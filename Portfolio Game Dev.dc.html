@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Adrien Patte, Gameplay Programmer Unreal Engine · Blueprint &amp; C++ | Portfolio</title>
+<meta name="description" content="Portfolio d'Adrien Patte, gameplay programmer Unreal Engine 5 en Blueprint et C++. Deux plugins publiés sur Fab, huit projets livrés du GDD au build, alternance M2 disponible en septembre 2026 à Paris.">
+<meta name="author" content="Adrien Patte">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="keywords" content="Adrien Patte, gameplay programmer, Unreal Engine 5, Blueprint, C++, Unity, C#, Niagara, Sequencer, Quartz, Steamworks, alternance jeu vidéo Paris, plugins Fab, Twitch StreamSync">
+<meta name="theme-color" content="#050506">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://kybrien.github.io/">
+<link rel="icon" href="uploads/OLR_LogoUnreal.ico" sizes="any">
+<link rel="apple-touch-icon" href="uploads/OLR-Logo.webp">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Adrien Patte, Gameplay Programmer">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://kybrien.github.io/">
+<meta property="og:title" content="Adrien Patte, Gameplay Programmer Unreal Engine · Blueprint &amp; C++">
+<meta property="og:description" content="Gameplay programmer Unreal Engine 5 (Blueprint, C++). Deux plugins publiés sur Fab, huit projets livrés. Alternance M2 en septembre 2026, Paris.">
+<meta property="og:image" content="https://kybrien.github.io/uploads/WaitScreen.webp">
+<meta property="og:image:width" content="1920">
+<meta property="og:image:height" content="1080">
+<meta property="og:image:alt" content="Adrien Patte, Gameplay Programmer Unreal Engine, portfolio">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Adrien Patte, Gameplay Programmer Unreal Engine · Blueprint &amp; C++">
+<meta name="twitter:description" content="Gameplay programmer Unreal Engine 5 (Blueprint, C++). Deux plugins publiés sur Fab, huit projets livrés. Alternance M2 en septembre 2026, Paris.">
+<meta name="twitter:image" content="https://kybrien.github.io/uploads/WaitScreen.webp">
+<link rel="preload" as="image" href="uploads/WaitScreen.webp" fetchpriority="high">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"Person","@id":"https://kybrien.github.io/#adrien","name":"Adrien Patte","jobTitle":"Gameplay Programmer","description":"Gameplay programmer Unreal Engine 5, spécialisé Blueprint et C++, en 2e année de Master Développement de jeux vidéo. Deux plugins Unreal publiés sur Fab et huit productions livrées du GDD au build.","url":"https://kybrien.github.io/","image":"https://kybrien.github.io/uploads/AP-Contact.webp","email":"adrienpatte75@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Paris","postalCode":"75017","addressCountry":"FR"},"nationality":"FR","hasOccupation":{"@type":"Occupation","name":"Gameplay Programmer","occupationLocation":{"@type":"City","name":"Paris"},"skills":"Unreal Engine 5, Blueprint, C++, Unity, C#, gameplay systems, AI, multiplayer replication"},"knowsLanguage":["fr","en","es","ja","sgn-FR"],"alumniOf":{"@type":"CollegeOrUniversity","name":"Quest Education Group · G.Tech Paris"},"knowsAbout":["Unreal Engine 5","Blueprint Visual Scripting","C++","Unity","C#","Gameplay programming","Niagara","Sequencer","Quartz Clock","Steamworks replication","Finite State Machine AI","Level design","Game Design Document"],"sameAs":["https://github.com/Kybrien","https://www.linkedin.com/in/adrien-patte/","https://www.fab.com/sellers/Kybrien"]},
+ {"@type":"WebSite","@id":"https://kybrien.github.io/#site","url":"https://kybrien.github.io/","name":"Adrien Patte, Gameplay Programmer","inLanguage":"fr-FR","author":{"@id":"https://kybrien.github.io/#adrien"}},
+ {"@type":"ProfilePage","@id":"https://kybrien.github.io/#page","url":"https://kybrien.github.io/","name":"Adrien Patte, Gameplay Programmer · Portfolio","isPartOf":{"@id":"https://kybrien.github.io/#site"},"mainEntity":{"@id":"https://kybrien.github.io/#adrien"}},
+ {"@type":"ItemList","name":"Projets de jeu","itemListOrder":"https://schema.org/ItemListOrderAscending","numberOfItems":8,"itemListElement":[
+  {"@type":"ListItem","position":1,"item":{"@type":"VideoGame","name":"One Last Rhapsody","gamePlatform":"PC (Windows)","applicationCategory":"Game","author":{"@id":"https://kybrien.github.io/#adrien"},"description":"Jeu d'infiltration et de plateforme sous Unreal Engine.","keywords":"Unreal Engine, Blueprint, C++"}},
+  {"@type":"ListItem","position":2,"item":{"@type":"VideoGame","name":"Soraimu","gamePlatform":"PC (Windows)","author":{"@id":"https://kybrien.github.io/#adrien"},"description":"Jeu de parkour physique sous Unreal Engine, réalisé en 10 jours.","keywords":"Unreal Engine, PCG, physique"}},
+  {"@type":"ListItem","position":3,"item":{"@type":"VideoGame","name":"The Tarnished Alchemist","gamePlatform":"PC (Windows)","author":{"@id":"https://kybrien.github.io/#adrien"},"description":"Projet d'interface et d'alchimie sous Unity.","keywords":"Unity, C#, UI"}},
+  {"@type":"ListItem","position":4,"item":{"@type":"VideoGame","name":"Gobelins Grimoires et gros Bobos","gamePlatform":"PC (Windows)","author":{"@id":"https://kybrien.github.io/#adrien"},"description":"Prototype multijoueur Unreal jusqu'à 30 joueurs sur les serveurs Steam.","keywords":"Unreal Engine, multijoueur, Steam"}},
+  {"@type":"ListItem","position":5,"item":{"@type":"VideoGame","name":"Trigger at Twilight","gamePlatform":"PC (Windows)","author":{"@id":"https://kybrien.github.io/#adrien"},"description":"FPS western développé en cinq jours sous Unity.","keywords":"Unity, C#, FPS"}},
+  {"@type":"ListItem","position":6,"item":{"@type":"VideoGame","name":"Another Man's Dungeon","gamePlatform":"PC (Windows)","author":{"@id":"https://kybrien.github.io/#adrien"},"description":"FPS multijoueur compétitif développé sous Unity.","keywords":"Unity, IA, multijoueur"}},
+  {"@type":"ListItem","position":7,"item":{"@type":"SoftwareApplication","name":"VxV Engine","applicationCategory":"DeveloperApplication","operatingSystem":"Windows","author":{"@id":"https://kybrien.github.io/#adrien"},"description":"Moteur de jeu maison écrit en OpenGL et C++.","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"}}},
+  {"@type":"ListItem","position":8,"item":{"@type":"VideoGame","name":"Mortal Brigade","gamePlatform":"PC (Windows)","author":{"@id":"https://kybrien.github.io/#adrien"},"description":"Vertical slice d'horreur sous SFML avec ombres dynamiques maison.","keywords":"SFML, C++, pixel art"}}
+ ]}
+]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&amp;family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Archivo:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root { --disp: 'Felix Titling','Cinzel',serif; --body: 'EB Garamond',Georgia,serif; --mono: 'IBM Plex Mono',monospace; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #000; }
+  a { color: inherit; text-decoration: none; }
+  #exp-co-1, #exp-co-2, #exp-co-3, #exp-co-4 {
+    display: inline-block; padding-bottom: 2px;
+    background-image: linear-gradient(oklch(0.72 0.19 25), oklch(0.72 0.19 25));
+    background-repeat: no-repeat; background-position: 0 100%; background-size: 0% 1px;
+    transition: background-size .38s cubic-bezier(.22,1,.36,1);
+  }
+  #exp-co-1:hover, #exp-co-2:hover, #exp-co-3:hover, #exp-co-4:hover { background-size: 100% 1px; }
+  #apropos-txt h2, #edu-1 h3, #edu-2 h3, #edu-3 h3 {
+    display: inline-block; padding-bottom: 3px;
+    background-image: linear-gradient(#fff, #fff); background-repeat: no-repeat;
+    background-position: 0 100%; background-size: 0% 1px;
+    transition: background-size .38s cubic-bezier(.22,1,.36,1);
+  }
+  #apropos-txt:hover h2, #edu-1:hover h3, #edu-2:hover h3, #edu-3:hover h3 { background-size: 100% 1px; }
+  #apropos-txt:hover p { color: #c9c6c0; }
+  #apropos-txt:hover strong { color: #fff; }
+  #apropos-txt p { transition: color .3s ease; }
+  #edu-1:hover, #edu-2:hover, #edu-3:hover { background: #0b0b0d; }
+
+  /* Version mobile / tablette : n'affecte rien au-dessus de 1100px */
+  @media (max-width: 1099px) {
+    html, body { overflow-x: hidden; }
+    [data-m="root"], [data-m="cs"] { min-width: 0 !important; }
+
+    [data-m="nav"] { top: auto !important; bottom: 0 !important; left: 0 !important; right: 0 !important;
+      transform: none !important; flex-direction: row !important; align-items: center !important;
+      justify-content: center !important; gap: 6px !important; padding: 8px 10px !important;
+      background: rgba(6,6,8,.96) !important; border-top: 1px solid #1b1b1e !important; }
+    [data-m="nav"] > div { margin-bottom: 0 !important; gap: 6px !important; }
+    [data-m="nav"] > div > span { width: 40px !important; height: 40px !important; }
+    [data-m="nav"] > a > span:first-child { display: none !important; }
+    [data-m="nav"] > a > span:last-child { width: 46px !important; height: 46px !important; }
+
+    #projets, #plugins, #apropos, #contact, #parcours,
+    [data-m="sec"], [data-m="feat"], [data-m="stats-wrap"] {
+      padding-left: 20px !important; padding-right: 20px !important; }
+    #contact { padding-bottom: 100px !important; }
+
+    [data-m="feat"], [data-m="proj-grid"], [data-m="plug-grid"],
+    #apropos, #contact, #parcours {
+      grid-template-columns: 1fr !important; gap: 40px !important; }
+    [data-m="edu-row"] { grid-template-columns: 1fr !important; gap: 12px !important; }
+    #parcours > div:last-child { order: -1 !important; }
+    [data-m="proj-card"] { grid-column: auto !important; }
+    [data-m="plug-grid"] > a { grid-column: auto !important; }
+    [data-m="thumbs"] { grid-template-columns: repeat(4, minmax(0,1fr)) !important; gap: 8px !important; }
+
+    [data-m="feat-title"] > a { font-size: 32px !important; }
+    [data-m="stats"] { gap: 12px !important; }
+    [data-m="stat-n"] { font-size: 46px !important; }
+    h2 { font-size: 26px !important; }
+
+    [data-m="cs"] > div { padding-left: 20px !important; padding-right: 20px !important; }
+    [data-m="cs"] div[style*="grid"] { grid-template-columns: 1fr !important; }
+  }
+</style>
+</helmet>
+
+<div data-m="root" style="--disp:{{ f.disp }};--body:{{ f.body }};--mono:{{ f.mono }};display:{{ homeDisplay }};width:100%;min-width:1100px;background:#000;color:#eceae6;font-family:var(--body)">
+
+  <nav data-m="nav" aria-label="Navigation principale" style="position:fixed;top:50%;right:0;transform:translateY(-50%);z-index:60;display:flex;flex-direction:column;gap:10px;align-items:flex-end">
+    <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+      <span onClick="{{ setFR }}" style="cursor:pointer;flex:none;width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:rgba(6,6,8,.92);border:1px solid {{ frBorder }};font:500 11px/1 var(--mono);letter-spacing:.12em;color:{{ frColor }};transition:color .25s ease,border-color .25s ease">FR</span>
+      <span onClick="{{ setEN }}" style="cursor:pointer;flex:none;width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:rgba(6,6,8,.92);border:1px solid {{ enBorder }};font:500 11px/1 var(--mono);letter-spacing:.12em;color:{{ enColor }};transition:color .25s ease,border-color .25s ease">EN</span>
+    </div>
+    <a href="#projets" onMouseEnter="{{ n0.enter }}" onMouseLeave="{{ n0.leave }}" style="display:flex;align-items:center;justify-content:flex-end;text-decoration:none">
+      <span style="overflow:hidden;white-space:nowrap;font-family:var(--disp);font-size:12px;letter-spacing:.18em;color:#fff;background:rgba(6,6,8,.92);border:1px solid {{ n0.bd }};border-right:none;line-height:44px;max-width:{{ n0.mw }};opacity:{{ n0.op }};padding:0 {{ n0.px }};transform:translateX({{ n0.tx }});transition:max-width .34s cubic-bezier(.22,1,.36,1),opacity .28s ease,transform .34s cubic-bezier(.22,1,.36,1),padding .34s ease">{{ t.navProjects }}</span>
+      <span style="flex:none;width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:rgba(6,6,8,.92);border:1px solid {{ n0.bd }};color:{{ n0.ic }};transition:border-color .25s ease,color .25s ease">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="7.5" height="7.5"></rect><rect x="13.5" y="3" width="7.5" height="7.5"></rect><rect x="3" y="13.5" width="7.5" height="7.5"></rect><rect x="13.5" y="13.5" width="7.5" height="7.5"></rect></svg>
+      </span>
+    </a>
+    <a href="#plugins" onMouseEnter="{{ n1.enter }}" onMouseLeave="{{ n1.leave }}" style="display:flex;align-items:center;justify-content:flex-end;text-decoration:none">
+      <span style="overflow:hidden;white-space:nowrap;font-family:var(--disp);font-size:12px;letter-spacing:.18em;color:#fff;background:rgba(6,6,8,.92);border:1px solid {{ n1.bd }};border-right:none;line-height:44px;max-width:{{ n1.mw }};opacity:{{ n1.op }};padding:0 {{ n1.px }};transform:translateX({{ n1.tx }});transition:max-width .34s cubic-bezier(.22,1,.36,1),opacity .28s ease,transform .34s cubic-bezier(.22,1,.36,1),padding .34s ease">{{ t.navPlugins }}</span>
+      <span style="flex:none;width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:rgba(6,6,8,.92);border:1px solid {{ n1.bd }};color:{{ n1.ic }};transition:border-color .25s ease,color .25s ease">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M10 3h4v3.2a2 2 0 1 0 3.4 1.4H21v4h-3.2a2 2 0 1 0-1.4 3.4V21h-4v-3.2a2 2 0 1 0-3.4-1.4H3v-4h3.2A2 2 0 1 0 10 9.4z"></path></svg>
+      </span>
+    </a>
+    <a href="#apropos" onMouseEnter="{{ n2.enter }}" onMouseLeave="{{ n2.leave }}" style="display:flex;align-items:center;justify-content:flex-end;text-decoration:none">
+      <span style="overflow:hidden;white-space:nowrap;font-family:var(--disp);font-size:12px;letter-spacing:.18em;color:#fff;background:rgba(6,6,8,.92);border:1px solid {{ n2.bd }};border-right:none;line-height:44px;max-width:{{ n2.mw }};opacity:{{ n2.op }};padding:0 {{ n2.px }};transform:translateX({{ n2.tx }});transition:max-width .34s cubic-bezier(.22,1,.36,1),opacity .28s ease,transform .34s cubic-bezier(.22,1,.36,1),padding .34s ease">{{ t.navAbout }}</span>
+      <span style="flex:none;width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:rgba(6,6,8,.92);border:1px solid {{ n2.bd }};color:{{ n2.ic }};transition:border-color .25s ease,color .25s ease">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="3.6"></circle><path d="M4.5 20.5c0-4.1 3.4-6.2 7.5-6.2s7.5 2.1 7.5 6.2"></path></svg>
+      </span>
+    </a>
+    <a href="#contact" onMouseEnter="{{ n3.enter }}" onMouseLeave="{{ n3.leave }}" style="display:flex;align-items:center;justify-content:flex-end;text-decoration:none">
+      <span style="overflow:hidden;white-space:nowrap;font-family:var(--disp);font-size:12px;letter-spacing:.18em;color:#fff;background:rgba(6,6,8,.92);border:1px solid {{ n3.bd }};border-right:none;line-height:44px;max-width:{{ n3.mw }};opacity:{{ n3.op }};padding:0 {{ n3.px }};transform:translateX({{ n3.tx }});transition:max-width .34s cubic-bezier(.22,1,.36,1),opacity .28s ease,transform .34s cubic-bezier(.22,1,.36,1),padding .34s ease">{{ t.navCV }}</span>
+      <span style="flex:none;width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:rgba(6,6,8,.92);border:1px solid {{ n3.bd }};color:{{ n3.ic }};transition:border-color .25s ease,color .25s ease">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14 3H6v18h12V7z"></path><path d="M14 3v4h4"></path><path d="M9 13h6M9 17h4"></path></svg>
+      </span>
+    </a>
+    <a href="#contact" onMouseEnter="{{ n4.enter }}" onMouseLeave="{{ n4.leave }}" style="display:flex;align-items:center;justify-content:flex-end;text-decoration:none">
+      <span style="overflow:hidden;white-space:nowrap;font-family:var(--disp);font-size:12px;letter-spacing:.18em;color:#fff;background:rgba(6,6,8,.92);border:1px solid {{ n4.bd }};border-right:none;line-height:44px;max-width:{{ n4.mw }};opacity:{{ n4.op }};padding:0 {{ n4.px }};transform:translateX({{ n4.tx }});transition:max-width .34s cubic-bezier(.22,1,.36,1),opacity .28s ease,transform .34s cubic-bezier(.22,1,.36,1),padding .34s ease">{{ t.navContact }}</span>
+      <span style="flex:none;width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:rgba(6,6,8,.92);border:1px solid {{ n4.bd }};color:{{ n4.ic }};transition:border-color .25s ease,color .25s ease">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14"></rect><path d="M3 6.5l9 6.5 9-6.5"></path></svg>
+      </span>
+    </a>
+  </nav>
+
+  <header data-m="hero" style="position:relative;aspect-ratio:16/9;background-color:#0a0a0c">
+    <img src="uploads/WaitScreen.webp" width="1920" height="1080" fetchpriority="high" alt="Adrien Patte, gameplay programmer Unreal Engine, portfolio" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+    <video src="uploads/hero1.mp4" poster="uploads/WaitScreen.webp" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" aria-hidden="true" tabIndex="{{ -1 }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></video>
+    <h1 style="position:absolute;width:1px;height:1px;margin:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap">Adrien Patte, gameplay programmer Unreal Engine 5 : Blueprint, C++ et systèmes de gameplay</h1>
+  </header>
+
+  <main style="display:block">
+  <div id="projets" style="padding:80px 60px 40px;display:flex;flex-direction:column;gap:8px">
+    
+  </div>
+  <div data-m="feat" style="padding:0 60px 80px;display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:52px;align-items:center">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="aspect-ratio:16/9;background:{{ mainBg }};display:flex;align-items:flex-end;justify-content:flex-start;transition:background .3s ease">
+        <span style="padding:14px 18px;font:500 11px/1 var(--mono);letter-spacing:.22em;color:#8f8c86;background:linear-gradient(to top,rgba(0,0,0,.7),transparent)">{{ mainLabel }}</span>
+      </div>
+      <div data-m="thumbs" style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px">
+        <sc-for list="{{ shots }}" as="s" hint-placeholder-count="5">
+          <button type="button" onClick="{{ s.select }}" style="padding:0;aspect-ratio:16/9;cursor:pointer;background:{{ s.bg }};border:1px solid {{ s.border }};opacity:{{ s.opacity }};display:flex;align-items:center;justify-content:center;transition:opacity .25s ease,border-color .25s ease" style-hover="opacity:1;border-color:oklch(0.72 0.19 25)">
+            <span style="align-self:flex-end;width:100%;padding:5px 7px;font:500 9px/1.4 var(--mono);letter-spacing:.16em;color:#e8e6e2;text-align:left;background:linear-gradient(to top,rgba(0,0,0,.8),transparent)">{{ s.label }}</span>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <h2 data-m="feat-title" style="margin:0;align-self:flex-start"><a href="projets/one-last-rhapsody.html" onClick="{{ openOLR }}" style="cursor:pointer;display:inline-block;font-family:var(--disp);font-size:50px;font-weight:700;letter-spacing:.02em;line-height:1.1;padding-bottom:6px;background-image:linear-gradient(#fff,#fff);background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;transition:background-size .38s cubic-bezier(.22,1,.36,1)" style-hover="background-size:100% 1px">One Last Rhapsody</a></h2>
+      <sc-if value="{{ isFR }}" hint-placeholder-val="{{ true }}">
+        <p style="margin:0;font-size:17px;line-height:1.6;color:#b3b0aa">Aventure cinématique cyberpunk sous Unreal 5.7 où la musique n'est pas une ambiance mais une mécanique : le monde bat à 80 BPM, et agir en rythme décuple les actions de R21. Lead sur une équipe de 3 : code gameplay, game design, level design, son et cinématiques.</p>
+      </sc-if>
+      <sc-if value="{{ isEN }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:0;font-size:17px;line-height:1.6;color:#b3b0aa">Cinematic cyberpunk adventure in Unreal 5.7 where music is a mechanic: the world beats at 80 BPM and acting in rhythm empowers R21. Lead of a team of 3: gameplay code, design, levels, sound and cinematics.</p>
+      </sc-if>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;font-size:13px;font-weight:600;color:#a9a6a0">
+        <span style="padding:7px 12px;background:rgba(255,255,255,.07)">UE 5.7</span>
+        <span style="padding:7px 12px;background:rgba(255,255,255,.07)">C++</span>
+        <span style="padding:7px 12px;background:rgba(255,255,255,.07)">BLUEPRINT</span>
+        <span style="padding:7px 12px;background:rgba(255,255,255,.07)">QUARTZ CLOCK</span>
+      </div>
+      <div style="display:flex;gap:22px;font-family:var(--disp);font-size:13px;font-weight:600;letter-spacing:.12em;color:oklch(0.72 0.19 25);margin-top:4px">
+        <a onClick="{{ openOLR }}" style="cursor:pointer;padding-bottom:3px;background-image:linear-gradient(#fff,#fff);background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;transition:background-size .38s cubic-bezier(.22,1,.36,1)" style-hover="background-size:100% 1px">{{ t.caseStudyCta }}</a>
+        <a href="https://github.com/Kybrien" target="_blank" rel="noopener" aria-label="Dépôt GitHub d'Adrien Patte" style="color:#c6c3bd;padding-bottom:3px;background-image:linear-gradient(#fff,#fff);background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;transition:background-size .38s cubic-bezier(.22,1,.36,1)" style-hover="background-size:100% 1px">GITHUB ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <div data-m="stats-wrap" style="position: relative; padding: 76px 60px; background: #000; border-top: 1px solid #1b1b1e; border-bottom: 1px solid #1b1b1e; padding-top: 45px; padding-bottom: 45px">
+    <div data-m="stats" style="position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;text-align:center">
+      <div><div data-m="stat-n" style="font-family:var(--disp);font-size:82px;font-weight:700;line-height:1.05;letter-spacing:.01em">4</div><div style="font-size:15px;font-weight:600;color:#a9a6a0">{{ t.statYears }}</div></div>
+      <div><div data-m="stat-n" style="font-family:var(--disp);font-size:82px;font-weight:700;line-height:1.05;letter-spacing:.01em">+15</div><div style="font-size:15px;font-weight:600;color:#a9a6a0">{{ t.statShipped }}</div></div>
+      <div><div data-m="stat-n" style="font-family:var(--disp);font-size:82px;font-weight:700;line-height:1.05;letter-spacing:.01em">2</div><div style="font-size:15px;font-weight:600;color:#a9a6a0">{{ t.statPlugins }}</div></div>
+    </div>
+  </div>
+
+  <div data-m="sec" style="padding:80px 60px;display:flex;flex-direction:column;gap:34px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline">
+      <h2 style="margin:0;font-family:var(--disp);font-size:34px;font-weight:700;letter-spacing:.08em">{{ t.otherProjects }}</h2>
+      <span style="font:500 12px/1 var(--mono);letter-spacing:.2em;color:#6d7078">{{ t.otherKicker }}</span>
+    </div>
+    <div data-m="proj-grid" style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px">
+      <sc-for list="{{ projects }}" as="p" hint-placeholder-count="7">
+        <a data-m="proj-card" href="{{ p.href }}" onClick="{{ p.open }}" onMouseEnter="{{ p.enter }}" onMouseLeave="{{ p.leave }}" style="cursor:pointer;grid-column:{{ p.col }};display:flex;flex-direction:column;background:{{ p.bgColor }};border:1px solid {{ p.borderColor }};transition:border-color .25s ease,background .25s ease">
+          <span style="aspect-ratio:16/9;background:{{ p.thumb }};display:block"></span>
+          <span style="display:flex;flex-direction:column;gap:9px;padding:17px;min-width:0">
+            <span style="display:flex;justify-content:space-between;align-items:baseline;gap:14px">
+              <h3 style="margin:0;font-family:var(--disp);font-size:17px;font-weight:700;letter-spacing:.05em">{{ p.title }}</h3>
+              <span style="font:500 11px/1 var(--mono);letter-spacing:.16em;color:#6d7078;flex:none">{{ p.year }}</span>
+            </span>
+            <span style="font:500 11px/1 var(--mono);letter-spacing:.16em;color:#8f8c86">{{ p.type }}</span>
+            <span style="font-size:14px;line-height:1.5;color:#a9a6a0">{{ p.desc }}</span>
+            <span style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-top:2px">
+              <span style="font-size:13px;font-weight:600;color:#c6c3bd">{{ p.tech }}</span>
+              <span style="font-size:12px;font-weight:700;letter-spacing:.06em;color:oklch(0.72 0.19 25);flex:none">{{ p.link }}</span>
+            </span>
+          </span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+
+  <div id="plugins" style="padding:80px 60px;display:flex;flex-direction:column;gap:34px;border-top:1px solid #1b1b1e">
+    <div style="display:flex;justify-content:space-between;align-items:baseline">
+      <h2 style="margin:0;font-family:var(--disp);font-size:34px;font-weight:700;letter-spacing:.08em">PLUGINS</h2>
+      <span style="font:500 12px/1 var(--mono);letter-spacing:.2em;color:#6d7078">FAB MARKETPLACE · UNREAL ENGINE</span>
+    </div>
+    <div data-m="plug-grid" style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px">
+      <a href="https://www.fab.com/listings/97e1b3d0-df12-41eb-89f4-3e4e54f28fc4" target="_blank" rel="noopener" style="grid-column:4 / span 3;display:flex;flex-direction:column;background:#000;border:1px solid #1c1c1f;transition:border-color .25s ease,background .25s ease" style-hover="border-color:#B7A6F0;background:rgba(183,166,240,.11)">
+        <img src="uploads/TwitchStreamSync.webp" alt="Twitch StreamSync, plugin Unreal Engine publié sur FAB" loading="lazy" decoding="async" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block">
+        <span style="display:flex;flex-direction:column;gap:9px;padding:17px;min-width:0;flex:1">
+          <span style="display:flex;justify-content:space-between;align-items:baseline;gap:14px">
+            <h3 style="margin:0;font-family:var(--disp);font-size:17px;font-weight:700;letter-spacing:.05em">TWITCH STREAMSYNC</h3>
+            <span style="font:500 11px/1 var(--mono);letter-spacing:.16em;color:#6d7078;flex:none">UE 5.1 → 5.8</span>
+          </span>
+          <span style="display:flex;align-items:center;gap:8px"><span style="font-size:13px;letter-spacing:.12em;color:#B7A6F0">★★★★★</span><span style="font:500 10px/1 var(--mono);letter-spacing:.14em;color:#8f8c86">{{ t.reviews }}</span></span>
+          <sc-if value="{{ isFR }}" hint-placeholder-val="{{ true }}">
+            <span style="font-size:14px;line-height:1.5;color:#a9a6a0">L'intégration Twitch complète pour Unreal : OAuth, chat IRC, EventSub et Helix, exposés en Blueprint et fonctionnels en build packagé.</span>
+          </sc-if>
+          <sc-if value="{{ isEN }}" hint-placeholder-val="{{ false }}">
+            <span style="font-size:14px;line-height:1.5;color:#a9a6a0">The complete Twitch integration for Unreal: OAuth, IRC chat, EventSub and Helix, exposed to Blueprint and working in packaged builds.</span>
+          </sc-if>
+          <span style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-top:auto;padding-top:6px">
+            <span style="font-size:13px;font-weight:600;color:#c6c3bd">C++ · BLUEPRINT</span>
+            <span style="font-size:12px;font-weight:700;letter-spacing:.06em;color:#B7A6F0;flex:none">{{ t.viewFab }}</span>
+          </span>
+        </span>
+      </a>
+      <a href="https://www.fab.com/listings/67c7d813-b85a-468b-a190-59a7eb035a0f" target="_blank" rel="noopener" style="grid-column:7 / span 3;display:flex;flex-direction:column;background:#000;border:1px solid #1c1c1f;transition:border-color .25s ease,background .25s ease" style-hover="border-color:#B7A6F0;background:rgba(183,166,240,.11)">
+        <img src="uploads/TwitchStreamSyncLite.webp" alt="Twitch StreamSync Lite, plugin Unreal Engine publié sur FAB" loading="lazy" decoding="async" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block">
+        <span style="display:flex;flex-direction:column;gap:9px;padding:17px;min-width:0;flex:1">
+          <span style="display:flex;justify-content:space-between;align-items:baseline;gap:14px">
+            <h3 style="margin:0;font-family:var(--disp);font-size:17px;font-weight:700;letter-spacing:.05em">TWITCH STREAMSYNC LITE</h3>
+            <span style="font:500 11px/1 var(--mono);letter-spacing:.16em;color:#6d7078;flex:none">UE 5.1 → 5.8</span>
+          </span>
+          <sc-if value="{{ isFR }}" hint-placeholder-val="{{ true }}">
+            <span style="font-size:14px;line-height:1.5;color:#a9a6a0">La version allégée : connexion OAuth et chat Twitch en quelques nodes Blueprint, sans la couche EventSub ni Helix.</span>
+          </sc-if>
+          <sc-if value="{{ isEN }}" hint-placeholder-val="{{ false }}">
+            <span style="font-size:14px;line-height:1.5;color:#a9a6a0">The lighter version: OAuth connection and Twitch chat in a few Blueprint nodes, without the EventSub or Helix layer.</span>
+          </sc-if>
+          <span style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-top:auto;padding-top:6px">
+            <span style="font-size:13px;font-weight:600;color:#c6c3bd">C++ · BLUEPRINT</span>
+            <span style="font-size:12px;font-weight:700;letter-spacing:.06em;color:#B7A6F0;flex:none">{{ t.viewFab }}</span>
+          </span>
+        </span>
+      </a>
+    </div>
+    <div style="display:flex;align-items:center;gap:16px;padding:20px 24px;border:1px dashed #23232a;color:#7d7a75">
+      <span style="font: 500 11px/1 var(--mono); letter-spacing: .2em; color: #D1D1D1">{{ t.soon }}</span>
+      <span style="font-size: 16px; color: #BDBDBD">{{ t.soonText }}</span>
+    </div>
+  </div>
+
+  <div id="apropos" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:60px;padding:80px 60px;border-top:1px solid #1b1b1e;align-items:center">
+    <img src="uploads/AP-Contact.webp" alt="Portrait d'Adrien Patte, gameplay programmer" loading="lazy" decoding="async" style="width:100%;height:auto;aspect-ratio:1080/800;object-fit:contain;object-position:50% 50%;display:block">
+    <div id="apropos-txt" style="display:flex;flex-direction:column;gap:20px">
+      <h2 style="margin:0;font-family:var(--disp);font-size:38px;font-weight:700;letter-spacing:.08em">{{ t.aboutTitle }}</h2>
+      <sc-if value="{{ isFR }}" hint-placeholder-val="{{ true }}">
+        <p style="margin:0;font-size:17px;line-height:1.65;color:#b3b0aa">J'imaginais des jeux et je dessinais des niveaux de mario sur papier durant mes cours de maths en primaire, aujourd'hui je suis <strong style="color:#f4f2ee;font-weight:700">gameplay programmer sur Unreal Engine 5 en Blueprint et en C++</strong>. J'adore <em style="color:#c6c3bd;font-style:italic;font-weight:400">les concepts qui sortent de l'ordinaire</em>, des choses qu'on a pas l'habitude de voir, et les jeux qui nous font nous dire "pourquoi j'ai pas pensé à&nbsp;ca nooonn !".</p>
+      </sc-if>
+      <sc-if value="{{ isEN }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:0;font-size:17px;line-height:1.65;color:#b3b0aa">I used to come up with games and draw Mario levels on paper during maths lessons at primary school; now I’m a <strong style="color:#f4f2ee;font-weight:700">gameplay programmer working with Unreal Engine 5 using Blueprint and C++</strong>. I love <em style="color:#c6c3bd;font-style:italic;font-weight:400">concepts that are out of the ordinary</em>, things we’re not used to seeing, and games that make us say “Why didn’t I think of that?".</p>
+      </sc-if>
+      <sc-if value="{{ isFR }}" hint-placeholder-val="{{ true }}">
+        <p style="margin:0;font-size:17px;line-height:1.65;color:#b3b0aa">Je conçois autant que je code : <em style="color:#c6c3bd;font-style:italic;font-weight:400">GDD, game feel, level design et sound design</em> font partie du travail, et je touche à&nbsp;tout pour etre le moins limité&nbsp;quand je crée mes propres jeux. <strong style="color:#f4f2ee;font-weight:700">Deux plugins Unreal publiés sur Fab, huit productions livrées du GDD au build.</strong> Je cherche une <strong style="color:#f4f2ee;font-weight:700">alternance de M2 en studio, 3 semaines en entreprise pour 1 semaine à l'école, à partir de septembre 2026</strong>, à Paris ou en Île-de-France en présentiel, et dans toute la France en remote.</p>
+      </sc-if>
+      <sc-if value="{{ isEN }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:0;font-size:17px;line-height:1.65;color:#b3b0aa">I design as much as I code: <em style="color:#c6c3bd;font-style:italic;font-weight:400">GDD, level design and sound design</em> are part of the job, and a system that is painful to play is a system that is painful to maintain. <strong style="color:#f4f2ee;font-weight:700">Two Unreal plugins published on Fab, eight productions delivered from GDD to build.</strong> I'm looking for an <strong style="color:#f4f2ee;font-weight:700">M2 apprenticeship in a studio, 3 weeks at the company for 1 week at school, starting September 2026</strong>, in Paris or the Île-de-France area.</p>
+      </sc-if>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;font-size:13px;font-weight:600;color:#a9a6a0">
+        <span style="padding:7px 12px;background:rgba(255,255,255,.07)">Unreal Engine</span>
+        <span style="padding:7px 12px;background:rgba(255,255,255,.07)">Blueprint</span>
+        <span style="padding:7px 12px;background:rgba(255,255,255,.07)">C++</span>
+        <span style="padding:7px 12px;background:rgba(255,255,255,.07)">C# / Unity</span>
+        <span style="padding:7px 12px;background:rgba(255,255,255,.07)">UMG · Enhanced Input</span>
+        <span style="padding:7px 12px;background:rgba(255,255,255,.07)">Niagara · Sequencer</span>
+        <span style="padding:7px 12px;background:rgba(255,255,255,.07)">Quartz Clock</span>
+        <span style="padding:7px 12px;background:rgba(255,255,255,.07)">Steamworks · Réplication</span>
+        <span style="padding:7px 12px;background:rgba(255,255,255,.07)">FSM · IA</span>
+        <span style="padding:7px 12px;background:rgba(255,255,255,.07)">Lumen · Ray tracing</span>
+        <span style="padding:7px 12px;background:rgba(255,255,255,.07)">Git / GitHub</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="parcours" style="display:grid;grid-template-columns:minmax(0,0.92fr) minmax(0,1.08fr);gap:72px;padding:0 60px 84px;align-items:start">
+
+    <div style="display:flex;flex-direction:column;gap:54px">
+      <div id="formations" style="display:flex;flex-direction:column">
+        <h2 style="margin:0 0 4px;font-family:var(--disp);font-size:30px;font-weight:700;letter-spacing:.08em">{{ t.eduTitle }}</h2>
+        <a id="edu-1" data-m="edu-row" href="{{ t.edu1Url }}" target="_blank" rel="noopener" style="display:grid;grid-template-columns:56px minmax(0,1fr);gap:18px;align-items:start;padding:24px 0;border-top:1px solid #1b1b1e;transition:background .25s ease;cursor:pointer">
+          <img src="uploads/Logo-GC.webp" alt="Quest Education Group · G.Tech" loading="lazy" decoding="async" style="width:56px;height:56px;object-fit:contain;display:block">
+          <span style="display:flex;flex-direction:column;gap:6px">
+            <h3 style="margin:0;font-family:var(--disp);font-size:18px;font-weight:700;letter-spacing:.02em;color:#efece6;text-wrap:pretty">{{ t.edu1 }}</h3>
+            <span style="font:500 11px/1 var(--mono);letter-spacing:.14em;color:oklch(0.72 0.19 25)">{{ t.edu1Status }}</span>
+            <span style="font-size:13px;color:#8f8c86">Quest Education Group · G.Tech, Paris · 2025 – 2027</span>
+            <span style="margin:2px 0 0;font-size:15px;line-height:1.6;color:#b3b0aa;text-wrap:pretty">{{ t.edu1Desc }}</span>
+          </span>
+        </a>
+        <a id="edu-2" data-m="edu-row" href="{{ t.edu2Url }}" target="_blank" rel="noopener" style="display:grid;grid-template-columns:56px minmax(0,1fr);gap:18px;align-items:start;padding:24px 0;border-top:1px solid #1b1b1e;transition:background .25s ease;cursor:pointer">
+          <img src="uploads/Logo-GC.webp" alt="Quest Education Group · G.Tech" loading="lazy" decoding="async" style="width:56px;height:56px;object-fit:contain;display:block">
+          <span style="display:flex;flex-direction:column;gap:6px">
+            <h3 style="margin:0;font-family:var(--disp);font-size:18px;font-weight:700;letter-spacing:.02em;color:#efece6;text-wrap:pretty">{{ t.edu2 }}</h3>
+            <span style="font:500 11px/1 var(--mono);letter-spacing:.14em;color:#7d7a75">{{ t.edu2Status }}</span>
+            <span style="font-size:13px;color:#8f8c86">Quest Education Group · G.Tech, Paris · 2025</span>
+            <span style="margin:2px 0 0;font-size:15px;line-height:1.6;color:#b3b0aa;text-wrap:pretty">{{ t.edu2Desc }}</span>
+          </span>
+        </a>
+        <a id="edu-3" data-m="edu-row" href="{{ t.edu3Url }}" target="_blank" rel="noopener" style="display:grid;grid-template-columns:56px minmax(0,1fr);gap:18px;align-items:start;padding:24px 0;border-top:1px solid #1b1b1e;border-bottom:1px solid #1b1b1e;transition:background .25s ease;cursor:pointer">
+          <img src="uploads/Logo_LMA.webp" alt="Lycée Militaire d'Autun" loading="lazy" decoding="async" style="width:56px;height:56px;object-fit:contain;display:block">
+          <span style="display:flex;flex-direction:column;gap:6px">
+            <h3 style="margin:0;font-family:var(--disp);font-size:18px;font-weight:700;letter-spacing:.02em;color:#efece6;text-wrap:pretty">{{ t.edu3 }}</h3>
+            <span style="font:500 11px/1 var(--mono);letter-spacing:.14em;color:#7d7a75">{{ t.edu3Status }}</span>
+            <span style="font-size:13px;color:#8f8c86">Lycée Militaire d'Autun · 2015 – 2022</span>
+            <span style="margin:2px 0 0;font-size:15px;line-height:1.6;color:#b3b0aa;text-wrap:pretty">{{ t.edu3Desc }}</span>
+          </span>
+        </a>
+      </div>
+
+      <div id="langues" style="display:flex;flex-direction:column">
+        <h2 style="margin:0 0 4px;font-family:var(--disp);font-size:30px;font-weight:700;letter-spacing:.08em">{{ t.langTitle }}</h2>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:18px;padding:13px 0;border-top:1px solid #1b1b1e">
+          <span style="display:flex;align-items:center;gap:12px;min-width:0">
+            <svg viewBox="0 0 24 16" style="width:24px;height:16px;flex:none;display:block;border:1px solid #2c2c30" aria-hidden="true"><rect width="8" height="16" fill="#0055A4"></rect><rect x="8" width="8" height="16" fill="#F4F2EE"></rect><rect x="16" width="8" height="16" fill="#EF4135"></rect></svg>
+            <span style="font-family:var(--disp);font-size:16px;font-weight:600;letter-spacing:.02em;color:#efece6;text-wrap:pretty">{{ t.lang1N }}</span>
+          </span>
+          <span style="font:500 11px/1.4 var(--mono);letter-spacing:.14em;color:#8f8c86;text-align:right;flex:none">{{ t.lang1L }}</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:18px;padding:13px 0;border-top:1px solid #1b1b1e">
+          <span style="display:flex;align-items:center;gap:12px;min-width:0">
+            <svg viewBox="0 0 24 16" style="width:24px;height:16px;flex:none;display:block;border:1px solid #2c2c30" aria-hidden="true"><rect width="24" height="16" fill="#012169"></rect><path d="M0 0l24 16M24 0L0 16" stroke="#F4F2EE" stroke-width="3.2"></path><path d="M0 0l24 16M24 0L0 16" stroke="#C8102E" stroke-width="1.8"></path><path d="M12 0v16M0 8h24" stroke="#F4F2EE" stroke-width="5.4"></path><path d="M12 0v16M0 8h24" stroke="#C8102E" stroke-width="3.2"></path></svg>
+            <span style="font-family:var(--disp);font-size:16px;font-weight:600;letter-spacing:.02em;color:#efece6;text-wrap:pretty">{{ t.lang2N }}</span>
+          </span>
+          <span style="font:500 11px/1.4 var(--mono);letter-spacing:.14em;color:#8f8c86;text-align:right;flex:none">{{ t.lang2L }}</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:18px;padding:13px 0;border-top:1px solid #1b1b1e">
+          <span style="display:flex;align-items:center;gap:12px;min-width:0">
+            <svg viewBox="0 0 24 16" style="width:24px;height:16px;flex:none;display:block;border:1px solid #2c2c30" aria-hidden="true"><rect width="24" height="16" fill="#AA151B"></rect><rect y="4" width="24" height="8" fill="#F1BF00"></rect></svg>
+            <span style="font-family:var(--disp);font-size:16px;font-weight:600;letter-spacing:.02em;color:#efece6;text-wrap:pretty">{{ t.lang3N }}</span>
+          </span>
+          <span style="font:500 11px/1.4 var(--mono);letter-spacing:.14em;color:#8f8c86;text-align:right;flex:none">{{ t.lang3L }}</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:18px;padding:13px 0;border-top:1px solid #1b1b1e">
+          <span style="display:flex;align-items:center;gap:12px;min-width:0">
+            <svg viewBox="0 0 24 16" style="width:24px;height:16px;flex:none;display:block;border:1px solid #2c2c30" aria-hidden="true"><rect width="24" height="16" fill="#F4F2EE"></rect><circle cx="12" cy="8" r="4.6" fill="#BC002D"></circle></svg>
+            <span style="font-family:var(--disp);font-size:16px;font-weight:600;letter-spacing:.02em;color:#efece6;text-wrap:pretty">{{ t.lang4N }}</span>
+          </span>
+          <span style="font:500 11px/1.4 var(--mono);letter-spacing:.14em;color:#8f8c86;text-align:right;flex:none">{{ t.lang4L }}</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:18px;padding:13px 0;border-top:1px solid #1b1b1e;border-bottom:1px solid #1b1b1e">
+          <span style="display:flex;align-items:center;gap:12px;min-width:0">
+            <svg viewBox="0 0 24 16" style="width:24px;height:16px;flex:none;display:block;border:1px solid #2c2c30" aria-hidden="true"><rect width="24" height="16" fill="#0d0d10"></rect><g stroke="#8f8c86" stroke-width="1.1" fill="none" stroke-linecap="round"><path d="M7 12V6.4a1 1 0 0 1 2 0V9"></path><path d="M9 9V5.6a1 1 0 0 1 2 0V9"></path><path d="M11 9.2V6.6a1 1 0 0 1 2 0V12"></path><path d="M17 4v5.6a1 1 0 0 1-2 0V7"></path></g></svg>
+            <span style="font-family:var(--disp);font-size:16px;font-weight:600;letter-spacing:.02em;color:#efece6;text-wrap:pretty">{{ t.lang5N }}</span>
+          </span>
+          <span style="font:500 11px/1.4 var(--mono);letter-spacing:.14em;color:#8f8c86;text-align:right;flex:none">{{ t.lang5L }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="experience" style="display:flex;flex-direction:column">
+      <h2 style="margin:0 0 4px;font-family:var(--disp);font-size:30px;font-weight:700;letter-spacing:.08em">{{ t.expTitle }}</h2>
+        <div data-m="edu-row" style="display:grid;grid-template-columns:56px minmax(0,1fr);gap:18px;align-items:start;padding:24px 0;border-top:1px solid #1b1b1e;transition:background .25s ease">
+          <img src="uploads/BornToWebLogo.png" alt="Born To Web" loading="lazy" decoding="async" style="width:56px;height:56px;object-fit:contain;display:block">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <span style="font:500 11px/1 var(--mono);letter-spacing:.16em;color:#6d7078">{{ t.exp1Date }}</span>
+            <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin-top:2px">
+              <h3 style="margin:0;font-family:var(--disp);font-size:19px;font-weight:700;letter-spacing:.02em;color:#efece6">{{ t.exp1Role }}</h3>
+              <a id="exp-co-1" href="{{ t.exp1Url }}" target="_blank" rel="noopener" style="font:500 11px/1.4 var(--mono);letter-spacing:.14em;color:oklch(0.72 0.19 25)">{{ t.exp1Co }}</a>
+            </div>
+            <span style="font-size:14px;color:#8f8c86">{{ t.exp1Meta }}</span>
+            <p style="margin:2px 0 0;font-size:15px;line-height:1.6;color:#b3b0aa;text-wrap:pretty">{{ t.exp1Desc }}</p>
+          </div>
+        </div>
+        <div data-m="edu-row" style="display:grid;grid-template-columns:56px minmax(0,1fr);gap:18px;align-items:start;padding:24px 0;border-top:1px solid #1b1b1e;transition:background .25s ease">
+          <img src="uploads/CabbConseilLogo.png" alt="CABB Conseil" loading="lazy" decoding="async" style="width:56px;height:56px;object-fit:contain;display:block">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <span style="font:500 11px/1 var(--mono);letter-spacing:.16em;color:#6d7078">{{ t.exp2Date }}</span>
+            <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin-top:2px">
+              <h3 style="margin:0;font-family:var(--disp);font-size:19px;font-weight:700;letter-spacing:.02em;color:#efece6">{{ t.exp2Role }}</h3>
+              <a id="exp-co-2" href="{{ t.exp2Url }}" target="_blank" rel="noopener" style="font:500 11px/1.4 var(--mono);letter-spacing:.14em;color:oklch(0.72 0.19 25)">{{ t.exp2Co }}</a>
+            </div>
+            <span style="font-size:14px;color:#8f8c86">{{ t.exp2Meta }}</span>
+            <p style="margin:2px 0 0;font-size:15px;line-height:1.6;color:#b3b0aa;text-wrap:pretty">{{ t.exp2Desc }}</p>
+          </div>
+        </div>
+        <div data-m="edu-row" style="display:grid;grid-template-columns:56px minmax(0,1fr);gap:18px;align-items:start;padding:24px 0;border-top:1px solid #1b1b1e;transition:background .25s ease">
+          <img src="uploads/Logo-GC.webp" alt="G.STUDIO · Quest Education Group" loading="lazy" decoding="async" style="width:56px;height:56px;object-fit:contain;display:block">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <span style="font:500 11px/1 var(--mono);letter-spacing:.16em;color:#6d7078">{{ t.exp3Date }}</span>
+            <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin-top:2px">
+              <h3 style="margin:0;font-family:var(--disp);font-size:19px;font-weight:700;letter-spacing:.02em;color:#efece6">{{ t.exp3Role }}</h3>
+              <a id="exp-co-3" href="{{ t.exp3Url }}" target="_blank" rel="noopener" style="font:500 11px/1.4 var(--mono);letter-spacing:.14em;color:oklch(0.72 0.19 25)">{{ t.exp3Co }}</a>
+            </div>
+            <span style="font-size:14px;color:#8f8c86">{{ t.exp3Meta }}</span>
+            <p style="margin:2px 0 0;font-size:15px;line-height:1.6;color:#b3b0aa;text-wrap:pretty">{{ t.exp3Desc }}</p>
+          </div>
+        </div>
+        <div data-m="edu-row" style="display:grid;grid-template-columns:56px minmax(0,1fr);gap:18px;align-items:start;padding:24px 0;border-top:1px solid #1b1b1e;border-bottom:1px solid #1b1b1e;transition:background .25s ease">
+          <img src="uploads/Logo-BSPP.webp" alt="Brigade de Sapeurs-Pompiers de Paris" loading="lazy" decoding="async" style="width:56px;height:56px;object-fit:contain;display:block">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <span style="font:500 11px/1 var(--mono);letter-spacing:.16em;color:#6d7078">{{ t.exp4Date }}</span>
+            <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin-top:2px">
+              <h3 style="margin:0;font-family:var(--disp);font-size:19px;font-weight:700;letter-spacing:.02em;color:#efece6">{{ t.exp4Role }}</h3>
+              <a id="exp-co-4" href="{{ t.exp4Url }}" target="_blank" rel="noopener" style="font:500 11px/1.4 var(--mono);letter-spacing:.14em;color:oklch(0.72 0.19 25)">{{ t.exp4Co }}</a>
+            </div>
+            <span style="font-size:14px;color:#8f8c86">{{ t.exp4Meta }}</span>
+            <p style="margin:2px 0 0;font-size:15px;line-height:1.6;color:#b3b0aa;text-wrap:pretty">{{ t.exp4Desc }}</p>
+          </div>
+        </div>
+    </div>
+
+  </div>
+  </main>
+  <footer id="contact" style="display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px;padding:72px 60px;border-top:1px solid #1b1b1e;background:#000">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <span style="font-family:var(--disp);font-weight:700;font-size:19px;letter-spacing:.1em">ADRIEN <span style="color:oklch(0.72 0.19 25)">PATTE</span></span>
+      <a href="mailto:adrienpatte75@gmail.com" style="align-self:flex-start;font-family:var(--disp);font-size:24px;font-weight:600;letter-spacing:.04em;padding-bottom:4px;background-image:linear-gradient(#fff,#fff);background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;transition:background-size .38s cubic-bezier(.22,1,.36,1)" style-hover="background-size:100% 1px">adrienpatte75@gmail.com</a>
+      <a href="tel:+33783794596" style="align-self:flex-start;font-size:15px;font-weight:600;color:#c6c3bd;padding-bottom:3px;background-image:linear-gradient(#fff,#fff);background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;transition:background-size .38s cubic-bezier(.22,1,.36,1)" style-hover="background-size:100% 1px">07 83 79 45 96</a>
+      <span style="font-size:14px;color:#7d7a75">{{ t.replyLine }}</span>
+      <span style="display:flex;flex-direction:column;gap:7px;margin-top:14px;padding:15px 17px;border:1px solid #26262a;border-left:2px solid oklch(0.72 0.19 25);align-self:flex-start">
+        <span style="display:flex;align-items:center;gap:9px">
+          <span style="width:7px;height:7px;background:oklch(0.72 0.19 25);border-radius:50%;flex:none;display:block"></span>
+          <span style="font-family:var(--disp);font-size:15px;font-weight:700;letter-spacing:.06em;color:oklch(0.72 0.19 25);text-wrap:pretty">{{ t.avail }}</span>
+        </span>
+        <span style="font:500 12px/1.5 var(--mono);letter-spacing:.12em;color:#8f8c86">{{ t.loc }}</span>
+      </span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <span style="font:500 11px/1 var(--mono);letter-spacing:.2em;color:#5f6269;margin-bottom:4px">{{ t.profile }}</span>
+      <a href="https://www.linkedin.com/in/adrien-patte/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:11px;align-self:flex-start;font-family:var(--disp);font-size:16px;font-weight:600;letter-spacing:.1em;color:#c6c3bd;padding-bottom:3px;background-image:linear-gradient(#fff,#fff);background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;transition:background-size .38s cubic-bezier(.22,1,.36,1),color .25s ease" style-hover="background-size:100% 1px;color:#f4f2ee"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" style="flex:none;display:block" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM2.9 21h4.16V10.2H2.9V21zM9.7 10.2h3.99v1.48h.06c.56-1.01 1.92-2.07 3.95-2.07 4.22 0 5 2.66 5 6.12V21h-4.16v-4.6c0-1.1-.02-2.51-1.6-2.51-1.6 0-1.85 1.19-1.85 2.43V21H9.7V10.2z"></path></svg><span>LINKEDIN</span></a>
+      <a href="https://github.com/Kybrien" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:11px;align-self:flex-start;font-family:var(--disp);font-size:16px;font-weight:600;letter-spacing:.1em;color:#c6c3bd;padding-bottom:3px;background-image:linear-gradient(#fff,#fff);background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;transition:background-size .38s cubic-bezier(.22,1,.36,1),color .25s ease" style-hover="background-size:100% 1px;color:#f4f2ee"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" style="flex:none;display:block" aria-hidden="true"><path d="M12 1.8a10.2 10.2 0 0 0-3.23 19.9c.51.1.7-.22.7-.49l-.01-1.9c-2.6.51-3.2-1.1-3.2-1.1-.44-1.06-1.08-1.35-1.08-1.35-.88-.57.07-.56.07-.56.98.07 1.5 1 1.5 1 .86 1.45 2.26 1.03 2.81.79.09-.62.34-1.04.62-1.28-2.07-.23-4.25-1.02-4.25-4.55 0-1.01.36-1.83.95-2.48-.1-.23-.41-1.17.09-2.44 0 0 .78-.24 2.55.95a8.9 8.9 0 0 1 4.65 0c1.77-1.19 2.54-.95 2.54-.95.51 1.27.19 2.21.1 2.44.6.65.95 1.47.95 2.48 0 3.54-2.19 4.32-4.27 4.54.34.29.64.86.64 1.74l-.01 2.58c0 .27.19.6.71.49A10.2 10.2 0 0 0 12 1.8z"></path></svg><span>GITHUB</span></a>
+      <a href="https://www.fab.com/sellers/Kybrien" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:11px;align-self:flex-start;font-family:var(--disp);font-size:16px;font-weight:600;letter-spacing:.1em;color:#c6c3bd;padding-bottom:3px;background-image:linear-gradient(#fff,#fff);background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;transition:background-size .38s cubic-bezier(.22,1,.36,1),color .25s ease" style-hover="background-size:100% 1px;color:#f4f2ee"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" style="flex:none;display:block" aria-hidden="true"><path d="M12 1.6 3.2 6.5v11L12 22.4l8.8-4.9v-11L12 1.6zm0 2.5 6.3 3.5-6.3 3.5-6.3-3.5L12 4.1zM5.2 9.4l5.8 3.2v6.6l-5.8-3.2V9.4zm7.8 9.8v-6.6l5.8-3.2v6.6l-5.8 3.2z"></path></svg><span>FAB SELLER</span></a>
+      <a href="https://steamcommunity.com/id/Kybrien/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:11px;align-self:flex-start;font-family:var(--disp);font-size:16px;font-weight:600;letter-spacing:.1em;color:#c6c3bd;padding-bottom:3px;background-image:linear-gradient(#fff,#fff);background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;transition:background-size .38s cubic-bezier(.22,1,.36,1),color .25s ease" style-hover="background-size:100% 1px;color:#f4f2ee"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" style="flex:none;display:block" aria-hidden="true"><path d="M12 1.9C6.6 1.9 2.2 6 1.8 11.2l5.4 2.2a2.9 2.9 0 0 1 1.6-.5h.15l2.4-3.45v-.05a3.85 3.85 0 1 1 3.85 3.85h-.09l-3.4 2.42v.12a2.9 2.9 0 0 1-5.75.5L1.6 14.2A10.1 10.1 0 1 0 12 1.9zm-4.6 13.4-1.24-.5a2.18 2.18 0 0 0 4.03-.35 2.18 2.18 0 0 0-2.9-2.35l1.28.53a1.6 1.6 0 1 1-1.17 2.67zm10.4-6.03a2.57 2.57 0 1 0-5.14 0 2.57 2.57 0 0 0 5.14 0zm-4.5 0a1.93 1.93 0 1 1 3.87 0 1.93 1.93 0 0 1-3.87 0z"></path></svg><span>STEAM</span></a>
+    </div>
+    
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <span style="font:500 11px/1 var(--mono);letter-spacing:.2em;color:#5f6269;margin-bottom:4px">{{ t.cvTitle }}</span>
+      <a href="uploads/CVO-AdrienPatte-FR.pdf" download="" style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 18px;font-family:var(--disp);font-size:14px;font-weight:700;letter-spacing:.1em;border:1px solid #3a3a40;background:transparent;color:#e8e6e2;transition:background .25s ease,color .25s ease,border-color .25s ease" style-hover="background:oklch(0.72 0.19 25);border-color:oklch(0.72 0.19 25);color:#0a0a0c">
+        <span>CV FR (PDF)</span>
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" style="flex:none" aria-hidden="true"><path d="M8 1v9"></path><path d="M4 6.5 8 10.5l4-4"></path><path d="M1.5 13.5h13"></path></svg>
+      </a>
+      <a href="uploads/CVO-AdrienPatte-EN.pdf" download="" style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 18px;font-family:var(--disp);font-size:14px;font-weight:700;letter-spacing:.1em;border:1px solid #3a3a40;background:transparent;color:#e8e6e2;transition:background .25s ease,color .25s ease,border-color .25s ease" style-hover="background:oklch(0.72 0.19 25);border-color:oklch(0.72 0.19 25);color:#0a0a0c">
+        <span>CV EN (PDF)</span>
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" style="flex:none" aria-hidden="true"><path d="M8 1v9"></path><path d="M4 6.5 8 10.5l4-4"></path><path d="M1.5 13.5h13"></path></svg>
+      </a>
+    </div>
+  </footer>
+
+  
+</div>
+
+
+  <sc-if value="{{ pgA }}" hint-placeholder-val="{{ false }}">
+    <div data-m="cs" style="--disp:{{ f.disp }};--body:{{ f.body }};--mono:{{ f.mono }};width:100%;min-width:1100px;overflow-x:clip;background:#050506;color:#f4f2ee;font-family:var(--body)">
+      <div style="position:sticky;top:0;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:15px 48px;background:rgba(5,5,6,.88);backdrop-filter:blur(14px);border-bottom:1px solid #1b1b1e">
+        <span onClick="{{ pg.close }}" style="cursor:pointer;font:500 11px/1 var(--mono);letter-spacing:.2em;color:#c6c3bd;transition:color .2s ease" style-hover="color:#fff">← {{ t.backPortfolio }}</span>
+        <span style="font:500 11px/1 var(--mono);letter-spacing:.24em;color:#6d7078">{{ pg.n }} · {{ t.caseStudyLabel }}</span>
+        <span style="display:flex;gap:9px;font:500 11px/1 var(--mono);letter-spacing:.14em">
+          <span onClick="{{ setFR }}" style="cursor:pointer;color:{{ frColor }};transition:color .2s ease">FR</span>
+          <span style="color:#33333a">/</span>
+          <span onClick="{{ setEN }}" style="cursor:pointer;color:{{ enColor }};transition:color .2s ease">EN</span>
+        </span>
+        <span style="display:flex;gap:22px;font:500 11px/1 var(--mono);letter-spacing:.16em;color:#8f8c86">
+          <span onClick="{{ pg.goPrev }}" style="cursor:pointer;transition:color .2s ease" style-hover="color:#fff">←&nbsp;&nbsp;{{ pg.prevTitle }}</span>
+          <span onClick="{{ pg.goNext }}" style="cursor:pointer;transition:color .2s ease" style-hover="color:#fff">{{ pg.nextTitle }}&nbsp;&nbsp;→</span>
+        </span>
+      </div>
+
+      <div style="position:relative;aspect-ratio:21/9;background:{{ pg.banner }};display:flex;align-items:flex-end">
+        <div style="width:100%;padding:56px 48px;background:linear-gradient(to top,rgba(5,5,6,.96) 6%,rgba(5,5,6,.55) 45%,transparent)">
+          <div style="display:flex;flex-direction:column;gap:14px;max-width:1100px">
+            <span style="font:500 12px/1 var(--mono);letter-spacing:.3em;color:{{ pg.accent }}">{{ pg.sub }}</span>
+            <h1 style="margin:0;font-family:var(--disp);font-size:76px;font-weight:700;line-height:1;letter-spacing:.01em">{{ pg.title }}</h1>
+            <div style="display:flex;gap:26px;font:500 12px/1 var(--mono);letter-spacing:.16em;color:#c6c3bd">
+              <span>{{ pg.engine }}</span><span>{{ pg.year }}</span><span>{{ pg.team }}</span><span>{{ pg.platform }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="position:relative;z-index:0;max-width:880px;margin:0 auto;padding:76px 40px 0;display:flex;flex-direction:column;gap:26px">
+        {{ pg.logoWideEl }}
+        <sc-if value="{{ pg.hasPitch }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:22px">
+            <p style="margin:0;font-size:26px;line-height:1.5;color:#f4f2ee;text-wrap:pretty">{{ pg.pitch }}</p>
+            <p style="margin:0;font-size:18px;line-height:1.6;color:{{ pg.accent }};text-wrap:pretty">{{ pg.hook }}</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ pg.needsPitch }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:34px;border:1px dashed #2c2c30;display:flex;flex-direction:column;gap:8px">
+            <span style="font:500 11px/1 var(--mono);letter-spacing:.24em;color:{{ pg.accent }}">{{ t.phPitch }}</span>
+            <span style="font-size:16px;line-height:1.6;color:#7d7a75">{{ t.phPitchSub }}</span>
+          </div>
+        </sc-if>
+      </div>
+
+      <div style="max-width:880px;margin:0 auto;padding:52px 40px;display:grid;grid-template-columns:52px minmax(0,1fr);gap:22px;align-items:start">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" stroke="{{ pg.accent }}" stroke-width="1.5" stroke-linejoin="miter" style="flex:none;display:block"><path d="M2 2h30v20H13l-8 8v-8H2z"></path><path d="M8 9h18"></path><path d="M8 15h11"></path></svg>
+        <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font:500 11px/1 var(--mono);letter-spacing:.26em;color:#6d7078">{{ t.myRole }}</span>
+        <p style="margin:0;font-size:19px;line-height:1.65;color:#b3b0aa;text-wrap:pretty">{{ pg.role }}</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px">
+          <sc-for list="{{ pg.roles }}" as="r" hint-placeholder-count="4">
+            <span style="padding:7px 13px;font:500 10px/1 var(--mono);letter-spacing:.16em;color:#e8e6e2;border:1px solid #26262a">{{ r.r }}</span>
+          </sc-for>
+        </div>
+        </div>
+      </div>
+
+      <div style="max-width:880px;margin:0 auto;padding:0 40px 52px">
+        <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:#1b1b1e;border-top:2px solid {{ pg.accent }}">
+          <div style="background:#050506;padding:22px 18px;display:flex;flex-direction:column;gap:8px"><span style="font:500 10px/1 var(--mono);letter-spacing:.2em;color:#6d7078">{{ t.engineLabel }}</span><span style="font-size:17px;color:#f4f2ee">{{ pg.engine }}</span></div>
+          <div style="background:#050506;padding:22px 18px;display:flex;flex-direction:column;gap:8px"><span style="font:500 10px/1 var(--mono);letter-spacing:.2em;color:#6d7078">{{ t.teamLabel }}</span><span style="font-size:17px;color:#f4f2ee">{{ pg.team }}</span></div>
+          <div style="background:#050506;padding:22px 18px;display:flex;flex-direction:column;gap:8px"><span style="font:500 10px/1 var(--mono);letter-spacing:.2em;color:#6d7078">{{ t.yearLabel }}</span><span style="font-size:17px;color:#f4f2ee">{{ pg.year }}</span></div>
+          <div style="background:#050506;padding:22px 18px;display:flex;flex-direction:column;gap:8px"><span style="font:500 10px/1 var(--mono);letter-spacing:.2em;color:#6d7078">{{ t.platformLabel }}</span><span style="font-size:17px;color:#f4f2ee">{{ pg.platform }}</span></div>
+        </div>
+      </div>
+
+      <sc-if value="{{ pg.hasVideo }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1240px;margin:0 auto;padding:0 40px 64px;display:flex;flex-direction:column;gap:14px">
+          <span style="font:500 11px/1 var(--mono);letter-spacing:.26em;color:#6d7078">{{ t.trailerLabel }}</span>
+          <sc-if value="{{ pg.hasEmbed }}" hint-placeholder-val="{{ false }}">
+            <iframe src="{{ pg.videoSrc }}" title="Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen="true" style="width:100%;aspect-ratio:16/9;border:1px solid #1c1c1f;display:block"></iframe>
+          </sc-if>
+          <sc-if value="{{ pg.needsVideo }}" hint-placeholder-val="{{ false }}">
+            <div style="width:100%;aspect-ratio:16/9;border:1px dashed #2c2c30;display:flex;align-items:center;justify-content:center;gap:14px">
+              <span style="width:56px;height:56px;border:1px solid {{ pg.accent }};display:flex;align-items:center;justify-content:center;color:{{ pg.accent }};font-size:18px">▶</span>
+              <span style="font:500 11px/1 var(--mono);letter-spacing:.22em;color:#7d7a75">{{ t.phVideo }}</span>
+            </div>
+          </sc-if>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ pg.hasFeatures }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1000px;margin:0 auto;padding:0 40px 64px;display:flex;flex-direction:column;gap:34px">
+          <h2 style="margin:0;font-family:var(--disp);font-size:30px;font-weight:700;letter-spacing:.08em">{{ t.keySystems }}</h2>
+          <sc-for list="{{ pg.features }}" as="f" hint-placeholder-count="4">
+            <div style="display:grid;grid-template-columns:64px minmax(0,1fr);gap:24px;padding-bottom:30px;border-bottom:1px solid #17171a">
+              <span style="font-family:var(--disp);font-size:30px;font-weight:700;color:{{ pg.accent }};line-height:1">{{ f.num }}</span>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <span style="font:500 12px/1 var(--mono);letter-spacing:.2em;color:#e8e6e2">{{ f.t }}</span>
+                <span style="font-size:18px;line-height:1.65;color:#b3b0aa;text-wrap:pretty">{{ f.d }}</span>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+      <sc-if value="{{ pg.needsFeatures }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1000px;margin:0 auto;padding:0 40px 64px">
+          <div style="padding:34px;border:1px dashed #2c2c30;display:flex;flex-direction:column;gap:8px">
+            <span style="font:500 11px/1 var(--mono);letter-spacing:.24em;color:{{ pg.accent }}">{{ t.phSystems }}</span>
+            <span style="font-size:16px;line-height:1.6;color:#7d7a75">{{ t.phSystemsSub }}</span>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ pg.hasChallenges }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:1240px;margin:0 auto;padding:0 40px 68px;display:flex;flex-direction:column;gap:28px">
+          <h2 style="margin:0;font-family:var(--disp);font-size:30px;font-weight:700;letter-spacing:.08em">{{ t.challengesTitle }}</h2>
+          <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:#1b1b1e">
+            <sc-for list="{{ pg.challenges }}" as="c" hint-placeholder-count="3">
+              <div style="background:#050506;padding:28px 24px;display:flex;flex-direction:column;gap:12px">
+                <span style="font:500 10px/1 var(--mono);letter-spacing:.2em;color:{{ pg.accent }}">{{ t.problem }} {{ c.num }}</span>
+                <span style="font:500 12px/1.4 var(--mono);letter-spacing:.14em;color:#e8e6e2">{{ c.t }}</span>
+                <span style="font-size:16px;line-height:1.6;color:#a9a6a0;text-wrap:pretty">{{ c.d }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <div style="padding:0 40px 72px;max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:14px">
+        <span style="font:500 11px/1 var(--mono);letter-spacing:.26em;color:#6d7078">{{ t.gallery }}</span>
+        <div style="aspect-ratio:16/9;background:{{ pg.big }};border:1px solid #1c1c1f;display:flex;align-items:flex-end">
+          <span style="padding:14px 18px;font:500 11px/1 var(--mono);letter-spacing:.22em;color:#c6c3bd;background:linear-gradient(to top,rgba(0,0,0,.75),transparent)">{{ pg.bigLabel }}</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:10px">
+          <sc-for list="{{ pg.shots }}" as="s" hint-placeholder-count="6">
+            <button type="button" onClick="{{ s.select }}" style="padding:0;aspect-ratio:16/9;cursor:pointer;background:{{ s.bg }};border:1px solid {{ s.border }};opacity:{{ s.opacity }};transition:opacity .25s ease,border-color .25s ease" style-hover="opacity:1"></button>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="border-top:1px solid #1b1b1e;padding:44px 48px;display:flex;justify-content:space-between;align-items:center;gap:30px">
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <sc-for list="{{ pg.tech }}" as="t" hint-placeholder-count="4">
+            <span style="padding:7px 12px;font:500 10px/1 var(--mono);letter-spacing:.16em;color:#c6c3bd;background:rgba(255,255,255,.06)">{{ t.t }}</span>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:24px;font-family:var(--disp);font-size:13px;font-weight:600;letter-spacing:.12em">
+          <sc-for list="{{ pg.links }}" as="l" hint-placeholder-count="1">
+            <a href="{{ l.url }}" target="_blank" rel="noopener" style="color:{{ pg.accent }};padding-bottom:3px;background-image:linear-gradient(#fff,#fff);background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;transition:background-size .38s cubic-bezier(.22,1,.36,1)" style-hover="background-size:100% 1px">{{ l.label }}</a>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#1b1b1e">
+        <div onClick="{{ pg.goPrev }}" style="cursor:pointer;background:#050506;padding:38px 48px;display:flex;flex-direction:column;gap:10px;transition:background .25s ease" style-hover="background:#0c0c0e">
+          <span style="font:500 10px/1 var(--mono);letter-spacing:.24em;color:#6d7078">← {{ t.prevProject }}</span>
+          <span style="font-family:var(--disp);font-size:26px;font-weight:700;letter-spacing:.04em">{{ pg.prevTitle }}</span>
+        </div>
+        <div onClick="{{ pg.goNext }}" style="cursor:pointer;background:#050506;padding:38px 48px;display:flex;flex-direction:column;gap:10px;align-items:flex-end;transition:background .25s ease" style-hover="background:#0c0c0e">
+          <span style="font:500 10px/1 var(--mono);letter-spacing:.24em;color:#6d7078">{{ t.nextProject }} →</span>
+          <span style="font-family:var(--disp);font-size:26px;font-weight:700;letter-spacing:.04em">{{ pg.nextTitle }}</span>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ pgB }}" hint-placeholder-val="{{ false }}">
+    <div data-m="cs" style="--disp:{{ f.disp }};--body:{{ f.body }};--mono:{{ f.mono }};width:100%;min-width:1100px;overflow-x:clip;background:#050506;color:#f4f2ee;font-family:var(--body)">
+      <div style="position:sticky;top:0;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:15px 44px;background:rgba(5,5,6,.88);backdrop-filter:blur(14px);border-bottom:1px solid #1b1b1e">
+        <span onClick="{{ pg.close }}" style="cursor:pointer;font:500 11px/1 var(--mono);letter-spacing:.2em;color:#c6c3bd;transition:color .2s ease" style-hover="color:#fff">← {{ t.back }}</span>
+        <span style="font:500 11px/1 var(--mono);letter-spacing:.24em;color:#6d7078">{{ t.dossier }} {{ pg.n }}</span>
+        <span style="display:flex;gap:9px;font:500 11px/1 var(--mono);letter-spacing:.14em">
+          <span onClick="{{ setFR }}" style="cursor:pointer;color:{{ frColor }};transition:color .2s ease">FR</span>
+          <span style="color:#33333a">/</span>
+          <span onClick="{{ setEN }}" style="cursor:pointer;color:{{ enColor }};transition:color .2s ease">EN</span>
+        </span>
+        <span style="display:flex;gap:22px;font:500 11px/1 var(--mono);letter-spacing:.16em;color:#8f8c86">
+          <span onClick="{{ pg.goPrev }}" style="cursor:pointer;transition:color .2s ease" style-hover="color:#fff">←&nbsp;&nbsp;{{ pg.prevTitle }}</span>
+          <span onClick="{{ pg.goNext }}" style="cursor:pointer;transition:color .2s ease" style-hover="color:#fff">{{ pg.nextTitle }}&nbsp;&nbsp;→</span>
+        </span>
+      </div>
+
+      <div style="position:relative;aspect-ratio:32/9;background:{{ pg.banner }};border-bottom:2px solid {{ pg.accent }};display:flex;align-items:flex-end">
+        <div style="width:100%;padding:42px 44px;display:flex;justify-content:space-between;align-items:flex-end;gap:30px;background:linear-gradient(to top,rgba(5,5,6,.95) 8%,transparent 70%)">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <span style="font:500 11px/1 var(--mono);letter-spacing:.3em;color:{{ pg.accent }}">{{ pg.sub }}</span>
+            <h1 style="margin:0;font-family:var(--disp);font-size:58px;font-weight:700;line-height:1.02;letter-spacing:.02em">{{ pg.title }}</h1>
+          </div>
+          <span style="font-family:var(--disp);font-size:56px;font-weight:700;color:rgba(255,255,255,.14);line-height:1">{{ pg.year }}</span>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:56px;padding:60px 44px 0;align-items:start">
+        <div style="position:relative;z-index:0;display:flex;flex-direction:column;gap:52px;min-width:0">
+        {{ pg.logoDossierEl }}
+          <sc-if value="{{ pg.hasPitch }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:18px">
+              <span style="font:500 11px/1 var(--mono);letter-spacing:.26em;color:#6d7078">{{ t.pitchLabel }}</span>
+              <p style="margin:0;font-size:22px;line-height:1.55;color:#f4f2ee;text-wrap:pretty">{{ pg.pitch }}</p>
+              <p style="margin:0;font-size:17px;line-height:1.6;color:{{ pg.accent }};text-wrap:pretty">{{ pg.hook }}</p>
+            </div>
+          </sc-if>
+          <sc-if value="{{ pg.needsPitch }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:30px;border:1px dashed #2c2c30;display:flex;flex-direction:column;gap:8px">
+              <span style="font:500 11px/1 var(--mono);letter-spacing:.24em;color:{{ pg.accent }}">{{ t.phPitch }}</span>
+              <span style="font-size:16px;line-height:1.6;color:#7d7a75">{{ t.phPitchSub }}</span>
+            </div>
+          </sc-if>
+
+          <div style="display:grid;grid-template-columns:46px minmax(0,1fr);gap:20px;align-items:start">
+            <svg width="30" height="30" viewBox="0 0 34 34" fill="none" stroke="{{ pg.accent }}" stroke-width="1.5" stroke-linejoin="miter" style="flex:none;display:block"><path d="M2 2h30v20H13l-8 8v-8H2z"></path><path d="M8 9h18"></path><path d="M8 15h11"></path></svg>
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <span style="font:500 11px/1 var(--mono);letter-spacing:.26em;color:#6d7078">{{ t.myRole }}</span>
+              <p style="margin:0;font-size:18px;line-height:1.65;color:#b3b0aa;text-wrap:pretty">{{ pg.role }}</p>
+            </div>
+          </div>
+
+          <sc-if value="{{ pg.hasFeatures }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:20px">
+              <span style="font:500 11px/1 var(--mono);letter-spacing:.26em;color:#6d7078">{{ t.keySystems }}</span>
+              <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px">
+                <sc-for list="{{ pg.features }}" as="f" hint-placeholder-count="4">
+                  <div style="padding:26px 24px;background:#0a0a0c;border:1px solid #1c1c1f;border-top:2px solid {{ pg.accent }};display:flex;flex-direction:column;gap:12px">
+                    <span style="font:500 11px/1.4 var(--mono);letter-spacing:.18em;color:#e8e6e2">{{ f.t }}</span>
+                    <span style="font-size:16px;line-height:1.6;color:#a9a6a0;text-wrap:pretty">{{ f.d }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ pg.needsFeatures }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:30px;border:1px dashed #2c2c30;display:flex;flex-direction:column;gap:8px">
+              <span style="font:500 11px/1 var(--mono);letter-spacing:.24em;color:{{ pg.accent }}">{{ t.phSystems }}</span>
+              <span style="font-size:16px;line-height:1.6;color:#7d7a75">{{ t.phSystemsSub }}</span>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ pg.hasChallenges }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:18px">
+              <span style="font:500 11px/1 var(--mono);letter-spacing:.26em;color:#6d7078">{{ t.challengesTitle }}</span>
+              <sc-for list="{{ pg.challenges }}" as="c" hint-placeholder-count="3">
+                <div style="display:grid;grid-template-columns:74px minmax(0,1fr);gap:20px;padding:20px 0;border-top:1px solid #17171a">
+                  <span style="font:500 10px/1.4 var(--mono);letter-spacing:.18em;color:{{ pg.accent }}">{{ c.num }}</span>
+                  <div style="display:flex;flex-direction:column;gap:8px">
+                    <span style="font:500 12px/1.4 var(--mono);letter-spacing:.14em;color:#e8e6e2">{{ c.t }}</span>
+                    <span style="font-size:16px;line-height:1.6;color:#a9a6a0;text-wrap:pretty">{{ c.d }}</span>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+
+        <div style="position:sticky;top:64px;display:flex;flex-direction:column;gap:0;border:1px solid #1c1c1f;background:#0a0a0c">
+          <div style="padding:20px 22px;border-bottom:1px solid #1c1c1f;background:{{ pg.accent }}">
+            <span style="font:500 10px/1 var(--mono);letter-spacing:.24em;color:#08080a">{{ t.specSheet }}</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0">
+            <div style="display:flex;justify-content:space-between;gap:14px;padding:15px 22px;border-bottom:1px solid #141417"><span style="font:500 10px/1 var(--mono);letter-spacing:.16em;color:#6d7078">{{ t.engineLabel }}</span><span style="font-size:15px;color:#f4f2ee;text-align:right">{{ pg.engine }}</span></div>
+            <div style="display:flex;justify-content:space-between;gap:14px;padding:15px 22px;border-bottom:1px solid #141417"><span style="font:500 10px/1 var(--mono);letter-spacing:.16em;color:#6d7078">{{ t.teamLabel }}</span><span style="font-size:15px;color:#f4f2ee;text-align:right">{{ pg.team }}</span></div>
+            <div style="display:flex;justify-content:space-between;gap:14px;padding:15px 22px;border-bottom:1px solid #141417"><span style="font:500 10px/1 var(--mono);letter-spacing:.16em;color:#6d7078">{{ t.yearLabel }}</span><span style="font-size:15px;color:#f4f2ee;text-align:right">{{ pg.year }}</span></div>
+            <div style="display:flex;justify-content:space-between;gap:14px;padding:15px 22px;border-bottom:1px solid #141417"><span style="font:500 10px/1 var(--mono);letter-spacing:.16em;color:#6d7078">{{ t.platformLabel }}</span><span style="font-size:15px;color:#f4f2ee;text-align:right">{{ pg.platform }}</span></div>
+            <div style="display:flex;justify-content:space-between;gap:14px;padding:15px 22px"><span style="font:500 10px/1 var(--mono);letter-spacing:.16em;color:#6d7078">{{ t.cameraLabel }}</span><span style="font-size:15px;color:#f4f2ee;text-align:right">{{ pg.camera }}</span></div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:7px;padding:20px 22px;border-top:1px solid #1c1c1f">
+            <sc-for list="{{ pg.roles }}" as="r" hint-placeholder-count="3">
+              <span style="padding:6px 11px;font:500 9px/1 var(--mono);letter-spacing:.16em;color:#c6c3bd;border:1px solid #26262a">{{ r.r }}</span>
+            </sc-for>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:7px;padding:0 22px 20px">
+            <sc-for list="{{ pg.tech }}" as="t" hint-placeholder-count="3">
+              <span style="padding:6px 11px;font:500 9px/1 var(--mono);letter-spacing:.16em;color:#8f8c86;background:rgba(255,255,255,.05)">{{ t.t }}</span>
+            </sc-for>
+          </div>
+          <sc-if value="{{ pg.hasLinks }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:10px;padding:18px 22px;border-top:1px solid #1c1c1f">
+              <sc-for list="{{ pg.links }}" as="l" hint-placeholder-count="1">
+                <a href="{{ l.url }}" target="_blank" rel="noopener" style="align-self:flex-start;font-family:var(--disp);font-size:12px;font-weight:600;letter-spacing:.14em;color:{{ pg.accent }};padding-bottom:3px;background-image:linear-gradient(#fff,#fff);background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;transition:background-size .38s cubic-bezier(.22,1,.36,1)" style-hover="background-size:100% 1px">{{ l.label }}</a>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+
+      <sc-if value="{{ pg.hasVideo }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:60px 44px 0;display:flex;flex-direction:column;gap:14px">
+          <span style="font:500 11px/1 var(--mono);letter-spacing:.26em;color:#6d7078">{{ t.trailerLabel }}</span>
+          <sc-if value="{{ pg.hasEmbed }}" hint-placeholder-val="{{ false }}">
+            <iframe src="{{ pg.videoSrc }}" title="Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen="true" style="width:100%;aspect-ratio:16/9;border:1px solid #1c1c1f;display:block"></iframe>
+          </sc-if>
+          <sc-if value="{{ pg.needsVideo }}" hint-placeholder-val="{{ false }}">
+            <div style="width:100%;aspect-ratio:16/9;border:1px dashed #2c2c30;display:flex;align-items:center;justify-content:center;gap:14px">
+              <span style="width:56px;height:56px;border:1px solid {{ pg.accent }};display:flex;align-items:center;justify-content:center;color:{{ pg.accent }};font-size:18px">▶</span>
+              <span style="font:500 11px/1 var(--mono);letter-spacing:.22em;color:#7d7a75">{{ t.phVideo }}</span>
+            </div>
+          </sc-if>
+        </div>
+      </sc-if>
+
+      <div style="padding:60px 44px 72px;display:flex;flex-direction:column;gap:14px">
+        <span style="font:500 11px/1 var(--mono);letter-spacing:.26em;color:#6d7078">{{ t.gallery }}</span>
+        <div style="display:grid;grid-template-columns:minmax(0,2.4fr) minmax(0,1fr);gap:14px;align-items:start">
+          <div style="aspect-ratio:16/9;background:{{ pg.big }};border:1px solid #1c1c1f;display:flex;align-items:flex-end">
+            <span style="padding:14px 18px;font:500 11px/1 var(--mono);letter-spacing:.22em;color:#c6c3bd;background:linear-gradient(to top,rgba(0,0,0,.75),transparent)">{{ pg.bigLabel }}</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px">
+            <sc-for list="{{ pg.shots }}" as="s" hint-placeholder-count="6">
+              <button type="button" onClick="{{ s.select }}" style="padding:0;aspect-ratio:16/9;cursor:pointer;background:{{ s.bg }};border:1px solid {{ s.border }};opacity:{{ s.opacity }};transition:opacity .25s ease,border-color .25s ease" style-hover="opacity:1"></button>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#1b1b1e">
+        <div onClick="{{ pg.goPrev }}" style="cursor:pointer;background:#050506;padding:34px 44px;display:flex;flex-direction:column;gap:9px;transition:background .25s ease" style-hover="background:#0c0c0e">
+          <span style="font:500 10px/1 var(--mono);letter-spacing:.24em;color:#6d7078">← {{ t.prevProject }}</span>
+          <span style="font-family:var(--disp);font-size:24px;font-weight:700;letter-spacing:.04em">{{ pg.prevTitle }}</span>
+        </div>
+        <div onClick="{{ pg.goNext }}" style="cursor:pointer;background:#050506;padding:34px 44px;display:flex;flex-direction:column;gap:9px;align-items:flex-end;transition:background .25s ease" style-hover="background:#0c0c0e">
+          <span style="font:500 10px/1 var(--mono);letter-spacing:.24em;color:#6d7078">{{ t.nextProject }} →</span>
+          <span style="font-family:var(--disp);font-size:24px;font-weight:700;letter-spacing:.04em">{{ pg.nextTitle }}</span>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ pgC }}" hint-placeholder-val="{{ false }}">
+    <div data-m="cs" style="--disp:{{ f.disp }};--body:{{ f.body }};--mono:{{ f.mono }};width:100%;min-width:1100px;overflow-x:clip;background:#050506;color:#f4f2ee;font-family:var(--body)">
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);min-height:640px">
+        <div style="padding:40px 48px 52px;display:flex;flex-direction:column;justify-content:space-between;gap:40px;border-right:1px solid #1b1b1e">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:20px">
+            <span onClick="{{ pg.close }}" style="cursor:pointer;font:500 11px/1 var(--mono);letter-spacing:.2em;color:#c6c3bd;transition:color .2s ease" style-hover="color:#fff">← {{ t.back }}</span>
+            <span style="display:flex;align-items:center;gap:20px">
+              <span style="display:flex;gap:9px;font:500 11px/1 var(--mono);letter-spacing:.14em">
+                <span onClick="{{ setFR }}" style="cursor:pointer;color:{{ frColor }};transition:color .2s ease">FR</span>
+                <span style="color:#33333a">/</span>
+                <span onClick="{{ setEN }}" style="cursor:pointer;color:{{ enColor }};transition:color .2s ease">EN</span>
+              </span>
+              <span style="font:500 11px/1 var(--mono);letter-spacing:.24em;color:{{ pg.accent }}">{{ pg.n }}</span>
+            </span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:22px">
+            <span style="font:500 11px/1 var(--mono);letter-spacing:.3em;color:{{ pg.accent }}">{{ pg.sub }}</span>
+            <h1 style="margin:0;font-family:var(--disp);font-size:64px;font-weight:700;line-height:1.02;letter-spacing:.01em;text-wrap:pretty">{{ pg.title }}</h1>
+            <sc-if value="{{ pg.hasPitch }}" hint-placeholder-val="{{ false }}">
+              <p style="margin:0;font-size:19px;line-height:1.65;color:#b3b0aa;max-width:52ch;text-wrap:pretty">{{ pg.pitch }}</p>
+            </sc-if>
+            <sc-if value="{{ pg.needsPitch }}" hint-placeholder-val="{{ false }}">
+              <div style="padding:26px;border:1px dashed #2c2c30;display:flex;flex-direction:column;gap:8px;max-width:52ch">
+                <span style="font:500 11px/1 var(--mono);letter-spacing:.24em;color:{{ pg.accent }}">{{ t.phPitch }}</span>
+                <span style="font-size:16px;line-height:1.6;color:#7d7a75">{{ t.phPitchSub }}</span>
+              </div>
+            </sc-if>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:#1b1b1e;border-top:2px solid {{ pg.accent }}">
+            <div style="background:#050506;padding:16px 4px 4px 0;display:flex;flex-direction:column;gap:6px"><span style="font:500 10px/1 var(--mono);letter-spacing:.2em;color:#6d7078">{{ t.engineLabel }}</span><span style="font-size:16px">{{ pg.engine }}</span></div>
+            <div style="background:#050506;padding:16px 4px 4px 18px;display:flex;flex-direction:column;gap:6px"><span style="font:500 10px/1 var(--mono);letter-spacing:.2em;color:#6d7078">{{ t.teamLabel }}</span><span style="font-size:16px">{{ pg.team }}</span></div>
+            <div style="background:#050506;padding:16px 4px 4px 0;display:flex;flex-direction:column;gap:6px"><span style="font:500 10px/1 var(--mono);letter-spacing:.2em;color:#6d7078">{{ t.yearLabel }}</span><span style="font-size:16px">{{ pg.year }}</span></div>
+            <div style="background:#050506;padding:16px 4px 4px 18px;display:flex;flex-direction:column;gap:6px"><span style="font:500 10px/1 var(--mono);letter-spacing:.2em;color:#6d7078">{{ t.platformLabel }}</span><span style="font-size:16px">{{ pg.platform }}</span></div>
+          </div>
+        </div>
+        <div style="background:{{ pg.banner }};min-height:640px"></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:170px minmax(0,1fr);gap:0;border-top:1px solid #1b1b1e">
+        <div style="padding:56px 0 56px 48px;display:flex;flex-direction:column;gap:16px">
+          <svg width="30" height="30" viewBox="0 0 34 34" fill="none" stroke="{{ pg.accent }}" stroke-width="1.5" stroke-linejoin="miter" style="flex:none;display:block"><path d="M2 2h30v20H13l-8 8v-8H2z"></path><path d="M8 9h18"></path><path d="M8 15h11"></path></svg>
+          <span style="font:500 10px/1 var(--mono);letter-spacing:.24em;color:#6d7078">{{ t.myRole }}</span>
+        </div>
+        <div style="padding:56px 48px 56px 0;display:flex;flex-direction:column;gap:20px">
+          <p style="margin:0;font-size:22px;line-height:1.6;color:#f4f2ee;max-width:70ch;text-wrap:pretty">{{ pg.role }}</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <sc-for list="{{ pg.roles }}" as="r" hint-placeholder-count="4">
+              <span style="padding:7px 13px;font:500 10px/1 var(--mono);letter-spacing:.16em;color:#e8e6e2;border:1px solid #26262a">{{ r.r }}</span>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <sc-if value="{{ pg.hasVideo }}" hint-placeholder-val="{{ false }}">
+        <div style="border-top:1px solid #1b1b1e;padding:0">
+          <sc-if value="{{ pg.hasEmbed }}" hint-placeholder-val="{{ false }}">
+            <iframe src="{{ pg.videoSrc }}" title="Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen="true" style="width:100%;aspect-ratio:21/9;border:none;display:block"></iframe>
+          </sc-if>
+          <sc-if value="{{ pg.needsVideo }}" hint-placeholder-val="{{ false }}">
+            <div style="width:100%;aspect-ratio:21/9;background:#08080a;display:flex;align-items:center;justify-content:center;gap:16px">
+              <span style="width:62px;height:62px;border:1px solid {{ pg.accent }};display:flex;align-items:center;justify-content:center;color:{{ pg.accent }};font-size:20px">▶</span>
+              <span style="font:500 11px/1 var(--mono);letter-spacing:.22em;color:#7d7a75">{{ t.phVideoLong }}</span>
+            </div>
+          </sc-if>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ pg.hasFeatures }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid;grid-template-columns:170px minmax(0,1fr);border-top:1px solid #1b1b1e">
+          <div style="padding:56px 0 56px 48px"><span style="font:500 10px/1 var(--mono);letter-spacing:.24em;color:#6d7078">{{ t.systems }}</span></div>
+          <div style="padding:56px 48px 56px 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:34px">
+            <sc-for list="{{ pg.features }}" as="f" hint-placeholder-count="4">
+              <div style="display:flex;flex-direction:column;gap:12px">
+                <span style="font-family:var(--disp);font-size:34px;font-weight:700;line-height:1;color:{{ pg.accent }}">{{ f.num }}</span>
+                <span style="font:500 12px/1.4 var(--mono);letter-spacing:.18em;color:#e8e6e2">{{ f.t }}</span>
+                <span style="font-size:17px;line-height:1.65;color:#a9a6a0;text-wrap:pretty">{{ f.d }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ pg.needsFeatures }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid;grid-template-columns:170px minmax(0,1fr);border-top:1px solid #1b1b1e">
+          <div style="padding:56px 0 56px 48px"><span style="font:500 10px/1 var(--mono);letter-spacing:.24em;color:#6d7078">{{ t.systems }}</span></div>
+          <div style="padding:56px 48px 56px 0">
+            <div style="padding:30px;border:1px dashed #2c2c30;display:flex;flex-direction:column;gap:8px">
+              <span style="font:500 11px/1 var(--mono);letter-spacing:.24em;color:{{ pg.accent }}">{{ t.phSystems }}</span>
+              <span style="font-size:16px;line-height:1.6;color:#7d7a75">{{ t.phSystemsSub }}</span>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ pg.hasChallenges }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid;grid-template-columns:170px minmax(0,1fr);border-top:1px solid #1b1b1e">
+          <div style="padding:56px 0 56px 48px"><span style="font:500 10px/1 var(--mono);letter-spacing:.24em;color:#6d7078">{{ t.challenges }}</span></div>
+          <div style="padding:56px 48px 56px 0;display:flex;flex-direction:column;gap:0">
+            <sc-for list="{{ pg.challenges }}" as="c" hint-placeholder-count="3">
+              <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:30px;padding:24px 0;border-bottom:1px solid #17171a">
+                <span style="font:500 12px/1.5 var(--mono);letter-spacing:.14em;color:#e8e6e2">{{ c.t }}</span>
+                <span style="font-size:16px;line-height:1.65;color:#a9a6a0;text-wrap:pretty">{{ c.d }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <div style="border-top:1px solid #1b1b1e;padding:56px 48px 64px;display:flex;flex-direction:column;gap:16px">
+        <span style="font:500 10px/1 var(--mono);letter-spacing:.24em;color:#6d7078">{{ t.gallery }}</span>
+        <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px">
+          <sc-for list="{{ pg.shots }}" as="s" hint-placeholder-count="6">
+            <button type="button" onClick="{{ s.select }}" style="padding:0;aspect-ratio:16/9;cursor:pointer;background:{{ s.bg }};border:1px solid {{ s.border }};display:flex;align-items:flex-end;transition:border-color .25s ease" style-hover="border-color:#4a4a50">
+              <span style="width:100%;padding:8px 10px;font:500 9px/1 var(--mono);letter-spacing:.16em;color:#e8e6e2;text-align:left;background:linear-gradient(to top,rgba(0,0,0,.8),transparent)">{{ s.label }}</span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="border-top:1px solid #1b1b1e;padding:36px 48px;display:flex;justify-content:space-between;align-items:center;gap:30px">
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <sc-for list="{{ pg.tech }}" as="t" hint-placeholder-count="4">
+            <span style="padding:7px 12px;font:500 10px/1 var(--mono);letter-spacing:.16em;color:#c6c3bd;background:rgba(255,255,255,.06)">{{ t.t }}</span>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:24px;font-family:var(--disp);font-size:13px;font-weight:600;letter-spacing:.12em">
+          <sc-for list="{{ pg.links }}" as="l" hint-placeholder-count="1">
+            <a href="{{ l.url }}" target="_blank" rel="noopener" style="color:{{ pg.accent }};padding-bottom:3px;background-image:linear-gradient(#fff,#fff);background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;transition:background-size .38s cubic-bezier(.22,1,.36,1)" style-hover="background-size:100% 1px">{{ l.label }}</a>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#1b1b1e">
+        <div onClick="{{ pg.goPrev }}" style="cursor:pointer;background:#050506;padding:34px 48px;display:flex;flex-direction:column;gap:9px;transition:background .25s ease" style-hover="background:#0c0c0e">
+          <span style="font:500 10px/1 var(--mono);letter-spacing:.24em;color:#6d7078">← {{ t.prev }}</span>
+          <span style="font-family:var(--disp);font-size:24px;font-weight:700;letter-spacing:.04em">{{ pg.prevTitle }}</span>
+        </div>
+        <div onClick="{{ pg.goNext }}" style="cursor:pointer;background:#050506;padding:34px 48px;display:flex;flex-direction:column;gap:9px;align-items:flex-end;transition:background .25s ease" style-hover="background:#0c0c0e">
+          <span style="font:500 10px/1 var(--mono);letter-spacing:.24em;color:#6d7078">{{ t.next }} →</span>
+          <span style="font-family:var(--disp);font-size:24px;font-weight:700;letter-spacing:.04em">{{ pg.nextTitle }}</span>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;typography&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Technique&quot;,&quot;Studio&quot;,&quot;Cinématique&quot;],&quot;default&quot;:&quot;Technique&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Typographie&quot;},&quot;lang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;FR&quot;,&quot;EN&quot;],&quot;default&quot;:&quot;FR&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contenu&quot;},&quot;projectCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:7,&quot;min&quot;:1,&quot;max&quot;:7,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Contenu&quot;},&quot;showGithub&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Contenu&quot;},&quot;projectLayout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Éditorial&quot;,&quot;Dossier&quot;,&quot;Cinématique&quot;],&quot;default&quot;:&quot;Éditorial&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Pages projet&quot;},&quot;olrVideo&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Pages projet&quot;}}">
+class Component extends DCLogic {
+  state = { shot: 0, nav: -1, page: -1, gsel: 0, lang: null };
+
+  SITE = 'https://kybrien.github.io/';
+
+  componentDidMount() {
+    try {
+      const q = (new URLSearchParams(location.search).get('lang') || '').toUpperCase();
+      const hash = (location.hash || '').replace('#', '').toUpperCase();
+      const want = q === 'EN' || q === 'FR' ? q : (hash === 'EN' || hash === 'FR' ? hash : null);
+      if (want) this.setState({ lang: want });
+    } catch (e) {}
+    try {
+      const h = (location.hash || '').replace('#', '');
+      if (h) {
+        const i = this.catalog().findIndex(p => this.slugify(p.title) === this.slugify(h));
+        if (i >= 0) this.openPage(i);
+      }
+      this._onHash = () => {
+        const s = (location.hash || '').replace('#', '');
+        const j = s ? this.catalog().findIndex(p => this.slugify(p.title) === this.slugify(s)) : -1;
+        if (j >= 0) { if (j !== this.state.page) this.openPage(j); }
+        else if (this.state.page >= 0 && !s) this.closePage();
+      };
+      window.addEventListener('hashchange', this._onHash);
+    } catch (e) {}
+    this.syncSeo();
+  }
+
+  componentWillUnmount() {
+    if (this._onHash) window.removeEventListener('hashchange', this._onHash);
+  }
+
+  tint(hex, a) {
+    const h = String(hex || '#ffffff').replace('#', '');
+    const f = h.length === 3 ? h.split('').map(c => c + c).join('') : h;
+    const n = parseInt(f, 16);
+    return 'rgba(' + ((n >> 16) & 255) + ',' + ((n >> 8) & 255) + ',' + (n & 255) + ',' + (a || 0.11) + ')';
+  }
+
+  slugify(s) {
+    return String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  }
+  componentDidUpdate() { this.syncSeo(); }
+
+  setMeta(sel, attr, key, val) {
+    let el = document.head.querySelector(sel + '[' + attr + '="' + key + '"]');
+    if (!el) { el = document.createElement(sel); el.setAttribute(attr, key); document.head.appendChild(el); }
+    el.setAttribute(sel === 'link' ? 'href' : 'content', val);
+  }
+
+  syncSeo() {
+    if (typeof document === 'undefined') return;
+    const lang = this.state.lang || this.props.lang || 'FR';
+    const fr = lang !== 'EN';
+    document.documentElement.lang = fr ? 'fr' : 'en';
+    const list = this.catalog();
+    const p = list[this.state.page];
+    let title, desc, url, img;
+    if (p) {
+      const sub = fr ? p.sub : (p.subEn || p.sub);
+      title = p.title + ' · ' + (sub || p.engine) + ' | Adrien Patte';
+      desc = ((fr ? p.pitchFr : p.pitchEn) || (fr ? p.cardFr : p.cardEn) || '').slice(0, 300);
+      const slug = this.slugify(p.title);
+      url = this.SITE + '#' + slug;
+      try { if (location.hash !== '#' + slug) history.replaceState(null, '', '#' + slug); } catch (e) {}
+      img = p.banner || 'uploads/WaitScreen.webp';
+    } else {
+      title = fr
+        ? 'Adrien Patte, Gameplay Programmer Unreal Engine · Blueprint & C++ | Portfolio'
+        : 'Adrien Patte, Gameplay Programmer Unreal Engine · Blueprint & C++ | Portfolio';
+      desc = fr
+        ? "Portfolio d'Adrien Patte, gameplay programmer Unreal Engine 5 en Blueprint et C++. Deux plugins publiés sur Fab, huit projets livrés, alternance M2 disponible en septembre 2026 à Paris."
+        : "Adrien Patte's portfolio, gameplay programmer on Unreal Engine 5 in Blueprint and C++. Two plugins published on Fab, eight shipped projects, available for an M2 apprenticeship in September 2026 in Paris.";
+      url = this.SITE;
+      img = 'uploads/WaitScreen.webp';
+      try {
+        const h = (location.hash || '').replace('#', '');
+        if (h && h.toUpperCase() !== 'FR' && h.toUpperCase() !== 'EN') {
+          history.replaceState(null, '', location.pathname + location.search);
+        }
+      } catch (e) {}
+    }
+    if (!fr) url += (url.indexOf('#') > -1 ? '' : '?lang=en');
+    if (!/^https?:/.test(img)) img = this.SITE + encodeURI(img);
+    document.title = title;
+    this.setMeta('meta', 'name', 'description', desc);
+    this.setMeta('meta', 'property', 'og:title', title);
+    this.setMeta('meta', 'property', 'og:description', desc);
+    this.setMeta('meta', 'property', 'og:url', url);
+    this.setMeta('meta', 'property', 'og:image', img);
+    this.setMeta('meta', 'property', 'og:type', p ? 'article' : 'website');
+    this.setMeta('meta', 'property', 'og:locale', fr ? 'fr_FR' : 'en_US');
+    this.setMeta('meta', 'name', 'twitter:title', title);
+    this.setMeta('meta', 'name', 'twitter:description', desc);
+    this.setMeta('meta', 'name', 'twitter:image', img);
+    this.setMeta('link', 'rel', 'canonical', url);
+  }
+
+
+  extras() {
+    const F = 'https://framerusercontent.com/images/';
+    const S = (src, label, labelEn) => ({ src: F + src, label: label, labelEn: labelEn });
+    return {
+      '01': {
+        sub: 'Parkour physique · Tokyo', subEn: 'Physics parkour · Tokyo',
+        team: 'Solo · 10 jours', teamEn: 'Solo · 10 days',
+        tech: ['UNREAL', 'BLUEPRINT', 'PCG', 'PHYSIQUE'],
+        banner: F + 'NIkNbj0g697mroV65w9ynzrR78.png?width=1389&height=832',
+        logo: '',
+        pitchFr: "Jeu de parkour physique fait sous Unreal en 10 jours : on incarne un slime dans les rues de Tokyo. Il colle aux murs, se balance aux lianes, tire des projectiles, se divise en mini-slimes qui suivent le joueur et surfe sur les courants ascendants.",
+        pitchEn: "A physics-driven parkour game built in Unreal in 10 days: you play a slime through the streets of Tokyo, sticking to walls, swinging from vines, firing projectiles, splitting into mini slimes that follow you and riding aerial currents.",
+        hookFr: "Tout le level design repose sur de la génération procédurale sur splines et des matériaux qui réagissent à chaque surface.",
+        hookEn: "The level design runs on spline-based procedural generation and materials that react to every surface.",
+        roleFr: "Projet solo : game design, code gameplay et level design, du prototype au build en dix jours.",
+        roleEn: "Solo project: game design, gameplay code and level design, prototype to build in ten days.",
+        features: [
+          { t: 'MOUVEMENT PHYSIQUE', tEn: 'PHYSICS MOVEMENT', fr: "Adhérence aux murs, balancier sur lianes, courants aériens et projectiles : chaque verbe est simulé plutôt que scripté.", en: "Wall sticking, vine swinging, aerial currents and projectiles: every verb is simulated rather than scripted." },
+          { t: 'MINI-SLIMES', tEn: 'MINI SLIMES', fr: "Le personnage se divise en une nuée de petits slimes qui suivent le joueur et servent de ressource de gameplay.", en: "The character splits into a swarm of small slimes that follow the player and double as a gameplay resource." },
+          { t: 'PCG SUR SPLINES', tEn: 'SPLINE PCG', fr: "Génération procédurale du décor le long de splines, couplée à un système de matériaux adaptatifs selon la surface.", en: "Procedural set dressing along splines, paired with an adaptive material system driven by the surface." }
+        ],
+        shots: [
+          S('NIkNbj0g697mroV65w9ynzrR78.png?width=1389&height=832', 'TOKYO', 'TOKYO'),
+          S('mNSz0cx2EgLKEVqVqfQn5CASpBU.png?width=1698&height=885', 'PARKOUR', 'PARKOUR'),
+          S('u1qp3bL9UthyRjElkErbkBmlGA.png?width=1701&height=885', 'MINI-SLIMES', 'MINI SLIMES')
+        ],
+        links: [{ label: 'GITHUB ↗', url: 'https://github.com/Kybrien/SlimeGame' }]
+      },
+      '02': {
+        sub: 'UI & pixel art', subEn: 'UI & pixel art',
+        team: 'Solo · 1 semaine', teamEn: 'Solo · 1 week',
+        tech: ['UNITY', 'C#', 'ASEPRITE', 'UI'],
+        banner: F + 'pvvTYX9QfoEhUesPj3IFpSVanLY.png?width=1381&height=796',
+        pitchFr: "Projet d'interface Unity d'une semaine, dans la salle de classe du monde de Chime : les potions se prennent dans les tiroirs, chacune a sa description, un tableau liste les recettes et leur difficulté, le joueur a son inventaire et un PNJ à la fenêtre ouvre l'accès au marché noir.",
+        pitchEn: "A one-week Unity interface project set in a classroom of the world of Chime: potions are pulled from drawers, each with its own description, a board lists recipes and their difficulty, the player has an inventory, and an NPC at the window opens the black market.",
+        hookFr: "Toute l'UI, art et animations, est dessinée à la main dans Aseprite.",
+        hookEn: "Every piece of UI art and animation was hand-drawn in Aseprite.",
+        roleFr: "Projet solo : conception et intégration de toute l'interface, et l'intégralité du pixel art.",
+        roleEn: "Solo project: designed and implemented the whole interface, plus all of the pixel art.",
+        features: [
+          { t: 'UI WORLD + SCREEN SPACE', tEn: 'WORLD + SCREEN SPACE UI', fr: "Mélange d'éléments diégétiques dans la scène et d'UI classique à l'écran, avec contours animés au survol.", en: "Diegetic elements in the scene mixed with classic screen-space UI, with animated outlines on hover." },
+          { t: 'RAYCASTING 2D / 3D', tEn: '2D / 3D RAYCASTING', fr: "Gestion et optimisation des raycasts pour que tiroirs, potions et fenêtres restent lisibles au clic.", en: "Managing and optimising raycasts so drawers, potions and windows stay reliable to click." },
+          { t: 'PIXEL ART & ANIMATION', tEn: 'PIXEL ART & ANIMATION', fr: "Toutes les icônes, plaques et animations produites dans Aseprite pour une identité visuelle homogène.", en: "Every icon, plate and animation produced in Aseprite for one coherent visual identity." }
+        ],
+        shots: [
+          S('pvvTYX9QfoEhUesPj3IFpSVanLY.png?width=1381&height=796', 'SALLE DE CLASSE', 'CLASSROOM'),
+          S('wc7idV8n2WFoWgwchykibzrNvc.png?width=1363&height=974', 'RECETTES', 'RECIPES'),
+          S('JguGXXJZYkeq4unDmDWdjdbEs9A.png?width=1722&height=972', 'MARCHÉ NOIR', 'BLACK MARKET')
+        ],
+        links: [{ label: 'GITHUB ↗', url: 'https://github.com/Kybrien/The-Tarnished-Alchemist' }]
+      },
+      '03': {
+        sub: 'Multijoueur · 30 joueurs', subEn: 'Multiplayer · 30 players',
+        team: '3 personnes · 10 jours', teamEn: '3 people · 10 days',
+        tech: ['UNREAL', 'BLUEPRINT', 'STEAM', 'MULTIJOUEUR'],
+        banner: F + 'VfOWHXBM3MM9OLT2Bz6ytJElMpE.png?width=2559&height=1432',
+        pitchFr: "Prototype multijoueur Unreal monté en 10 jours sur les serveurs Steam : jusqu'à 30 joueurs s'affrontent en mages gobelins, chacun avec ses sorts, sur une carte lisible grâce à une minimap temps réel.",
+        pitchEn: "An Unreal multiplayer prototype built in 10 days on Steam servers: up to 30 players fight as goblin mages, each with their own spells, on a map kept readable by a real-time minimap.",
+        hookFr: "Du combat magique nerveux, pensé pour le chaos à plusieurs.",
+        hookEn: "Fast, messy magic combat, designed for chaos with friends.",
+        roleFr: "Level designer et game developer dans une équipe de 3 : conception de la carte, sorts et intégration réseau.",
+        roleEn: "Level designer and game developer in a team of 3: map design, spells and network integration.",
+        features: [
+          { t: 'RÉSEAU STEAM · 30 JOUEURS', tEn: 'STEAM NETWORKING · 30 PLAYERS', fr: "Sessions basées sur les serveurs Spacewar de Steam, dimensionnées pour des batailles à 30.", en: "Sessions on Steam's Spacewar servers, sized for 30-player battles." },
+          { t: 'MINIMAP TEMPS RÉEL', tEn: 'REAL-TIME MINIMAP', fr: "Une minimap qui suit tout le monde en direct, indispensable pour se repérer dans la mêlée.", en: "A minimap tracking everyone live, the only way to stay oriented in the melee." },
+          { t: 'SORTS & ÉQUILIBRAGE', tEn: 'SPELLS & BALANCE', fr: "Panel de sorts et capacités, équilibrés pour rester lisibles à grande échelle.", en: "A set of spells and abilities, balanced to stay readable at scale." },
+          { t: 'LEVEL DESIGN DE LA MAP', tEn: 'MAP LEVEL DESIGN', fr: "Carte dynamique dessinée pour les affrontements en groupe et les lignes de vue courtes.", en: "A dynamic map drawn for group fights and short sightlines." }
+        ],
+        shots: [
+          S('VfOWHXBM3MM9OLT2Bz6ytJElMpE.png?width=2559&height=1432', 'ARÈNE', 'ARENA'),
+          S('JYsPdQpYeO5VTosi3EUZimrP6Hk.png?width=2559&height=1588', 'COMBAT', 'COMBAT'),
+          S('CxULY7ylN95WM3IcIB7EKAnOdfE.png?width=2559&height=1599', 'MINIMAP', 'MINIMAP')
+        ]
+      },
+      '04': {
+        sub: 'FPS western', subEn: 'Western FPS',
+        team: 'Solo · 5 jours', teamEn: 'Solo · 5 days',
+        tech: ['UNITY', 'C#', 'FPS'],
+        banner: F + 'bHDfYOWrtttUnBje81TUdL1BzlM.png?width=1579&height=816',
+        pitchFr: "FPS western écrit en cinq jours, en pleine game jam en parallèle : un fantôme réapparaît toutes les cinq secondes n'importe où sur une carte semi-ouverte, il faut le descendre en ramassant les citrouilles semées dans le décor.",
+        pitchEn: "A western FPS written in five days, in the middle of a parallel game jam: a ghost reappears every five seconds anywhere on a semi-open map, and you have to take it down while collecting pumpkins scattered around.",
+        hookFr: "Le repérage du fantôme passe par un réticule inspiré du Haedir de Shadow of War.",
+        hookEn: "You track the ghost through a reticle inspired by the Haedir mechanic in Shadow of War.",
+        roleFr: "Projet solo : concept, game design, level design, tir, déplacement et interfaces.",
+        roleEn: "Solo project: concept, game design, level design, shooting, movement and UI.",
+        features: [
+          { t: 'CONCEPT ORIGINAL & GDD', tEn: 'ORIGINAL CONCEPT & GDD', fr: "Sujet libre : concept, boucle et document de game design écrits de zéro.", en: "Open brief: concept, loop and game design document written from scratch." },
+          { t: 'CARTE SEMI-OUVERTE', tEn: 'SEMI-OPEN MAP', fr: "Level design d'une carte semi-ouverte où le fantôme peut surgir partout sans casser la lisibilité.", en: "Level design of a semi-open map where the ghost can appear anywhere without hurting readability." },
+          { t: 'TIR & DÉPLACEMENT', tEn: 'SHOOTING & MOVEMENT', fr: "Mécaniques de visée et de mouvement calibrées pour une fenêtre d'action de cinq secondes.", en: "Aiming and movement tuned around a five-second window of action." },
+          { t: 'HUD & MENUS', tEn: 'HUD & MENUS', fr: "Interfaces complètes : réticule de détection, compteur de citrouilles, menus.", en: "Full interfaces: detection reticle, pumpkin counter, menus." }
+        ],
+        shots: [
+          S('bHDfYOWrtttUnBje81TUdL1BzlM.png?width=1579&height=816', 'CRÉPUSCULE', 'TWILIGHT'),
+          S('NaYBohQsEPRZIl4nnMqm683yuI.png?width=1646&height=853', 'CHASSE', 'THE HUNT'),
+          S('cbgRMTkxPqVaij2jwBfDZNPSwY.png?width=572&height=644', 'RÉTICULE', 'RETICLE')
+        ],
+        links: [
+          { label: 'GITHUB ↗', url: 'https://github.com/Kybrien/Trigger-at-Twilight' },
+          { label: 'GAME DESIGN DOCUMENT ↗', url: 'https://www.canva.com/design/DAGWSea3iak/xu8Z-rWRKJ5FhosqqdEEtg/edit' }
+        ]
+      },
+      '05': {
+        sub: 'FPS compétitif', subEn: 'Competitive FPS',
+        team: '4 personnes · 2 mois', teamEn: '4 people · 2 months',
+        tech: ['UNITY', 'C#', 'IA', 'MULTIJOUEUR'],
+        banner: F + 'WdKod1xqsgApQ88QCVr76C8nsg.png?width=1096&height=631',
+        pitchFr: "FPS multijoueur compétitif développé sur deux mois à G.STUDIO (Quest Education) : deux joueurs courent à travers les monstres pour atteindre la fin de la carte avant l'autre, et le premier arrivé gagne le droit d'envahir le monde de son rival.",
+        pitchEn: "A competitive multiplayer FPS built over two months at G.STUDIO (Quest Education): two players race through monsters to reach the end of the map first, and the winner earns the right to invade their rival's world.",
+        hookFr: "Le projet où j'ai compris les fondations : ce qu'il faut anticiper, et les erreurs de débutant à ne plus refaire.",
+        hookEn: "The project where I learned the foundations: what to plan for, and which beginner mistakes never to repeat.",
+        roleFr: "Équipe de 4, mais j'ai réalisé l'essentiel : IA, level design, animations et organisation des tâches.",
+        roleEn: "Team of 4, but I built most of it: AI, level design, animations and task organisation.",
+        features: [
+          { t: 'IA : PATHFINDING & FSM', tEn: 'AI: PATHFINDING & FSM', fr: "Navigation des monstres et machine à états finis pour leurs comportements de traque.", en: "Monster navigation and a finite state machine driving their hunting behaviour." },
+          { t: 'LEVEL DESIGN COMPLET', tEn: 'FULL LEVEL DESIGN', fr: "Cartes jouables de bout en bout, pensées pour la course entre deux joueurs.", en: "Maps playable end to end, shaped around a race between two players." },
+          { t: 'ANIMATIONS', tEn: 'ANIMATION', fr: "Création et intégration des animations de personnages et de monstres avec l'Animator Unity.", en: "Character and monster animations created and wired up through Unity's Animator." }
+        ],
+        challenges: [
+          { t: 'OPTIMISATION', tEn: 'OPTIMISATION', fr: "Les performances ont été le mur du projet : c'est là que j'ai appris à profiler et à penser le budget d'une scène avant de la remplir.", en: "Performance was the wall of this project: it taught me to profile and to budget a scene before filling it." }
+        ],
+        shots: [
+          S('WdKod1xqsgApQ88QCVr76C8nsg.png?width=1096&height=631', 'DONJON', 'DUNGEON'),
+          S('WGhdDY9zCTJrcMm63mu8BAyd8.png?width=1095&height=634', 'MONSTRES', 'MONSTERS'),
+          S('rVLf9NwqC17x1ajmTgApJ8UEws.png?width=1920&height=1080', 'COURSE', 'THE RACE')
+        ],
+        links: [
+          { label: 'GITHUB ↗', url: 'https://github.com/Kybrien/AnotherMansDungeon' },
+          { label: 'GAME DESIGN DOCUMENT ↗', url: 'https://www.canva.com/design/DAGFfGGiHc4/nxaD9LLXV7eZmjxhXr8yhA/edit' }
+        ]
+      },
+      '06': {
+        sub: 'Moteur maison OpenGL', subEn: 'In-house OpenGL engine',
+        team: '7 personnes · 4 semaines', teamEn: '7 people · 4 weeks',
+        tech: ['OPENGL', 'C++', 'GLM', 'IMGUI'],
+        banner: F + 'DMoRXBtmffD3Gr4V32zaDj3toc.png?width=961&height=1011',
+        pitchFr: "Mon premier moteur, écrit en quatre semaines en OpenGL. Projet entièrement pédagogique : la meilleure façon de comprendre ce qui se passe réellement sous un moteur de jeu.",
+        pitchEn: "My first engine, written in four weeks with OpenGL. A purely educational project, the best way to understand what actually happens inside a game engine.",
+        hookFr: "J'étais responsable de tout le pipeline graphique, et j'ai travaillé le côté serveur avec un ami.",
+        hookEn: "I owned the entire graphics pipeline and worked on the server side with a friend.",
+        roleFr: "Game developer sur le pipeline graphique complet : buffers, shaders, transformations et intégration des librairies.",
+        roleEn: "Game developer on the whole graphics pipeline: buffers, shaders, transforms and library integration.",
+        features: [
+          { t: 'PIPELINE GRAPHIQUE', tEn: 'GRAPHICS PIPELINE', fr: "Gestion des buffers (VBO, VAO) et programmation des shaders vertex et fragment.", en: "Buffer management (VBO, VAO) and vertex / fragment shader programming." },
+          { t: 'MATHS & TRANSFORMS', tEn: 'MATHS & TRANSFORMS', fr: "Manipulation de matrices avec GLM pour toutes les transformations de la scène.", en: "Matrix work with GLM for every transform in the scene." },
+          { t: 'INTÉGRATION DE LIBS', tEn: 'LIBRARY INTEGRATION', fr: "GLFW, GLEW, stbImage, tinyObj, jsonCPP, GLM et imGUI branchés dans le moteur.", en: "GLFW, GLEW, stbImage, tinyObj, jsonCPP, GLM and imGUI wired into the engine." },
+          { t: 'DOCUMENTATION', tEn: 'DOCUMENTATION', fr: "Documentation du projet générée avec Doxygen pour que l'équipe suive le code.", en: "Project documentation generated with Doxygen so the team could follow the code." }
+        ],
+        shots: [
+          S('DMoRXBtmffD3Gr4V32zaDj3toc.png?width=961&height=1011', 'RENDU', 'RENDER'),
+          S('9dfmBQem3FPsPyRIwyvx4upVuEQ.png?width=954&height=1011', 'SCÈNE', 'SCENE'),
+          S('VSAXLcRg59KlbdqPHUwVL3yne38.png?width=452&height=307', 'MOTEUR', 'ENGINE')
+        ],
+        links: [{ label: 'GITHUB ↗', url: 'https://github.com/Kybrien/VxV-Engine' }]
+      },
+      '07': {
+        sub: 'Horreur · vertical slice', subEn: 'Horror · vertical slice',
+        team: 'Équipe · 3 semaines', teamEn: 'Team · 3 weeks',
+        tech: ['SFML', 'C++', 'ASEPRITE', 'PIXEL ART'],
+        banner: F + 'ESv3k1VU3tqmpurE3cuR9482JA.png?width=921&height=445',
+        pitchFr: "Vertical slice d'horreur écrite en trois semaines sous SFML, dans l'esprit de Lethal Company : un système d'ombres dynamiques réagit aux murs de la carte pour installer une atmosphère noire et oppressante, avec des monstres en patrouille, une musique d'ambiance et des mines posées aux mauvais endroits.",
+        pitchEn: "A three-week horror vertical slice written in SFML, in the spirit of Lethal Company: a dynamic shadow system reacts to the map's walls to build a dark, oppressive atmosphere, with roaming monsters, ambient music and landmines in all the wrong places.",
+        hookFr: "Tout l'enjeu était de coder nos propres ombres dynamiques, et c'est elles qui font la peur.",
+        hookEn: "The whole challenge was writing our own dynamic shadows, and they are what makes it scary.",
+        roleFr: "Game developer et artiste : IA des monstres, sound design, documentation de game design, et tous les sprites et animations pixel art.",
+        roleEn: "Game developer and artist: monster AI, sound design, game design documentation, and every pixel-art sprite and animation.",
+        features: [
+          { t: 'OMBRES DYNAMIQUES', tEn: 'DYNAMIC SHADOWS', fr: "Système d'ombres maison qui interagit avec les murs de la carte pour créer l'obscurité et la tension.", en: "A home-made shadow system interacting with the map's walls to create the darkness and the tension." },
+          { t: 'IA DES MONSTRES', tEn: 'MONSTER AI', fr: "Pathfinding des monstres qui patrouillent la carte et convergent vers le joueur.", en: "Pathfinding for monsters that roam the map and converge on the player." },
+          { t: 'SOUND DESIGN', tEn: 'SOUND DESIGN', fr: "Musique d'ambiance et effets sonores des monstres composés pour le jeu.", en: "Ambient music and monster sound effects composed for the game." },
+          { t: 'SPRITES & ANIMATIONS', tEn: 'SPRITES & ANIMATION', fr: "Tous les assets et animations dessinés dans Aseprite.", en: "Every asset and animation drawn in Aseprite." }
+        ],
+        shots: [
+          S('LywvUcm7d5CMO4pgmJtNRpow.png?width=1920&height=1080', 'OBSCURITÉ', 'DARKNESS'),
+          S('48WQ987NtLI24y7ibfbxEgJbiY.png?width=1920&height=1080', 'PATROUILLE', 'PATROL'),
+          S('ESv3k1VU3tqmpurE3cuR9482JA.png?width=921&height=445', 'TITRE', 'TITLE')
+        ],
+        links: [
+          { label: 'GITHUB ↗', url: 'https://github.com/Kybrien/Mortal-Brigade-SFML' },
+          { label: 'GAME DESIGN DOCUMENT ↗', url: 'https://www.canva.com/design/DAF3pgjSztU/ENfmBxt0mZOxXpxEj8PVVg/edit' }
+        ]
+      }
+    };
+  }
+
+  catalog() {
+    const olrShots = [
+      { label: 'R-21', labelEn: 'R-21', src: 'uploads/OLR-Screenshot01.webp' },
+      { label: 'ZONE 1', labelEn: 'ZONE 1', src: 'uploads/OLR-Screenshot03.webp' },
+      { label: 'ZONE 2 (SNEAKY)', labelEn: 'ZONE 2 (SNEAKY)', src: 'uploads/OLR-Screenshot04.webp' },
+      { label: 'ÉNIGME BIBLIOTHÈQUE', labelEn: 'LIBRARY PUZZLE', src: 'uploads/OLR-Screenshot05.webp' },
+      { label: 'ZONE 3BIS', labelEn: 'ZONE 3BIS', src: 'uploads/OLR-Screenshot06.webp' },
+      { label: 'ZONE 4 PASSERELLES', labelEn: 'ZONE 4 WALKWAYS', src: 'uploads/OLR-Screenshot07.webp' },
+      { label: 'ZONE 5 TOURELLE', labelEn: 'ZONE 5 TURRET', src: 'uploads/OLR-Screenshot08.webp' },
+      { label: 'MENU PRINCIPAL', labelEn: 'MAIN MENU', src: 'uploads/OLR-Screenshot02.webp' }
+    ];
+    const list = [
+      {
+        n: '00', title: 'One Last Rhapsody', sub: 'A Cinematic Cyberpunk Rhapsody',
+        engine: 'Unreal Engine 5.7', year: '2025 · 2026', team: '3 personnes', platform: 'PC · Windows 64',
+        camera: '3ᵉ personne · caméra spline', cameraEn: 'Third person · spline camera', teamEn: '3 people', accent: '#1CAEE4',
+        tech: ['UE 5.7', 'C++', 'BLUEPRINT', 'QUARTZ CLOCK', 'LUMEN + RT', 'NIAGARA'],
+        roles: ['LEAD', 'GAME DEV', 'GAME DESIGN', 'LEVEL DESIGN', 'SOUND DESIGN', 'CINEMATIC DESIGN', 'GAME FEEL'],
+        cardFr: 'Aventure cinématique cyberpunk où la musique est une mécanique. Lead sur toute la production.',
+        cardEn: 'Cyberpunk cinematic adventure where music is a mechanic. Lead across the whole production.',
+        pitchFr: "En périphérie d'une ville sans nom, un robot s'éveille, blessé, dernier de sa lignée. Désigné R21 par son créateur, il porte en lui un mécanisme singulier : la musique de son environnement décuple la puissance de ses actes. À travers des rues hostiles et des bâtiments morts, il avance vers un seul but : faire taire la Sentinelle primaire qui règne sur la ville.",
+        pitchEn: "On the outskirts of a nameless city a wounded robot wakes, the last of his line. Named R21 by his creator, he carries a singular mechanism: the music around him amplifies everything he does. Through hostile streets he moves toward one goal : silencing the primary Sentinel.",
+        hookFr: "La musique n'est pas une ambiance, c'est une mécanique : le monde bat au rythme du son, et c'est en agissant en rythme que R21 reprend le pouvoir.",
+        hookEn: "Music is not ambience, it is a mechanic: the world beats with the sound, and acting in rhythm is how R21 takes back control.",
+        roleFr: "J'ai porté le projet de bout en bout : direction d'équipe, code gameplay, game design, level design, sound design, cinématiques et game feel. Mes coéquipiers ont pris l'IA de l'araignée et le système de sauvegarde.",
+        roleEn: "I carried the project end to end: team direction, gameplay code, game design, level design, sound design, cinematics and game feel. Teammates handled the spider AI and the save system.",
+        features: [
+          { t: 'CAMÉRA SPLINE & BLEND AREAS', tEn: 'SPLINE CAMERA & BLEND AREAS', fr: "Des splines placées à la main, chacune avec un ID et un côté ; la caméra suit en continu le point le plus proche du joueur. Des volumes de blend réassignent la spline active au passage, pour des transitions invisibles.", en: "Hand-placed splines, each with an ID and a side; the camera continuously tracks the closest point to the player. Blend volumes reassign the active spline for seamless transitions." },
+          { t: 'QUARTZ CLOCK · 80 BPM', tEn: 'QUARTZ CLOCK · 80 BPM', fr: "Métronome natif Unreal : musiques lancées au tick près, abonnement au tempo (beat, mesure, 2 mesures). Toutes les 3 secondes le monde pulse : lumières, néons, tourelles.", en: "Unreal's native metronome: music started on an exact tick, tempo subscriptions per beat and bar. Every 3 seconds the world pulses: lights, neon, turrets." },
+          { t: 'ACTION EN RYTHME', tEn: 'RHYTHM ACTION', fr: "Fenêtre de timing façon Osu! : un cercle se resserre autour du réticule. Tirer ou parer à ±0,2 s du temps déclenche une action puissante, avec double feedback visuel et sonore.", en: "Osu!-style timing window: a ring closes around the reticle. Firing or parrying within ±0.2 s of the beat triggers an empowered action, with visual and audio feedback." },
+          { t: 'CIBLAGE MODULAIRE', tEn: 'MODULAR TARGETING', fr: "Targetting + Aimable Components : n'importe quel actor devient ciblable, filtré par spline active et distance, trié par le regard. Sentinelles, tourelle et araignée réutilisent les mêmes fondations.", en: "Targetting + Aimable components: any actor becomes targetable, filtered by active spline and distance. Sentinels, turret and spider reuse the same foundation." }
+        ],
+        challenges: [
+          { t: 'OPTIMISATION DE LA MAP', tEn: 'MAP OPTIMISATION', fr: "Textures compressées et réduites, chaque zone rangée en data-layers, chargés aux endroits propices de la map.", en: "Compressed textures, every zone sorted into data-layers streamed at the right spots." },
+          { t: 'SYNCHRO GAMEPLAY / MUSIQUE', tEn: 'GAMEPLAY / MUSIC SYNC', fr: "Quartz Clock lancée en même temps que la musique, boucles de gameplay en Set Timer by Event pour ouvrir une fenêtre de 0,2 s avant et après le timing parfait.", en: "Quartz Clock started with the music, gameplay loops on Set Timer by Event to open a 0.2 s window either side of the perfect beat." },
+          { t: 'CADRAGE DE LA CAMÉRA', tEn: 'CAMERA FRAMING', fr: "Level design pensé pour garder la main sur ce que voit le joueur, transitions de splines placées sur les moments où les repères ne bougent pas.", en: "Level design built to control what the player sees, spline transitions placed where landmarks stay put." }
+        ],
+        shots: olrShots, video: true, banner: 'uploads/OLR-Screenshot01.webp', logo: 'uploads/OLR-Logo.webp',
+        links: [{ label: 'GITHUB ↗', url: 'https://github.com/Kybrien' }]
+      },
+      {
+        n: '01', title: 'Soraimu', sub: 'Plateformer 3D', subEn: '3D Platformer', engine: 'Unreal Engine', year: '2025',
+        team: 'Solo', teamEn: 'Solo', platform: 'PC · Windows', camera: '3ᵉ personne', cameraEn: 'Third person', accent: '#6FD79A', hover: '#9EC5F0',
+        tech: ['UNREAL', 'BLUEPRINT'], roles: ['GAME DEV', 'GAME DESIGN', 'LEVEL DESIGN'],
+        cardFr: 'Game design, code gameplay et level design.',
+        cardEn: 'Game design, gameplay code and level design.'
+      },
+      {
+        n: '02', title: 'The Tarnished Alchemist', sub: 'Potion Making Game', engine: 'Unity', year: '2025',
+        team: 'Solo', teamEn: 'Solo', platform: 'PC · Windows', camera: 'N/A', accent: '#D9A45B', hover: '#F0C88A',
+        tech: ['UNITY', 'C#'], roles: ['GAME DEV', 'GAME DESIGN', 'LEVEL DESIGN'],
+        cardFr: 'Game design, code gameplay et level design.',
+        cardEn: 'Game design, gameplay code and level design.'
+      },
+      {
+        n: '03', title: 'Gobelins, Grimoires et Gros Bobos', sub: 'Multijoueur', subEn: 'Multiplayer', engine: 'Unreal Engine', year: '2025',
+        team: '3 personnes', teamEn: '3 people', platform: 'PC · Windows', camera: 'N/A', accent: '#9B6BFF', hover: '#E8736F',
+        tech: ['UNREAL', 'MULTIJOUEUR'], roles: ['LEVEL DESIGN', 'GAME DEV'],
+        cardFr: 'Level design et développement gameplay.',
+        cardEn: 'Level design and gameplay development.'
+      },
+      {
+        n: '04', title: 'Trigger at Twilight', sub: 'Fast Paced Action', engine: 'Unity', year: '2025',
+        team: 'Solo', teamEn: 'Solo', platform: 'PC · Windows', camera: 'N/A', accent: '#FF7A45', hover: '#4A5F9E',
+        tech: ['UNITY', 'C#'], roles: ['GAME DEV', 'GAME DESIGN', 'LEVEL DESIGN'],
+        cardFr: 'Game design, code gameplay et level design.',
+        cardEn: 'Game design, gameplay code and level design.'
+      },
+      {
+        n: '05', title: "Another Man's Dungeon", sub: 'Dungeon Crawler', engine: 'Unity', year: '2024',
+        team: '4 personnes', teamEn: '4 people', platform: 'PC · Windows', camera: 'N/A', accent: '#4FA3D1', hover: '#B8E6A8',
+        tech: ['UNITY', 'C#'], roles: ['GAME DEV', 'GAME DESIGN', 'LEVEL DESIGN'],
+        cardFr: "J'ai réalisé l'essentiel du projet, comme sur One Last Rhapsody.",
+        cardEn: 'I built most of the project myself, as on One Last Rhapsody.'
+      },
+      {
+        n: '06', title: 'VxV', sub: 'Moteur maison OpenGL', subEn: 'In-house OpenGL engine', engine: 'Moteur maison · OpenGL', engineEn: 'In-house engine · OpenGL', year: '2024',
+        team: '7 personnes', teamEn: '7 people', platform: 'PC · Windows', camera: 'N/A', accent: '#7FE3D4', hover: '#8FD8D0',
+        tech: ['OPENGL', 'C++'], roles: ['GAME DEV'],
+        cardFr: 'Game developer global sur un moteur maison OpenGL.',
+        cardEn: 'General game developer on an in-house OpenGL engine.'
+      },
+      {
+        n: '07', title: 'Mortal Brigade', sub: 'Horror Inspired', engine: 'SFML · C++', year: '2023',
+        team: 'Équipe', teamEn: 'Team', platform: 'PC · Windows', camera: 'N/A', accent: '#E24A4A', hover: '#FFFFFF',
+        tech: ['SFML', 'C++', 'PIXEL ART'], roles: ['GAME DEV', 'ANIMATION PIXEL ART'],
+        cardFr: 'Game developer et artiste sur les animations pixel art.',
+        cardEn: 'Game developer and pixel-art animator.'
+      }
+    ];
+    const ext = this.extras();
+    return list.map(p => ({ ...p, ...(ext[p.n] || {}) }));
+  }
+
+  fonts() {
+    const sets = {
+      'Cinématique': { disp: "'Felix Titling','Cinzel',serif", body: "'EB Garamond',Georgia,serif", mono: "'IBM Plex Mono',monospace" },
+      'Studio': { disp: "'Cinzel',serif", body: "'Archivo',system-ui,sans-serif", mono: "'IBM Plex Mono',monospace" },
+      'Technique': { disp: "'Space Grotesk',system-ui,sans-serif", body: "'Space Grotesk',system-ui,sans-serif", mono: "'IBM Plex Mono',monospace" }
+    };
+    return sets[this.props.typography] || sets['Technique'];
+  }
+
+  dict(fr) {
+    return fr ? {
+      navProjects: 'PROJETS', navPlugins: 'PLUGINS', navAbout: 'À PROPOS', navCV: 'CV', navContact: 'CONTACT',
+      caseStudyCta: 'ÉTUDE DE CAS →', statYears: 'EXPÉRIENCES EN ENTREPRISE', statShipped: 'PROJETS LIVRÉS', statPlugins: 'PLUGINS SUR FAB',
+      otherProjects: 'AUTRES PROJETS', otherKicker: 'JAMS · SOLO · ÉQUIPE', reviews: '5.0 · 9 AVIS SUR FAB',
+      viewFab: 'VOIR SUR FAB ↗', soon: 'BIENTÔT', soonText: "D'autres plugins sont en préparation et arriveront sur FAB.",
+      aboutTitle: 'À PROPOS', replyLine: 'Réponse sous 24h ',
+      profile: 'PROFIL', cvTitle: 'CV', viewProject: 'VOIR LE PROJET →',
+      avail: 'ALTERNANCE M2 · 3 SEM. ENTREPRISE / 1 SEM. ÉCOLE · SEPTEMBRE 2026', loc: 'PARIS 17e · ÎLE-DE-FRANCE',
+      expTitle: 'EXPÉRIENCE',
+      exp1Url: 'https://born-to-web.com', exp2Url: 'https://www.linkedin.com/company/cabb-conseil/home/', exp3Url: 'https://gamingcampus.fr', exp4Url: 'https://www.terre.defense.gouv.fr/pompiers-paris',
+      exp1Date: 'JANV. 2026 – AVR. 2026', exp1Role: 'Gameplay Programmer / Game Designer', exp1Co: 'BORN TO WEB',
+      exp1Meta: 'Unreal Engine 5 · Souls-like HD-2D · Équipe de 5',
+      exp1Desc: "Fondations du système de combat et de l'IA ennemie en Blueprint : machine à états et patterns d'attaque. Level design des premières zones et Game Design Document soutenu devant jury.",
+      exp2Date: 'MAI 2025 – AOÛT 2025', exp2Role: 'Gameplay Programmer', exp2Co: 'CABB CONSEIL',
+      exp2Meta: 'Unreal Engine 5 · Jeu multijoueur PC · Équipe de 4',
+      exp2Desc: 'Multijoueur sur les serveurs Steam via la Steamworks API : sessions, réplication, interactions. Génération procédurale des niveaux pour la rejouabilité, et GDD complet présenté à un jury.',
+      exp3Date: 'JUIN 2024 – AOÛT 2024', exp3Role: 'Chef de projet / AI Programmer', exp3Co: 'G.STUDIO',
+      exp3Meta: 'Unity C# · Jeu multijoueur · Équipe de 4 sur 3 mois',
+      exp3Desc: 'Finite State Machine pour les IA de monstres (poursuite, corps à corps, distance) avec animations intégrées au gameplay sur des maps semi open world.',
+      exp4Date: 'JUIN 2023 – JUIL. 2023', exp4Role: 'Game Designer', exp4Co: 'BRIGADE DE SAPEURS-POMPIERS DE PARIS',
+      exp4Meta: 'Simulateur XVR (SIMOPS) · Agile · Équipe de 6',
+      exp4Desc: "Simulations d'intervention livrées et utilisées en stage de formation, avec un GDD dédié et un gabarit d'interfaces in-game réutilisable.",
+      edu1Url: 'https://gamingcampus.fr/formations/mastere-europeen-expert-it-applications-intelligentes-et-big-data.html', edu2Url: 'https://gamingcampus.fr/formations/bachelor-developpeur-informatique-option-jeux-video.html', edu3Url: 'https://www.terre.defense.gouv.fr/lycee-militaire-autun',
+      eduTitle: 'FORMATIONS',
+      edu1: 'Master Développement de jeux vidéo, Big Data & rendu 3D temps réel', edu1Status: '2e ANNÉE EN COURS',
+      edu1Desc: 'Mastère Européen Expert IT. Programmation moteur, rendu 3D temps réel et pipelines de production de jeu.',
+      edu2: 'Bachelor Développeur Informatique, option Jeu Vidéo', edu2Status: 'OBTENU',
+      edu2Desc: 'Bases du développement logiciel appliquées au jeu : C++, C#, architecture objet et projets en équipe.',
+      edu3: 'Baccalauréat MPCSI\n', edu3Status: 'OBTENU',
+      edu3Desc: 'Filière scientifique orientée maths, physique et sciences de l\'ingénieur, en internat militaire.',
+      lang1N: 'FRANÇAIS', lang1L: 'LANGUE MATERNELLE',
+      lang2N: 'ANGLAIS', lang2L: 'C1 · TOEIC 980',
+      lang3N: 'ESPAGNOL', lang3L: 'B1',
+      lang4N: 'JAPONAIS', lang4L: 'A2',
+      lang5N: 'LANGUE DES SIGNES FRANÇAISE (LSF)', lang5L: '2 ANS DE PRATIQUE',
+      langTitle: 'LANGUES', langFr: 'FRANÇAIS · NATIF', langEn: 'ANGLAIS · C1 · TOEIC 980', langEs: 'ESPAGNOL · B1', langJp: 'JAPONAIS · A2',
+      backPortfolio: 'RETOUR AU PORTFOLIO', back: 'RETOUR', caseStudyLabel: 'ÉTUDE DE CAS', dossier: 'DOSSIER',
+      myRole: 'MON RÔLE', pitchLabel: 'PITCH', specSheet: 'FICHE TECHNIQUE',
+      engineLabel: 'MOTEUR', teamLabel: 'ÉQUIPE', yearLabel: 'ANNÉE', platformLabel: 'PLATEFORME', cameraLabel: 'CAMÉRA',
+      keySystems: 'SYSTÈMES CLÉS', systems: 'SYSTÈMES', challengesTitle: 'DÉFIS & SOLUTIONS', challenges: 'DÉFIS',
+      gallery: 'GALERIE', trailerLabel: 'TRAILER',
+      prevProject: 'PROJET PRÉCÉDENT', nextProject: 'PROJET SUIVANT', prev: 'PRÉCÉDENT', next: 'SUIVANT',
+      phPitch: 'PITCH À COMPLÉTER', phPitchSub: "Deux ou trois phrases sur l'univers et l'intention du jeu.",
+      phSystems: 'SYSTÈMES CLÉS & DÉFIS À COMPLÉTER', phSystemsSub: '3 à 4 systèmes, puis 2 à 3 défis : un titre et deux phrases chacun.',
+      phVideo: 'URL YOUTUBE À RENSEIGNER', problem: 'PROBLÈME', editorTools: 'Outils éditeur', phVideoLong: 'TRAILER · URL YOUTUBE À RENSEIGNER', shotPh: 'CAPTURE 16:9'
+    } : {
+      navProjects: 'PROJECTS', navPlugins: 'PLUGINS', navAbout: 'ABOUT', navCV: 'RESUME', navContact: 'CONTACT',
+      caseStudyCta: 'CASE STUDY →', statYears: 'PROFESSIONAL PLACEMENTS', statShipped: 'PROJECTS SHIPPED', statPlugins: 'PLUGINS ON FAB',
+      otherProjects: 'OTHER PROJECTS', otherKicker: 'JAMS · SOLO · TEAM', reviews: '5.0 · 9 REVIEWS ON FAB',
+      viewFab: 'VIEW ON FAB ↗', soon: 'SOON', soonText: 'More plugins are in the works and will land on FAB.',
+      aboutTitle: 'ABOUT', replyLine: 'Replies within 24h',
+      profile: 'PROFILE', cvTitle: 'CV', viewProject: 'VIEW PROJECT →',
+      avail: 'M2 APPRENTICESHIP · 3 WEEKS COMPANY / 1 WEEK SCHOOL · SEPTEMBER 2026', loc: 'PARIS 17e · GREATER PARIS',
+      expTitle: 'EXPERIENCE',
+      exp1Url: 'https://born-to-web.com', exp2Url: 'https://www.linkedin.com/company/cabb-conseil/home/', exp3Url: 'https://gamingcampus.fr', exp4Url: 'https://www.terre.defense.gouv.fr/pompiers-paris',
+      exp1Date: 'JAN 2026 – APR 2026', exp1Role: 'Gameplay Programmer / Game Designer', exp1Co: 'BORN TO WEB',
+      exp1Meta: 'Unreal Engine 5 · HD-2D Souls-like · Team of 5',
+      exp1Desc: 'Built the foundations of the combat system and enemy AI in Blueprint: state machine and attack patterns. Level design of the opening areas, plus a Game Design Document defended before a jury.',
+      exp2Date: 'MAY 2025 – AUG 2025', exp2Role: 'Gameplay Programmer', exp2Co: 'CABB CONSEIL',
+      exp2Meta: 'Unreal Engine 5 · PC multiplayer game · Team of 4',
+      exp2Desc: 'Multiplayer on Steam servers through the Steamworks API: sessions, replication, interactions. Procedural level generation for replayability, and a full GDD presented to a jury.',
+      exp3Date: 'JUN 2024 – AUG 2024', exp3Role: 'Project Lead / AI Programmer', exp3Co: 'G.STUDIO',
+      exp3Meta: 'Unity C# · Multiplayer game · Team of 4 over 3 months',
+      exp3Desc: 'Finite State Machine for monster AI (chase, melee and ranged) with animations wired into gameplay across semi open world maps.',
+      exp4Date: 'JUN 2023 – JUL 2023', exp4Role: 'Game Designer', exp4Co: 'PARIS FIRE BRIGADE',
+      exp4Meta: 'XVR simulation software (SIMOPS) · Agile · Team of 6',
+      exp4Desc: 'Emergency-response simulations shipped and used in training courses, with a dedicated GDD and a reusable in-game interface template.',
+      edu1Url: 'https://gamingcampus.fr/formations/mastere-europeen-expert-it-applications-intelligentes-et-big-data.html', edu2Url: 'https://gamingcampus.fr/formations/bachelor-developpeur-informatique-option-jeux-video.html', edu3Url: 'https://www.terre.defense.gouv.fr/lycee-militaire-autun',
+      eduTitle: 'EDUCATION',
+      edu1: 'Master in Video Game Development, Big Data & Real-Time 3D Rendering', edu1Status: '2ND YEAR IN PROGRESS',
+      edu1Desc: 'European Expert IT Master. Engine programming, real-time 3D rendering and game production pipelines.',
+      edu2: 'Bachelor in Software Development, Video Game Track', edu2Status: 'GRADUATED',
+      edu2Desc: 'Software development fundamentals applied to games: C++, C#, object-oriented architecture and team projects.',
+      edu3: 'French Baccalauréat MPCSI\n', edu3Status: 'GRADUATED',
+      edu3Desc: 'Science track focused on maths, physics and engineering sciences, in a military boarding school.',
+      lang1N: 'FRENCH', lang1L: 'NATIVE',
+      lang2N: 'ENGLISH', lang2L: 'C1 · TOEIC 980',
+      lang3N: 'SPANISH', lang3L: 'B1',
+      lang4N: 'JAPANESE', lang4L: 'A2',
+      lang5N: 'FRENCH SIGN LANGUAGE (LSF)', lang5L: '2 YEARS',
+      langTitle: 'LANGUAGES', langFr: 'FRENCH · NATIVE', langEn: 'ENGLISH · C1 · TOEIC 980', langEs: 'SPANISH · B1', langJp: 'JAPANESE · A2',
+      backPortfolio: 'BACK TO PORTFOLIO', back: 'BACK', caseStudyLabel: 'CASE STUDY', dossier: 'FILE',
+      myRole: 'MY ROLE', pitchLabel: 'PITCH', specSheet: 'SPEC SHEET',
+      engineLabel: 'ENGINE', teamLabel: 'TEAM', yearLabel: 'YEAR', platformLabel: 'PLATFORM', cameraLabel: 'CAMERA',
+      keySystems: 'KEY SYSTEMS', systems: 'SYSTEMS', challengesTitle: 'CHALLENGES & SOLUTIONS', challenges: 'CHALLENGES',
+      gallery: 'GALLERY', trailerLabel: 'TRAILER',
+      prevProject: 'PREVIOUS PROJECT', nextProject: 'NEXT PROJECT', prev: 'PREVIOUS', next: 'NEXT',
+      phPitch: 'PITCH TO WRITE', phPitchSub: 'Two or three sentences on the world and the intent.',
+      phSystems: 'KEY SYSTEMS & CHALLENGES TO WRITE', phSystemsSub: '3 to 4 systems, then 2 to 3 challenges: a title and two sentences each.',
+      phVideo: 'YOUTUBE URL TO FILL IN', problem: 'PROBLEM', editorTools: 'Editor tools', phVideoLong: 'TRAILER · YOUTUBE URL TO FILL IN', shotPh: 'SCREENSHOT 16:9'
+    };
+  }
+
+  openPage(i) {
+    if (this.state.page < 0) this.homeScroll = window.scrollY;
+    this.setState({ page: i, gsel: 0 });
+    requestAnimationFrame(() => window.scrollTo(0, 0));
+  }
+
+  closePage() {
+    const y = this.homeScroll || 0;
+    this.setState({ page: -1 });
+    requestAnimationFrame(() => window.scrollTo(0, y));
+  }
+
+  pageVals(lang) {
+    const list = this.catalog();
+    const i = this.state.page;
+    if (i < 0 || i >= list.length) return { open: false };
+    const p = list[i];
+    const fr = lang !== 'EN';
+    const stripe = 'repeating-linear-gradient(45deg,#141416 0 14px,#0a0a0b 14px 28px)';
+    const raw = p.shots || [1, 2, 3, 4, 5, 6].map(() => ({ label: this.dict(fr).shotPh, src: null }));
+    const shots = raw.map(s => ({ src: s.src, label: fr ? s.label : (s.labelEn || s.label) }));
+    const sel = Math.min(this.state.gsel, shots.length - 1);
+    const prev = list[(i - 1 + list.length) % list.length];
+    const next = list[(i + 1) % list.length];
+    const line = (o, k) => (fr ? o[k + 'Fr'] : o[k + 'En']) || o[k + 'Fr'] || '';
+    const links = (this.props.showGithub ?? true) ? (p.links || []) : [];
+    const pick = k => (fr ? p[k] : (p[k + 'En'] || p[k])) || '';
+    return {
+      open: true,
+      title: p.title, sub: pick('sub'), n: p.n, accent: p.accent,
+      engine: pick('engine'), year: p.year, team: pick('team'), platform: p.platform, camera: pick('camera'),
+      pitch: line(p, 'pitch') || '',
+      hook: line(p, 'hook') || '',
+      role: line(p, 'role') || line(p, 'card'),
+      logo: p.logo || '', hasLogo: !!p.logo,
+      logoWideEl: p.logo ? React.createElement('img', { src: p.logo, alt: '', style: { position: 'absolute', top: '-30px', right: '-265px', width: '660px', height: 'auto', opacity: .09, zIndex: -1, pointerEvents: 'none', userSelect: 'none' } }) : null,
+      logoDossierEl: p.logo ? React.createElement('img', { src: p.logo, alt: '', style: { position: 'absolute', top: '-40px', right: '-240px', width: '600px', height: 'auto', opacity: .09, zIndex: -1, pointerEvents: 'none', userSelect: 'none' } }) : null,
+      hasPitch: !!p.pitchFr,
+      needsPitch: !p.pitchFr,
+      hasVideo: !!p.video,
+      hasEmbed: !!(p.video && (this.props.olrVideo || '')),
+      needsVideo: !!(p.video && !(this.props.olrVideo || '')),
+      videoSrc: this.props.olrVideo || '',
+      tech: p.tech.map(t => ({ t })),
+      roles: p.roles.map(r => ({ r })),
+      features: (p.features || []).map((f, k) => ({
+        t: fr ? f.t : (f.tEn || f.t), d: fr ? f.fr : f.en, num: String(k + 1).padStart(2, '0')
+      })),
+      hasFeatures: !!(p.features && p.features.length),
+      needsFeatures: !(p.features && p.features.length),
+      challenges: (p.challenges || []).map((c, k) => ({
+        t: fr ? c.t : (c.tEn || c.t), d: fr ? c.fr : c.en, num: String(k + 1).padStart(2, '0')
+      })),
+      hasChallenges: !!(p.challenges && p.challenges.length),
+      shots: shots.map((s, k) => ({
+        label: s.label,
+        bg: s.src ? `url("${s.src}") center/cover no-repeat` : stripe,
+        opacity: k === sel ? 1 : 0.5,
+        border: k === sel ? p.accent : '#1c1c1f',
+        select: () => this.setState({ gsel: k })
+      })),
+      big: shots[sel] && shots[sel].src ? `url("${shots[sel].src}") center/cover no-repeat` : stripe,
+      bigLabel: shots[sel] ? shots[sel].label : '',
+      banner: p.banner ? `url("${p.banner}") center/cover no-repeat` : stripe,
+      links: links.map(l => ({ ...l })),
+      hasLinks: !!links.length,
+      prevTitle: prev.title, nextTitle: next.title,
+      goPrev: () => this.openPage((i - 1 + list.length) % list.length),
+      goNext: () => this.openPage((i + 1) % list.length),
+      close: () => this.closePage()
+    };
+  }
+
+  navItem(i) {
+    const on = this.state.nav === i;
+    return {
+      enter: () => this.setState({ nav: i }),
+      leave: () => this.setState({ nav: -1 }),
+      mw: on ? '220px' : '0px',
+      op: on ? 1 : 0,
+      px: on ? '16px' : '0px',
+      tx: on ? '0px' : '14px',
+      bd: on ? '#fff' : '#1c1c1f',
+      ic: on ? '#fff' : '#8f8c86'
+    };
+  }
+
+  renderVals() {
+    const lang = this.state.lang || this.props.lang || 'FR';
+    const fr = lang !== 'EN';
+    const t = this.dict(fr);
+    const showGithub = this.props.showGithub ?? true;
+    const count = this.props.projectCount ?? 7;
+
+    const catalog = this.catalog();
+    const all = catalog.slice(1).map((p, k) => ({
+      n: p.n, title: p.title, type: (fr ? p.engine : (p.engineEn || p.engine)).toUpperCase(), tech: fr ? p.team : (p.teamEn || p.team), year: p.year,
+      thumb: p.banner ? `url("${p.banner}") center/cover no-repeat` : 'repeating-linear-gradient(45deg,#151517 0 12px,#0b0b0c 12px 24px)',
+      fr: p.cardFr, en: p.cardEn, idx: k + 1, hover: p.hover
+    }));
+
+    const shown = all.slice(0, count);
+    const rest = shown.length % 4;
+    const projects = shown.map((p, i) => {
+      const fromEnd = shown.length - i;
+      let col = 'span 3';
+      if (rest === 1 && fromEnd === 1) col = '5 / span 3';
+      if (rest === 2 && fromEnd === 2) col = '4 / span 3';
+      if (rest === 2 && fromEnd === 1) col = '7 / span 3';
+      if (rest === 3 && fromEnd === 3) col = '2 / span 3';
+      if (rest === 3 && fromEnd === 2) col = '5 / span 3';
+      if (rest === 3 && fromEnd === 1) col = '8 / span 3';
+      const hv = p.hover || '#ffffff';
+      const on = this.state.projHover === p.idx;
+      return {
+        ...p, col, desc: fr ? p.fr : p.en, link: t.viewProject,
+        borderColor: on ? hv : '#1c1c1f',
+        bgColor: on ? this.tint(hv) : '#000',
+        enter: () => this.setState({ projHover: p.idx }),
+        leave: () => this.setState({ projHover: -1 }),
+        href: 'projets/' + this.slugify(p.title) + '.html',
+        open: e => { if (e && e.preventDefault) e.preventDefault(); this.openPage(p.idx); }
+      };
+    });
+
+    const stripe = 'repeating-linear-gradient(45deg,#141416 0 14px,#0a0a0b 14px 28px)';
+    const stripeSm = 'repeating-linear-gradient(45deg,#17171a 0 8px,#0b0b0c 8px 16px)';
+    const gallery = [
+      { label: 'R-21', labelEn: 'R-21', src: 'uploads/OLR-Screenshot01.webp' },
+      { label: 'ZONE 1', labelEn: 'ZONE 1', src: 'uploads/OLR-Screenshot03.webp' },
+      { label: 'ZONE 2 (SNEAKY)', labelEn: 'ZONE 2 (SNEAKY)', src: 'uploads/OLR-Screenshot04.webp' },
+      { label: 'ÉNIGME BIBLIOTHÈQUE', labelEn: 'LIBRARY PUZZLE', src: 'uploads/OLR-Screenshot05.webp' },
+      { label: 'ZONE 3BIS', labelEn: 'ZONE 3BIS', src: 'uploads/OLR-Screenshot06.webp' },
+      { label: 'ZONE 4 PASSERELLES', labelEn: 'ZONE 4 WALKWAYS', src: 'uploads/OLR-Screenshot07.webp' },
+      { label: 'ZONE 5 TOURELLE', labelEn: 'ZONE 5 TURRET', src: 'uploads/OLR-Screenshot08.webp' },
+      { label: 'MENU PRINCIPAL', labelEn: 'MAIN MENU', src: 'uploads/OLR-Screenshot02.webp' }
+    ];
+    const sel = Math.min(this.state.shot, gallery.length - 1);
+    const cur = gallery[sel];
+    const shots = gallery.map((s, i) => ({
+      label: fr ? s.label : (s.labelEn || s.label),
+      bg: s.src ? `url("${s.src}") center/cover no-repeat` : stripeSm,
+      border: i === sel ? 'oklch(0.72 0.19 25)' : '#1c1c1f',
+      opacity: i === sel ? 1 : 0.55,
+      select: () => this.setState({ shot: i })
+    }));
+
+    const layout = this.props.projectLayout ?? 'Éditorial';
+    const pg = this.pageVals(lang);
+
+    return {
+      projects,
+      shots,
+      pg,
+      pgOpen: pg.open,
+      homeDisplay: pg.open ? 'none' : 'block',
+      pgA: pg.open && layout === 'Éditorial',
+      pgB: pg.open && layout === 'Dossier',
+      pgC: pg.open && layout === 'Cinématique',
+      openOLR: e => { if (e && e.preventDefault) e.preventDefault(); this.openPage(0); },
+      n0: this.navItem(0),
+      n1: this.navItem(1),
+      n2: this.navItem(2),
+      n3: this.navItem(3),
+      n4: this.navItem(4),
+      mainBg: cur.src ? `url("${cur.src}") center/cover no-repeat` : stripe,
+      mainLabel: fr ? cur.label : (cur.labelEn || cur.label),
+      t,
+      f: this.fonts(),
+      isFR: fr,
+      isEN: !fr,
+      frColor: fr ? '#fff' : '#6d7078',
+      enColor: fr ? '#6d7078' : '#fff',
+      frBorder: fr ? '#fff' : '#1c1c1f',
+      enBorder: fr ? '#1c1c1f' : '#fff',
+      setFR: () => this.setState({ lang: 'FR' }),
+      setEN: () => this.setState({ lang: 'EN' })
+    };
+  }
+}
+</script>
+</body>
+</html>
