@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YASP Documentation — Steam YASP Primary API Map | Yet Another Steam Plugin</title>
+<meta name="description" content="Interactive documentation for the Yet Another Steam Plugin Primary API: 184 Blueprint nodes across 8 typed Steam services — multiplayer, social, progression, Cloud, mods, input, inventory and platform.">
+<meta name="author" content="Adrien Patte">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#050506">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://kybrien.github.io/yasp/docs/">
+<link rel="icon" href="../../uploads/OLR_LogoUnreal.ico" sizes="any">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Yet Another Steam Plugin">
+<meta property="og:url" content="https://kybrien.github.io/yasp/docs/">
+<meta property="og:title" content="Steam YASP API Map — Documentation">
+<meta property="og:description" content="Get Steam YASP → choose a service → do the thing. 184 Primary API nodes, one interactive map.">
+<meta property="og:image" content="https://kybrien.github.io/uploads/YASP_Cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Steam YASP API Map — Documentation">
+<meta name="twitter:description" content="Get Steam YASP → choose a service → do the thing. 184 Primary API nodes, one interactive map.">
+<meta name="twitter:image" content="https://kybrien.github.io/uploads/YASP_Cover.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root { --disp:'Space Grotesk',system-ui,sans-serif; --mono:'IBM Plex Mono',monospace;
+          --ac:#4CC2FF; --ink:#f4f2ee; --dim:#a9a6a0; --faint:#6d7078; --line:#1b1b1e; --panel:#08080a; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#050506; color:var(--ink); font-family:var(--disp); overflow:hidden; }
+  a { color:inherit; text-decoration:none; }
+  a:hover { color:var(--ac); }
+  h1,h2,h3 { margin:0; }
+  .k { font:500 11px/1 var(--mono); letter-spacing:.22em; color:var(--faint); text-transform:uppercase; }
+  button { font-family:inherit; cursor:pointer; }
+  .tab { padding:9px 16px; font:600 11px/1 var(--disp); letter-spacing:.16em; text-transform:uppercase;
+         background:transparent; color:var(--faint); border:1px solid #1f1f23; min-height:38px; transition:.18s; }
+  .tab:hover { color:var(--ink); border-color:#2d2d33; }
+  .tab[aria-selected="true"] { color:#04121c; background:var(--ac); border-color:var(--ac); }
+  .ctl { width:34px; height:34px; display:grid; place-items:center; background:rgba(8,8,10,.92); border:1px solid #22222a;
+         color:var(--dim); font:500 13px var(--mono); transition:.18s; }
+  .ctl:hover { color:var(--ac); border-color:var(--ac); }
+  .type { padding:3px 7px; font:600 9px/1 var(--mono); letter-spacing:.14em; border:1px solid; }
+  .t-pure { color:#8FD9A8; border-color:rgba(143,217,168,.45); }
+  .t-immediate { color:#F0C674; border-color:rgba(240,198,116,.45); }
+  .t-async { color:#4CC2FF; border-color:rgba(76,194,255,.45); }
+  .t-service { color:#C9A8F0; border-color:rgba(201,168,240,.45); }
+  #svg { display:block; width:100%; height:100%; cursor:grab; touch-action:none; }
+  #svg.drag { cursor:grabbing; }
+  .gnode rect { transition:fill .15s, stroke .15s; }
+  .gnode { cursor:pointer; }
+  .gnode text { pointer-events:none; user-select:none; }
+  .row { display:grid; grid-template-columns:minmax(0,1fr) 92px; gap:14px; align-items:center; padding:11px 16px;
+         border:1px solid transparent; border-bottom-color:#131316; background:transparent; text-align:left; width:100%; color:inherit; }
+  .row:hover { background:rgba(76,194,255,.06); border-color:rgba(76,194,255,.3); }
+  .scroll { overflow-y:auto; scrollbar-width:thin; scrollbar-color:#2a2a30 transparent; }
+  .scroll::-webkit-scrollbar { width:9px; }
+  .scroll::-webkit-scrollbar-thumb { background:#25252b; }
+  input { font-family:var(--mono); }
+  :focus-visible { outline:2px solid var(--ac); outline-offset:2px; }
+  .sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+  @media (prefers-reduced-motion: reduce) { .gnode rect, #vp { transition:none !important; } }
+  @media (max-width: 900px) {
+    #inspector { position:fixed !important; left:0; right:0; bottom:0; top:auto !important; width:100% !important;
+                 max-height:76vh; border-left:none !important; border-top:1px solid var(--line); z-index:30; }
+    #brand-sub, #hdr-count { display:none; }
+    #search-hint { display:none; }
+    .hdr-tabs { gap:6px !important; }
+    .tab { padding:9px 11px; letter-spacing:.1em; }
+  }
+</style>
+</head>
+<body>
+
+<header style="position:relative;z-index:25;display:flex;align-items:center;gap:18px;padding:0 20px;height:58px;background:rgba(5,5,6,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)">
+  <a href="../index.html" class="k" style="color:#c6c3bd;flex:none">← YASP</a>
+  <span style="display:flex;flex-direction:column;gap:3px;flex:none">
+    <span style="font-size:14px;font-weight:600;letter-spacing:.1em">STEAM YASP</span>
+    <span id="brand-sub" class="k" style="letter-spacing:.16em">Primary API · v1.8.1</span>
+  </span>
+  <div class="hdr-tabs" style="display:flex;gap:8px;margin-left:12px">
+    <button class="tab" id="tab-map" aria-selected="true">API Map</button>
+    <button class="tab" id="tab-ref" aria-selected="false">Reference</button>
+    <button class="tab" id="tab-ex" aria-selected="false">Examples</button>
+  </div>
+  <button id="search-btn" style="margin-left:auto;display:flex;align-items:center;gap:10px;padding:0 14px;height:38px;background:#0b0b0e;border:1px solid #1f1f23;color:var(--faint);font:500 11px/1 var(--mono);letter-spacing:.12em">
+    <span>SEARCH THE API</span><span id="search-hint" style="padding:3px 6px;border:1px solid #26262c">⌘K</span>
+  </button>
+  <span id="hdr-count" class="k" style="flex:none">184 nodes</span>
+</header>
+
+<main id="stage" style="position:relative;height:calc(100vh - 58px);display:flex">
+
+  <!-- MAP -->
+  <div id="view-map" style="position:relative;flex:1;min-width:0;background-image:radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px);background-size:34px 34px">
+    <svg id="svg" role="application" aria-label="Steam YASP API map"><g id="vp"><g id="links" fill="none"></g><g id="nodes"></g></g></svg>
+    <div style="position:absolute;left:18px;top:18px;max-width:230px;display:flex;flex-direction:column;gap:7px;pointer-events:none;padding:11px 13px;background:rgba(5,5,6,.9);border:1px solid #16161a">
+      <span class="k" style="letter-spacing:.2em;color:#c6c3bd">Steam YASP API Map</span>
+      <span class="k" style="letter-spacing:.12em;line-height:1.7">Click a service to open its nodes<br>Drag to pan · scroll to zoom</span>
+    </div>
+    <div style="position:absolute;left:18px;bottom:18px;display:flex;gap:8px;flex-wrap:wrap">
+      <button class="ctl" id="z-in" title="Zoom in" aria-label="Zoom in">+</button>
+      <button class="ctl" id="z-out" title="Zoom out" aria-label="Zoom out">−</button>
+      <button class="ctl" id="z-fit" title="Fit view" aria-label="Fit view" style="width:auto;padding:0 12px;letter-spacing:.1em">FIT</button>
+      <button class="ctl" id="z-reset" title="Reset" aria-label="Reset the map" style="width:auto;padding:0 12px;letter-spacing:.1em">RESET</button>
+      <button class="ctl" id="z-all" title="Expand every branch" aria-label="Expand all branches" style="width:auto;padding:0 12px;letter-spacing:.1em">EXPAND ALL</button>
+    </div>
+    <div style="position:absolute;right:18px;bottom:18px;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end">
+      <span class="type t-service">SERVICE</span><span class="type t-pure">PURE</span><span class="type t-immediate">IMMEDIATE</span><span class="type t-async">ASYNC</span>
+    </div>
+  </div>
+
+  <!-- REFERENCE -->
+  <div id="view-ref" class="scroll" style="display:none;flex:1;min-width:0;padding:34px 0 80px"></div>
+
+  <!-- EXAMPLES -->
+  <div id="view-ex" class="scroll" style="display:none;flex:1;min-width:0;padding:34px 0 80px"></div>
+
+  <!-- INSPECTOR -->
+  <aside id="inspector" class="scroll" style="display:none;width:430px;flex:none;background:var(--panel);border-left:1px solid var(--line);padding:22px 24px 60px"></aside>
+</main>
+
+<!-- SEARCH -->
+<div id="search-ov" style="display:none;position:fixed;inset:0;z-index:60;background:rgba(3,3,4,.82);backdrop-filter:blur(6px);padding:11vh 20px 20px">
+  <div style="max-width:760px;margin:0 auto;background:#08080a;border:1px solid #23232a;display:flex;flex-direction:column;max-height:74vh">
+    <div style="display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid #17171a">
+      <span class="k" style="color:var(--ac)">/</span>
+      <input id="search-in" placeholder="Search 184 nodes — name, service, category, description" aria-label="Search the YASP API"
+             style="flex:1;background:transparent;border:none;outline:none;color:var(--ink);font-size:16px;letter-spacing:.02em">
+      <span class="k" id="search-n"></span>
+    </div>
+    <div id="search-res" class="scroll" style="overflow-y:auto"></div>
+  </div>
+</div>
+<span class="sr" id="live" aria-live="polite"></span>
+
+<script src="../yasp-api.js"></script>
+<script>
+(function () {
+var D = window.YASP_API, NS = 'http://www.w3.org/2000/svg';
+var $ = function (id) { return document.getElementById(id); };
+var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); };
+
+/* ── flat index (single source: yasp-api.js) ───────────────────── */
+var INDEX = [];
+D.services.forEach(function (s) {
+  s.cats.forEach(function (c) {
+    c.nodes.forEach(function (n) {
+      INDEX.push({ node: n, s: s, c: c, path: s.id + '/' + c.id + '/' + n.slug,
+                   hay: (n.name + ' ' + s.name + ' ' + c.name + ' ' + n.desc + ' ' + n.type).toLowerCase() });
+    });
+  });
+});
+var byPath = {}; INDEX.forEach(function (e) { byPath[e.path] = e; });
+$('hdr-count').textContent = D.primaryCount + ' nodes';
+$('search-in').placeholder = 'Search ' + D.primaryCount + ' nodes — name, service, category, description';
+
+/* ── state ─────────────────────────────────────────────────────── */
+var st = { mode: 'map', svc: {}, cat: {}, sel: null, ex: null, tx: 0, ty: 0, k: 1 };
+
+/* ══ GRAPH ═════════════════════════════════════════════════════ */
+var NW = 210, NH = 34, GAP = 9, COL = [0, 268, 536, 804];
+var layout = { nodes: [], links: [], h: 0 };
+
+function buildLayout() {
+  var nodes = [], links = [], y = 0;
+  function place(item, d, h) { item.x = COL[d]; item.y = y + h / 2; nodes.push(item); }
+  var rootChildren = [];
+  D.services.forEach(function (s) {
+    var sTop = y, kids = [];
+    if (st.svc[s.id]) {
+      s.cats.forEach(function (c) {
+        var cTop = y, cKids = [];
+        if (st.cat[s.id + '/' + c.id]) {
+          c.nodes.forEach(function (n) {
+            var it = { kind: 'node', id: s.id + '/' + c.id + '/' + n.slug, label: n.name, type: n.type, d: 3, y: y + NH / 2, x: COL[3] };
+            nodes.push(it); cKids.push(it); y += NH + GAP;
+          });
+          y -= (NH + GAP); y += NH + GAP;
+        } else { y += NH + GAP; }
+        var cy = cKids.length ? (cKids[0].y + cKids[cKids.length - 1].y) / 2 : cTop + NH / 2;
+        var cit = { kind: 'cat', id: s.id + '/' + c.id, label: c.name, count: c.nodes.length, d: 2, x: COL[2], y: cy, open: !!st.cat[s.id + '/' + c.id] };
+        nodes.push(cit); kids.push(cit);
+        cKids.forEach(function (k) { links.push([cit, k]); });
+        if (cKids.length) y += GAP * 1.2;
+      });
+    } else { y += NH + GAP; }
+    var sy = kids.length ? (kids[0].y + kids[kids.length - 1].y) / 2 : sTop + NH / 2;
+    var sit = { kind: 'svc', id: s.id, label: s.name, count: s.count, d: 1, x: COL[1], y: sy, open: !!st.svc[s.id] };
+    nodes.push(sit); rootChildren.push(sit);
+    kids.forEach(function (k) { links.push([sit, k]); });
+    y += GAP * 2.2;
+  });
+  var root = { kind: 'root', id: '', label: 'Get Steam YASP', d: 0, x: COL[0],
+               y: (rootChildren[0].y + rootChildren[rootChildren.length - 1].y) / 2 };
+  nodes.push(root); rootChildren.forEach(function (c) { links.push([root, c]); });
+  layout = { nodes: nodes, links: links, h: y };
+}
+
+function colorFor(it) {
+  if (it.kind === 'root') return ['rgba(76,194,255,.14)', '#4CC2FF'];
+  if (it.kind === 'svc') return it.open ? ['rgba(201,168,240,.12)', '#C9A8F0'] : ['#0b0d11', '#2c2f36'];
+  if (it.kind === 'cat') return it.open ? ['rgba(76,194,255,.08)', '#3a6a86'] : ['#0b0d11', '#24262c'];
+  var m = { pure: '#8FD9A8', immediate: '#F0C674', async: '#4CC2FF', service: '#C9A8F0' };
+  return [st.sel === it.id ? 'rgba(76,194,255,.2)' : '#0b0d11', st.sel === it.id ? '#4CC2FF' : (m[it.type] || '#24262c') + '55'];
+}
+
+function drawGraph() {
+  buildLayout();
+  var L = $('links'), N = $('nodes');
+  L.textContent = ''; N.textContent = '';
+  var onPath = {};
+  if (st.sel) { var p = st.sel.split('/'); onPath[''] = 1; onPath[p[0]] = 1; onPath[p[0] + '/' + p[1]] = 1; onPath[st.sel] = 1; }
+  layout.links.forEach(function (ln) {
+    var a = ln[0], b = ln[1], x1 = a.x + NW, y1 = a.y, x2 = b.x, y2 = b.y, mx = (x1 + x2) / 2;
+    var hot = onPath[a.id] && onPath[b.id];
+    var path = document.createElementNS(NS, 'path');
+    path.setAttribute('d', 'M' + x1 + ' ' + y1 + ' C' + mx + ' ' + y1 + ' ' + mx + ' ' + y2 + ' ' + x2 + ' ' + y2);
+    path.setAttribute('stroke', hot ? '#4CC2FF' : '#1f2228');
+    path.setAttribute('stroke-width', hot ? 1.6 : 1);
+    L.appendChild(path);
+  });
+  layout.nodes.forEach(function (it) {
+    var g = document.createElementNS(NS, 'g'); g.setAttribute('class', 'gnode');
+    var c = colorFor(it);
+    var r = document.createElementNS(NS, 'rect');
+    r.setAttribute('x', it.x); r.setAttribute('y', it.y - NH / 2); r.setAttribute('width', NW); r.setAttribute('height', NH);
+    r.setAttribute('fill', c[0]); r.setAttribute('stroke', c[1]);
+    g.appendChild(r);
+    var t = document.createElementNS(NS, 'text');
+    t.setAttribute('x', it.x + 13); t.setAttribute('y', it.y + 5); t.setAttribute('fill', it.kind === 'node' && st.sel !== it.id ? '#dcdad5' : '#f4f2ee');
+    t.setAttribute('style', 'font:' + (it.kind === 'node' ? '500 12px var(--mono)' : '600 13px var(--disp)') + ';letter-spacing:.04em');
+    t.textContent = it.label.length > 26 ? it.label.slice(0, 25) + '…' : it.label;
+    g.appendChild(t);
+    if (it.count) {
+      var b = document.createElementNS(NS, 'text');
+      b.setAttribute('x', it.x + NW - 12); b.setAttribute('y', it.y + 5); b.setAttribute('text-anchor', 'end');
+      b.setAttribute('fill', '#6d7078'); b.setAttribute('style', 'font:500 10px var(--mono);letter-spacing:.1em');
+      b.textContent = (it.open ? '−' : '+') + ' ' + it.count;
+      g.appendChild(b);
+    }
+    if (it.kind === 'node') {
+      var m = { pure: '#8FD9A8', immediate: '#F0C674', async: '#4CC2FF', service: '#C9A8F0' };
+      var dot = document.createElementNS(NS, 'rect');
+      dot.setAttribute('x', it.x); dot.setAttribute('y', it.y - NH / 2); dot.setAttribute('width', 3); dot.setAttribute('height', NH);
+      dot.setAttribute('fill', m[it.type] || '#24262c'); g.appendChild(dot);
+    }
+    var title = document.createElementNS(NS, 'title'); title.textContent = it.label; g.appendChild(title);
+    g.__item = it;
+    N.appendChild(g);
+  });
+  applyTransform();
+}
+
+function expandBranch(sid) {
+  var s = D.services.filter(function (x) { return x.id === sid; })[0];
+  if (!s) return;
+  st.svc[sid] = 1;
+  s.cats.forEach(function (c) { st.cat[sid + '/' + c.id] = 1; });
+}
+function collapseBranch(sid) {
+  delete st.svc[sid];
+  Object.keys(st.cat).forEach(function (k) { if (k.split('/')[0] === sid) delete st.cat[k]; });
+}
+function onGraphClick(it) {
+  if (it.kind === 'root') { setHash(''); return; }
+  if (it.kind === 'svc') {
+    if (st.svc[it.id]) { collapseBranch(it.id); setHash(''); }
+    else { expandBranch(it.id); setHash(it.id); }
+    return;
+  }
+  if (it.kind === 'cat') { st.cat[it.id] = !st.cat[it.id]; setHash(st.cat[it.id] ? it.id : it.id.split('/')[0]); return; }
+  setHash(it.id);
+}
+
+function applyTransform() { $('vp').setAttribute('transform', 'translate(' + st.tx + ',' + st.ty + ') scale(' + st.k + ')'); }
+
+function bbox() {
+  var minX = 1e9, minY = 1e9, maxX = -1e9, maxY = -1e9;
+  layout.nodes.forEach(function (n) {
+    minX = Math.min(minX, n.x); maxX = Math.max(maxX, n.x + NW);
+    minY = Math.min(minY, n.y - NH / 2); maxY = Math.max(maxY, n.y + NH / 2);
+  });
+  return { x: minX, y: minY, w: maxX - minX, h: maxY - minY };
+}
+function fit(pad) {
+  pad = pad || 60;
+  var r = $('view-map').getBoundingClientRect(), b = bbox();
+  st.k = Math.min(1.1, Math.min((r.width - pad * 2) / b.w, (r.height - pad * 2) / b.h));
+  st.tx = (r.width - b.w * st.k) / 2 - b.x * st.k;
+  st.ty = (r.height - b.h * st.k) / 2 - b.y * st.k;
+  applyTransform();
+}
+function fitBranch(prefix, pad) {
+  pad = pad || 56;
+  var sel = layout.nodes.filter(function (n) {
+    return n.id === prefix || n.id.indexOf(prefix + '/') === 0;
+  });
+  if (!sel.length) return fit();
+  var minX = 1e9, minY = 1e9, maxX = -1e9, maxY = -1e9;
+  sel.forEach(function (n) {
+    minX = Math.min(minX, n.x); maxX = Math.max(maxX, n.x + NW);
+    minY = Math.min(minY, n.y - NH / 2); maxY = Math.max(maxY, n.y + NH / 2);
+  });
+  var r = $('view-map').getBoundingClientRect(), w = maxX - minX, hgt = maxY - minY;
+  // never zoom below a readable scale — pan instead of shrinking a 45-node branch
+  st.k = Math.max(.62, Math.min(1, Math.min((r.width - pad * 2) / w, (r.height - pad * 2) / hgt)));
+  st.tx = w * st.k + pad * 2 < r.width ? (r.width - w * st.k) / 2 - minX * st.k : pad - minX * st.k;
+  st.ty = hgt * st.k + pad * 2 < r.height ? (r.height - hgt * st.k) / 2 - minY * st.k : pad - minY * st.k;
+  applyTransform();
+}
+function focusNode(id) {
+  var it = layout.nodes.filter(function (n) { return n.id === id; })[0];
+  if (!it) return;
+  var r = $('view-map').getBoundingClientRect();
+  st.k = Math.max(st.k, .8);
+  st.tx = r.width * (r.width > 900 ? .3 : .5) - (it.x + NW / 2) * st.k;
+  st.ty = r.height / 2 - it.y * st.k;
+  applyTransform();
+}
+function zoomAt(f, cx, cy) {
+  var r = $('svg').getBoundingClientRect(), k2 = Math.max(.18, Math.min(2.4, st.k * f));
+  var px = (cx - r.left - st.tx) / st.k, py = (cy - r.top - st.ty) / st.k;
+  st.tx -= px * (k2 - st.k); st.ty -= py * (k2 - st.k); st.k = k2; applyTransform();
+}
+
+/* pan / zoom input */
+var svg = $('svg'), drag = null, pinch = null;
+svg.addEventListener('wheel', function (e) { e.preventDefault(); zoomAt(e.deltaY < 0 ? 1.12 : 1 / 1.12, e.clientX, e.clientY); }, { passive: false });
+svg.addEventListener('pointerdown', function (e) {
+  if (e.pointerType === 'touch' && pinch) return;
+  var g = e.target.closest ? e.target.closest('.gnode') : null;
+  drag = { x: e.clientX, y: e.clientY, tx: st.tx, ty: st.ty, id: e.pointerId, hit: g && g.__item, moved: 0 };
+  svg.classList.add('drag'); svg.setPointerCapture(e.pointerId);
+});
+svg.addEventListener('pointermove', function (e) {
+  if (!drag || drag.id !== e.pointerId) return;
+  drag.moved = Math.max(drag.moved, Math.hypot(e.clientX - drag.x, e.clientY - drag.y));
+  st.tx = drag.tx + (e.clientX - drag.x); st.ty = drag.ty + (e.clientY - drag.y); applyTransform();
+});
+svg.addEventListener('pointerup', function (e) {
+  var d0 = drag; drag = null; svg.classList.remove('drag');
+  if (!d0 || d0.id !== e.pointerId || d0.moved > 5) return;
+  if (d0.hit) onGraphClick(d0.hit);
+  else if (st.sel) setHash(st.sel.split('/').slice(0, 2).join('/'));
+});
+svg.addEventListener('pointercancel', function () { drag = null; svg.classList.remove('drag'); });
+var touches = {};
+svg.addEventListener('touchstart', function (e) {
+  if (e.touches.length === 2) {
+    drag = null;
+    pinch = { d: dist(e.touches), k: st.k, cx: (e.touches[0].clientX + e.touches[1].clientX) / 2, cy: (e.touches[0].clientY + e.touches[1].clientY) / 2 };
+  }
+}, { passive: true });
+svg.addEventListener('touchmove', function (e) {
+  if (pinch && e.touches.length === 2) {
+    e.preventDefault();
+    var f = dist(e.touches) / pinch.d;
+    var target = Math.max(.18, Math.min(2.4, pinch.k * f));
+    zoomAt(target / st.k, pinch.cx, pinch.cy);
+  }
+}, { passive: false });
+svg.addEventListener('touchend', function (e) { if (e.touches.length < 2) pinch = null; }, { passive: true });
+function dist(t) { return Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY); }
+
+$('z-in').onclick = function () { var r = svg.getBoundingClientRect(); zoomAt(1.2, r.left + r.width / 2, r.top + r.height / 2); };
+$('z-out').onclick = function () { var r = svg.getBoundingClientRect(); zoomAt(1 / 1.2, r.left + r.width / 2, r.top + r.height / 2); };
+$('z-fit').onclick = function () { fit(); };
+$('z-reset').onclick = function () { st.svc = {}; st.cat = {}; setHash(''); };
+$('z-all').onclick = function () {
+  var all = Object.keys(st.svc).length === D.services.length;
+  st.svc = {}; st.cat = {};
+  if (!all) D.services.forEach(function (s) { st.svc[s.id] = 1; s.cats.forEach(function (c) { st.cat[s.id + '/' + c.id] = 1; }); });
+  $('z-all').textContent = all ? 'EXPAND ALL' : 'COLLAPSE ALL';
+  drawGraph(); fit(40);
+};
+
+/* ══ INSPECTOR ═════════════════════════════════════════════════ */
+function pins(list, label) {
+  if (!list || !list.length) return '';
+  return '<div style="display:flex;flex-direction:column;gap:9px"><span class="k">' + label + '</span>' +
+    list.map(function (p) {
+      var parts = p.split(':'), nm = parts[0].trim(), ty = parts.slice(1).join(':').trim();
+      return '<div style="display:flex;gap:12px;justify-content:space-between;align-items:baseline;padding:9px 12px;background:#0b0d11;border:1px solid #17181c">' +
+        '<span style="font:500 12px var(--mono);color:#dcdad5">' + esc(nm) + '</span>' +
+        (ty ? '<span style="font:500 11px var(--mono);color:var(--faint);text-align:right">' + esc(ty) + '</span>' : '') + '</div>';
+    }).join('') + '</div>';
+}
+function related(e) {
+  var sibs = e.c.nodes.filter(function (n) { return n.slug !== e.node.slug; }).slice(0, 6);
+  if (!sibs.length) return '';
+  return '<div style="display:flex;flex-direction:column;gap:9px"><span class="k">Same category</span><div style="display:flex;flex-wrap:wrap;gap:7px">' +
+    sibs.map(function (n) {
+      return '<a href="#' + e.s.id + '/' + e.c.id + '/' + n.slug + '" style="padding:6px 10px;font:500 11px var(--mono);color:#a9a6a0;border:1px solid #1f2126">' + esc(n.name) + '</a>';
+    }).join('') + '</div></div>';
+}
+function exampleLinks(name) {
+  var hits = D.examples.filter(function (x) { return x.chain.indexOf(name) >= 0; });
+  if (!hits.length) return '';
+  return '<div style="display:flex;flex-direction:column;gap:9px"><span class="k">Used in examples</span>' +
+    hits.map(function (x) {
+      return '<a href="#examples/' + x.id + '" style="padding:10px 12px;font-size:14px;color:#b3b0aa;border:1px solid #17181c;background:#0b0d11">' + esc(x.title) + ' →</a>';
+    }).join('') + '</div>';
+}
+function showInspector(path) {
+  var e = byPath[path]; if (!e) { closeInspector(); return; }
+  var n = e.node, ins = $('inspector');
+  ins.style.display = 'block';
+  ins.innerHTML =
+    '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:18px">' +
+      '<span class="k" style="line-height:1.8">Steam YASP <span style="color:#3a3d44">/</span> <a href="#' + e.s.id + '">' + esc(e.s.name) + '</a> <span style="color:#3a3d44">/</span> <a href="#' + e.s.id + '/' + e.c.id + '">' + esc(e.c.name) + '</a></span>' +
+      '<button id="ins-x" aria-label="Close documentation panel" style="flex:none;width:30px;height:30px;background:transparent;border:1px solid #22222a;color:var(--dim)">✕</button></div>' +
+    '<h2 style="font-size:26px;font-weight:700;letter-spacing:.01em;line-height:1.15">' + esc(n.name) + '</h2>' +
+    '<div style="display:flex;gap:8px;margin:14px 0 20px"><span class="type t-' + n.type + '">' + n.type.toUpperCase() + '</span>' +
+      '<span class="type" style="color:#8f8c86;border-color:#26262c">' + esc(e.s.name.toUpperCase()) + ' SERVICE</span></div>' +
+    '<p style="margin:0 0 22px;font-size:16px;line-height:1.62;color:#b3b0aa">' + esc(n.desc) + '</p>' +
+    '<div style="display:flex;flex-direction:column;gap:22px">' +
+      '<div style="display:flex;flex-direction:column;gap:9px"><span class="k">Blueprint path</span>' +
+        '<div style="display:flex;flex-direction:column;gap:7px;padding:14px;background:#0b0d11;border:1px solid #17181c;font:500 12px var(--mono);color:#dcdad5">' +
+          '<span>Get Steam YASP</span><span style="color:var(--ac)">↓ ' + esc(e.s.name) + '</span><span style="color:#f4f2ee">↓ ' + esc(n.name) + '</span></div></div>' +
+      pins(n.pins, 'Main pins' + (n.pins.length ? ' (' + n.pins.length + ')' : '')) +
+      (n.pins.length ? '' : '<span class="k" style="line-height:1.8">This node has no pins beyond the service target.</span>') +
+      related(e) + exampleLinks(n.name) +
+    '</div>';
+  $('ins-x').onclick = function () { setHash(e.s.id + '/' + e.c.id); };
+  ins.scrollTop = 0;
+  $('live').textContent = n.name + ' documentation opened';
+}
+function closeInspector() { $('inspector').style.display = 'none'; $('inspector').innerHTML = ''; }
+
+/* ══ REFERENCE ════════════════════════════════════════════════ */
+function buildRef() {
+  var v = $('view-ref');
+  v.innerHTML = '<div style="max-width:1000px;margin:0 auto;padding:0 24px;display:flex;flex-direction:column;gap:44px">' +
+    '<div style="display:flex;flex-direction:column;gap:14px">' +
+      '<span class="k">Reference</span>' +
+      '<h1 style="font-size:34px;font-weight:700;letter-spacing:.02em">Primary API reference</h1>' +
+      '<p style="margin:0;font-size:17px;line-height:1.62;color:#b3b0aa;max-width:70ch">' + D.primaryCount + ' Blueprint-visible nodes, taken from the compiling v' + D.version + ' headers. ' +
+      'The workflow is always the same: get Steam YASP, choose a typed service, then drag from that service pin. Click any row for the full documentation.</p></div>' +
+    startHereBlock() +
+    D.services.map(function (s) {
+      return '<section id="ref-' + s.id + '" style="display:flex;flex-direction:column;gap:16px">' +
+        '<div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-bottom:1px solid #22222a;padding-bottom:12px">' +
+          '<h2 style="font-size:24px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">' + s.name + '</h2>' +
+          '<span class="k" style="color:var(--ac)">' + s.count + ' nodes</span></div>' +
+        '<p style="margin:0;font-size:15px;line-height:1.6;color:var(--dim)">' + esc(s.blurb) + '</p>' +
+        s.cats.map(function (c) {
+          return '<div style="display:flex;flex-direction:column;gap:2px;margin-top:10px">' +
+            '<span class="k" style="color:#c6c3bd;letter-spacing:.2em;padding:8px 16px;background:#0b0b0e;border:1px solid #17171a">' + esc(c.name) + ' · ' + c.nodes.length + '</span>' +
+            c.nodes.map(function (n) {
+              return '<a class="row" href="#' + s.id + '/' + c.id + '/' + n.slug + '">' +
+                '<span style="display:flex;flex-direction:column;gap:4px;min-width:0">' +
+                  '<span style="font:500 13px var(--mono);color:#f4f2ee">' + esc(n.name) + '</span>' +
+                  '<span style="font-size:13px;line-height:1.5;color:#8f8c86">' + esc(n.desc) + '</span></span>' +
+                '<span style="text-align:right"><span class="type t-' + n.type + '">' + n.type.toUpperCase() + '</span></span></a>';
+            }).join('') + '</div>';
+        }).join('') + '</section>';
+    }).join('') +
+    '<section style="display:flex;flex-direction:column;gap:16px">' +
+      '<h2 style="font-size:24px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">Key structs</h2>' +
+      D.structs.map(function (x) {
+        return '<div style="padding:18px;background:#0b0b0e;border:1px solid #17171a;display:flex;flex-direction:column;gap:8px">' +
+          '<span style="font:600 14px var(--mono);color:var(--ac)">' + esc(x.name) + '</span>' +
+          '<span style="font-size:15px;line-height:1.6;color:#b3b0aa">' + esc(x.desc.replace(/`/g, '')) + '</span></div>';
+      }).join('') +
+      '<h2 style="font-size:24px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-top:20px">Behaviour notes</h2>' +
+      '<ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:12px">' +
+      D.notes.map(function (n) { return '<li style="font-size:15px;line-height:1.62;color:#b3b0aa">' + esc(n.replace(/\*\*/g, '').replace(/`/g, '')) + '</li>'; }).join('') +
+      '</ul></section></div>';
+}
+function startHereBlock() {
+  return '<section style="display:flex;flex-direction:column;gap:16px">' +
+    '<div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #22222a;padding-bottom:12px">' +
+      '<h2 style="font-size:24px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">Start here</h2>' +
+      '<span class="k" style="color:var(--ac)">' + (D.startHere.length + D.servicePins.length) + ' nodes</span></div>' +
+    '<p style="margin:0;font-size:15px;line-height:1.6;color:var(--dim)">Setup and readiness nodes, plus the eight typed service pins that Get Steam YASP returns.</p>' +
+    [['Setup & status', D.startHere], ['Typed service pins', D.servicePins]].map(function (grp) {
+      return '<div style="display:flex;flex-direction:column;gap:2px;margin-top:10px">' +
+        '<span class="k" style="color:#c6c3bd;letter-spacing:.2em;padding:8px 16px;background:#0b0b0e;border:1px solid #17171a">' + grp[0] + ' · ' + grp[1].length + '</span>' +
+        grp[1].map(function (n) {
+          return '<div class="row" style="cursor:default">' +
+            '<span style="display:flex;flex-direction:column;gap:4px;min-width:0">' +
+              '<span style="font:500 13px var(--mono);color:#f4f2ee">' + esc(n.name) + '</span>' +
+              '<span style="font-size:13px;line-height:1.5;color:#8f8c86">' + esc(n.desc) + '</span></span>' +
+            '<span style="text-align:right"><span class="type t-' + n.type + '">' + n.type.toUpperCase() + '</span></span></div>';
+        }).join('') + '</div>';
+    }).join('') + '</section>';
+}
+
+/* ══ EXAMPLES ═════════════════════════════════════════════════ */
+function chainHtml(chain) {
+  if (!chain.length) return '';
+  return '<div style="display:flex;flex-wrap:wrap;align-items:center;gap:9px">' +
+    chain.map(function (c, i) {
+      var e = INDEX.filter(function (x) { return x.node.name === c; })[0];
+      var inner = '<span style="display:inline-flex;flex-direction:column;gap:3px;padding:9px 13px;background:#0b0d11;border:1px solid ' + (e ? '#24262c' : '#1a1b1f') + '">' +
+        (e ? '<span style="font:500 9px var(--mono);letter-spacing:.16em;color:var(--faint)">' + e.s.name.toUpperCase() + ' · ' + e.node.type.toUpperCase() + '</span>' : '') +
+        '<span style="font:600 13px var(--disp);letter-spacing:.03em;color:' + (e ? '#f4f2ee' : '#a9a6a0') + '">' + esc(c) + '</span></span>';
+      return (e ? '<a href="#' + e.path + '">' + inner + '</a>' : inner) +
+        (i < chain.length - 1 ? '<span style="color:var(--ac)">→</span>' : '');
+    }).join('') + '</div>';
+}
+function buildEx() {
+  $('view-ex').innerHTML = '<div style="max-width:1000px;margin:0 auto;padding:0 24px;display:flex;flex-direction:column;gap:40px">' +
+    '<div style="display:flex;flex-direction:column;gap:14px">' +
+      '<span class="k">Examples</span>' +
+      '<h1 style="font-size:34px;font-weight:700;letter-spacing:.02em">Complete workflows</h1>' +
+      '<p style="margin:0;font-size:17px;line-height:1.62;color:#b3b0aa;max-width:70ch">Every chain below uses real node names from the Primary API. Click any node to open its documentation.</p></div>' +
+    '<div style="padding:24px;background:#0b0d11;border:1px solid rgba(76,194,255,.35);display:flex;flex-direction:column;gap:14px">' +
+      '<span class="k" style="color:var(--ac)">Quick start</span>' +
+      '<span style="font-size:17px;line-height:1.6;color:#b3b0aa">Install and enable the plugin, set your Steam App ID in Steamworks and in the project, then run the Blueprint below. ' +
+      'If the status comes back not ready, Run Steam YASP Setup Check tells you what is missing.</span>' +
+      chainHtml(['Get Steam YASP', 'Setup Steam YASP', 'Is Steam YASP Ready']) + '</div>' +
+    D.examples.map(function (x, i) {
+      return '<section id="ex-' + x.id + '" style="display:flex;flex-direction:column;gap:14px;padding-bottom:34px;border-bottom:1px solid #17171a">' +
+        '<div style="display:flex;gap:18px;align-items:baseline"><span style="font-family:var(--disp);font-size:24px;font-weight:700;color:var(--ac);line-height:1">' + String(i + 1).padStart(2, '0') + '</span>' +
+        '<h2 style="font-size:22px;font-weight:700;letter-spacing:.03em">' + esc(x.title) + '</h2></div>' +
+        chainHtml(x.chain) +
+        '<p style="margin:0;font-size:15px;line-height:1.65;color:#8f8c86">' + esc(x.body.replace(/`/g, '')) + '</p></section>';
+    }).join('') + '</div>';
+}
+
+/* ══ SEARCH ═══════════════════════════════════════════════════ */
+var searchOpen = false, results = [], cursor = 0;
+function openSearch() { searchOpen = true; $('search-ov').style.display = 'block'; $('search-in').value = ''; runSearch(''); $('search-in').focus(); }
+function closeSearch() { searchOpen = false; $('search-ov').style.display = 'none'; }
+function runSearch(q) {
+  q = q.trim().toLowerCase();
+  if (!q) results = INDEX.slice(0, 24);
+  else {
+    var toks = q.split(/\s+/);
+    results = INDEX.filter(function (e) { return toks.every(function (t) { return e.hay.indexOf(t) >= 0; }); })
+      .sort(function (a, b) {
+        var an = a.node.name.toLowerCase(), bn = b.node.name.toLowerCase();
+        return (an.indexOf(q) < 0 ? 1 : 0) - (bn.indexOf(q) < 0 ? 1 : 0) || an.length - bn.length;
+      }).slice(0, 60);
+  }
+  cursor = 0;
+  $('search-n').textContent = results.length + (q ? ' MATCHES' : ' OF ' + INDEX.length);
+  renderResults();
+}
+function renderResults() {
+  $('search-res').innerHTML = results.length ? results.map(function (e, i) {
+    return '<a class="row" href="#' + e.path + '" data-i="' + i + '" style="grid-template-columns:minmax(0,1fr) 120px' +
+      (i === cursor ? ';background:rgba(76,194,255,.09);border-color:rgba(76,194,255,.35)' : '') + '">' +
+      '<span style="display:flex;flex-direction:column;gap:4px;min-width:0">' +
+        '<span style="font:500 13px var(--mono);color:#f4f2ee">' + esc(e.node.name) + '</span>' +
+        '<span class="k" style="letter-spacing:.14em">' + esc(e.s.name) + ' / ' + esc(e.c.name) + '</span></span>' +
+      '<span style="text-align:right"><span class="type t-' + e.node.type + '">' + e.node.type.toUpperCase() + '</span></span></a>';
+  }).join('') : '<div style="padding:28px;text-align:center" class="k">No node matches. Try “lobby”, “achievement”, “cloud”, “workshop”.</div>';
+  Array.prototype.forEach.call($('search-res').querySelectorAll('a'), function (a) {
+    a.onclick = function () { closeSearch(); };
+  });
+}
+$('search-btn').onclick = openSearch;
+$('search-in').oninput = function (e) { runSearch(e.target.value); };
+$('search-ov').onclick = function (e) { if (e.target === $('search-ov')) closeSearch(); };
+document.addEventListener('keydown', function (e) {
+  var typing = /^(INPUT|TEXTAREA)$/.test((e.target.tagName || ''));
+  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); searchOpen ? closeSearch() : openSearch(); return; }
+  if (e.key === '/' && !typing && !searchOpen) { e.preventDefault(); openSearch(); return; }
+  if (!searchOpen) { if (e.key === 'Escape') closeInspector(); return; }
+  if (e.key === 'Escape') { closeSearch(); return; }
+  if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+    e.preventDefault();
+    cursor = Math.max(0, Math.min(results.length - 1, cursor + (e.key === 'ArrowDown' ? 1 : -1)));
+    renderResults();
+    var el = $('search-res').querySelector('[data-i="' + cursor + '"]');
+    if (el) el.scrollIntoViewIfNeeded ? el.scrollIntoViewIfNeeded() : null;
+  }
+  if (e.key === 'Enter' && results[cursor]) { closeSearch(); setHash(results[cursor].path); }
+});
+
+/* ══ ROUTING ══════════════════════════════════════════════════ */
+function setHash(h) { if (location.hash.slice(1) === h) route(); else location.hash = h; }
+function setMode(m) {
+  st.mode = m;
+  $('view-map').style.display = m === 'map' ? 'block' : 'none';
+  $('view-ref').style.display = m === 'reference' ? 'block' : 'none';
+  $('view-ex').style.display = m === 'examples' ? 'block' : 'none';
+  $('tab-map').setAttribute('aria-selected', m === 'map');
+  $('tab-ref').setAttribute('aria-selected', m === 'reference');
+  $('tab-ex').setAttribute('aria-selected', m === 'examples');
+  if (m !== 'map') closeInspector();
+}
+function route() {
+  var h = decodeURIComponent(location.hash.slice(1));
+  var parts = h.split('/').filter(Boolean);
+  if (parts[0] === 'reference') {
+    setMode('reference');
+    var t = parts[1] && document.getElementById('ref-' + parts[1]);
+    $('view-ref').scrollTop = t ? t.offsetTop - 20 : 0;
+    return;
+  }
+  if (parts[0] === 'examples') {
+    setMode('examples');
+    var e2 = parts[1] && document.getElementById('ex-' + parts[1]);
+    $('view-ex').scrollTop = e2 ? e2.offsetTop - 20 : 0;
+    return;
+  }
+  setMode('map');
+  var svc = D.services.filter(function (s) { return s.id === parts[0]; })[0];
+  st.sel = null;
+  if (!svc) { st.svc = {}; st.cat = {}; closeInspector(); drawGraph(); fit(); return; }
+  var cat = parts[1] && svc.cats.filter(function (c) { return c.id === parts[1]; })[0];
+  if (cat) st.svc[svc.id] = 1; else expandBranch(svc.id);
+  if (cat) st.cat[svc.id + '/' + cat.id] = 1;
+  if (cat && parts[2]) {
+    var path = svc.id + '/' + cat.id + '/' + parts[2];
+    if (byPath[path]) { st.sel = path; drawGraph(); showInspector(path); focusNode(path); return; }
+  }
+  closeInspector();
+  drawGraph();
+  if (cat) fitBranch(svc.id + '/' + cat.id); else fitBranch(svc.id);
+}
+$('tab-map').onclick = function () { setHash(''); };
+$('tab-ref').onclick = function () { setHash('reference'); };
+$('tab-ex').onclick = function () { setHash('examples'); };
+window.addEventListener('hashchange', route);
+window.addEventListener('resize', function () { if (st.mode === 'map' && !st.sel) fit(); });
+
+buildRef(); buildEx(); drawGraph();
+if (!location.hash && window.innerWidth < 760) location.hash = 'reference';
+route();
+if (st.mode === 'map' && !st.sel) fit();
+})();
+</script>
+</body>
+</html>

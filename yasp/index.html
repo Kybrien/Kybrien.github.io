@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yet Another Steam Plugin — Complete Steamworks Integration for Unreal Engine</title>
+<meta name="description" content="YASP brings Steam multiplayer, lobbies, achievements, stats, leaderboards, Workshop, Cloud, Inventory, Voice, Steam Input, DLC and more to Unreal Engine through Blueprint and C++.">
+<meta name="author" content="Adrien Patte">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="keywords" content="Steamworks Unreal Engine plugin, Unreal Engine Steam plugin, Steam API Unreal Engine, Steam multiplayer UE5, Steam Blueprint plugin, Steamworks Blueprint, Steam Workshop Unreal Engine, Steam achievements Unreal Engine, Steam Inventory Unreal Engine, YASP">
+<meta name="theme-color" content="#050506">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://kybrien.github.io/yasp/">
+<link rel="icon" href="../uploads/OLR_LogoUnreal.ico" sizes="any">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Adrien Patte, Gameplay Programmer">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://kybrien.github.io/yasp/">
+<meta property="og:title" content="Yet Another Steam Plugin">
+<meta property="og:description" content="Yeah, another Steam plugin. This one's free. :) Complete Steamworks integration for Unreal Engine. Blueprint and C++.">
+<meta property="og:image" content="https://kybrien.github.io/uploads/YASP_Cover.png">
+<meta property="og:image:width" content="1920">
+<meta property="og:image:height" content="1080">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Yet Another Steam Plugin">
+<meta name="twitter:description" content="Yeah, another Steam plugin. This one's free. :) Complete Steamworks integration for Unreal Engine. Blueprint and C++.">
+<meta name="twitter:image" content="https://kybrien.github.io/uploads/YASP_Cover.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Yet Another Steam Plugin","alternateName":"YASP","url":"https://kybrien.github.io/yasp/","applicationCategory":"DeveloperApplication","operatingSystem":"Windows","softwareVersion":"1.8.1","description":"Complete Steamworks integration plugin for Unreal Engine 5.6-5.8: multiplayer, lobbies, matchmaking, dedicated servers, voice, friends, presence, overlay, achievements, stats, leaderboards, Steam Cloud, Workshop, mod loading, Steam Inventory, Steam Input, DLC, screenshots and Timeline, exposed to Blueprint and C++.","author":{"@type":"Person","@id":"https://kybrien.github.io/#adrien","name":"Adrien Patte","url":"https://kybrien.github.io/"},"inLanguage":"en"}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root { --disp:'Space Grotesk',system-ui,sans-serif; --body:'Space Grotesk',system-ui,sans-serif; --mono:'IBM Plex Mono',monospace;
+          --ac:#4CC2FF; --ac2:#1E86C8; --ink:#f4f2ee; --dim:#a9a6a0; --faint:#6d7078; --line:#1b1b1e; }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin:0; background:#050506; color:var(--ink); font-family:var(--body); overflow-x:hidden; }
+  a { color:inherit; text-decoration:none; }
+  a:hover { color:var(--ac); }
+  h1,h2,h3 { font-family:var(--disp); margin:0; text-wrap:balance; }
+  p { text-wrap:pretty; }
+  .k { font:500 11px/1 var(--mono); letter-spacing:.24em; color:var(--faint); text-transform:uppercase; }
+  .wrap { max-width:1240px; margin:0 auto; padding:0 48px; }
+  section { border-top:1px solid var(--line); }
+  .sec { padding:86px 0; }
+  .h2 { font-size:34px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
+  .lead { font-size:19px; line-height:1.65; color:#b3b0aa; max-width:68ch; margin:0; }
+  .btn { display:inline-flex; align-items:center; gap:10px; padding:15px 26px; font:600 12px/1 var(--disp); letter-spacing:.14em;
+         border:1px solid #2a2a2f; color:var(--ink); transition:border-color .22s, background .22s, color .22s; min-height:48px; }
+  .btn:hover { border-color:var(--ac); background:rgba(76,194,255,.1); color:var(--ink); }
+  .btn.pri { border-color:var(--ac); background:rgba(76,194,255,.12); }
+  .btn.pri:hover { background:var(--ac); color:#04121c; }
+  .btn[aria-disabled="true"] { opacity:.5; pointer-events:none; }
+  .grid-bg { background-image:linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px); background-size:46px 46px; }
+  .card { background:#08080a; border:1px solid #17171a; transition:border-color .22s, background .22s; }
+  .card:hover { border-color:rgba(76,194,255,.55); background:rgba(76,194,255,.05); }
+  .pill { padding:6px 11px; font:500 10px/1 var(--mono); letter-spacing:.14em; color:#c6c3bd; border:1px solid #26262a; }
+  .node { display:inline-flex; flex-direction:column; gap:4px; padding:11px 15px; background:#0b0d11; border:1px solid #24262c; min-width:0; }
+  .node .t { font:500 9px/1 var(--mono); letter-spacing:.18em; color:var(--faint); }
+  .node .n { font-family:var(--disp); font-size:14px; font-weight:600; letter-spacing:.03em; }
+  .node.root { border-color:rgba(76,194,255,.6); background:rgba(76,194,255,.08); }
+  .arrow { color:var(--ac); font-size:15px; flex:none; }
+  .dash { stroke-dasharray:3 5; animation:flow 2.4s linear infinite; }
+  @keyframes flow { to { stroke-dashoffset:-16; } }
+  @keyframes blip { 0%,100%{opacity:.25} 50%{opacity:1} }
+  @media (prefers-reduced-motion: reduce) { .dash { animation:none; } * { scroll-behavior:auto; } }
+  @media (max-width: 1000px) {
+    .wrap { padding:0 20px; }
+    .sec { padding:56px 0; }
+    .h2 { font-size:25px; }
+    .cols2, .cols3, .cols4 { grid-template-columns:1fr !important; }
+    .hero-grid { grid-template-columns:1fr !important; gap:44px !important; }
+    h1 { font-size:40px !important; }
+    .stat-n { font-size:52px !important; }
+    .hdr-links { display:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header style="position:sticky;top:0;z-index:20;background:rgba(5,5,6,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)">
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;gap:20px;height:60px">
+    <a href="../index.html" class="k" style="color:#c6c3bd">← Portfolio</a>
+    <span class="k" style="letter-spacing:.3em;color:#c6c3bd">YASP <span style="color:var(--ac)">v1.8.1</span></span>
+    <nav class="hdr-links" style="display:flex;gap:26px" aria-label="YASP">
+      <a href="#why" class="k">Why</a>
+      <a href="#api" class="k">API</a>
+      <a href="#coverage" class="k">Coverage</a>
+      <a href="docs/index.html" class="k" style="color:var(--ac)">Docs →</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="grid-bg" style="position:relative;overflow:hidden">
+  <div class="wrap hero-grid" style="display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:64px;align-items:center;padding-top:96px;padding-bottom:96px">
+    <div style="display:flex;flex-direction:column;gap:26px;min-width:0">
+      <span class="k" style="color:var(--ac)">Steamworks · Unreal Engine 5.6 → 5.8 · Blueprint + C++</span>
+      <h1 style="font-size:66px;font-weight:700;line-height:.98;letter-spacing:-.01em">Yet Another<br>Steam Plugin</h1>
+      <p style="margin:0;font-size:24px;line-height:1.45;color:var(--ink)">Yeah. Another one.<br><span style="color:var(--ac)">Except this one is free. :)</span></p>
+      <p class="lead">Complete Steamworks integration for Unreal Engine: multiplayer, lobbies, matchmaking, dedicated servers, voice, friends, presence, overlay, achievements, stats, leaderboards, Steam Cloud, Workshop and mod loading, Inventory, Steam Input, DLC, screenshots and Timeline.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:6px">
+        <a id="cta-get" class="btn pri" href="#get">Get YASP</a>
+        <a class="btn" href="docs/index.html">Explore the API</a>
+        <a class="btn" href="docs/index.html#reference" style="border-color:#1f1f23">Documentation</a>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px">
+        <span class="pill">184 PRIMARY NODES</span><span class="pill">8 SERVICES</span><span class="pill">1 ENTRY POINT</span><span class="pill">FREE FOR INDIES</span>
+      </div>
+    </div>
+    <div style="min-width:0">
+      <svg viewBox="0 0 520 460" width="100%" style="display:block;overflow:visible" role="img" aria-label="Steam YASP architecture: one entry point branching into eight typed services">
+        <g stroke="#2a3038" stroke-width="1" fill="none">
+          <path class="dash" d="M260 78 V126"></path>
+          <path class="dash" d="M60 126 H460"></path>
+          <g id="hero-drops"></g>
+        </g>
+        <g id="hero-svc"></g>
+        <rect x="150" y="34" width="220" height="44" fill="rgba(76,194,255,.09)" stroke="#4CC2FF"></rect>
+        <text x="260" y="54" text-anchor="middle" fill="#6d7078" style="font:500 9px var(--mono);letter-spacing:2px">ENTRY POINT</text>
+        <text x="260" y="70" text-anchor="middle" fill="#f4f2ee" style="font:600 15px var(--disp);letter-spacing:.5px">Get Steam YASP</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<section><div class="wrap sec" style="padding-top:60px;padding-bottom:60px">
+  <div class="cols4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border-top:2px solid var(--ac)">
+    <div style="background:#050506;padding:30px 24px"><div class="stat-n" style="font-family:var(--disp);font-size:74px;font-weight:700;line-height:1">184</div><div style="font-size:15px;font-weight:600;color:var(--dim)">Primary API nodes</div></div>
+    <div style="background:#050506;padding:30px 24px"><div class="stat-n" style="font-family:var(--disp);font-size:74px;font-weight:700;line-height:1">8</div><div style="font-size:15px;font-weight:600;color:var(--dim)">Contextual services</div></div>
+    <div style="background:#050506;padding:30px 24px"><div class="stat-n" style="font-family:var(--disp);font-size:74px;font-weight:700;line-height:1">1</div><div style="font-size:15px;font-weight:600;color:var(--dim)">Entry point</div></div>
+    <div style="background:#050506;padding:30px 24px"><div class="stat-n" style="font-family:var(--disp);font-size:74px;font-weight:700;line-height:1;color:var(--ac)">0</div><div style="font-size:15px;font-weight:600;color:var(--dim)">Reasons your Blueprint menu should show 500 unrelated Steam nodes at once</div></div>
+  </div>
+  <p class="k" style="margin:18px 0 0;letter-spacing:.2em">Counts come from the compiling v1.8.1 headers. The Advanced and Legacy APIs add hundreds of functions on top of that.</p>
+</div></section>
+
+<!-- WHY -->
+<section id="why"><div class="wrap sec">
+  <div class="cols2" style="display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <span class="k">01 · The pitch</span>
+      <h2 class="h2">Why another one</h2>
+      <p style="margin:0;font-size:17px;line-height:1.6;color:var(--ac)">Yes, there are already dozens.<br>But this one is free :)</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <p class="lead">The free complete Steamworks integration plugin: Steam API, multiplayer, Blueprint and C++.</p>
+      <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px">
+        <li style="display:flex;gap:14px;font-size:17px;line-height:1.55;color:#b3b0aa"><span class="k" style="color:var(--ac);padding-top:4px">→</span>I don't want to pay for a Steam plugin.</li>
+        <li style="display:flex;gap:14px;font-size:17px;line-height:1.55;color:#b3b0aa"><span class="k" style="color:var(--ac);padding-top:4px">→</span>I don't want my friends, or anyone short on budget, to pay for one either.</li>
+        <li style="display:flex;gap:14px;font-size:17px;line-height:1.55;color:#b3b0aa"><span class="k" style="color:var(--ac);padding-top:4px">→</span>I needed something that covers what Steam actually offers, for my own projects.</li>
+        <li style="display:flex;gap:14px;font-size:17px;line-height:1.55;color:#b3b0aa"><span class="k" style="color:var(--ac);padding-top:4px">→</span>Competing with established Steam plugins is probably a terrible business plan anyway.</li>
+      </ul>
+      <div class="card" id="get" style="padding:26px;display:flex;flex-direction:column;gap:14px">
+        <span class="k">Licensing</span>
+        <p style="margin:0;font-size:17px;line-height:1.6;color:#b3b0aa">Free for hobbyists, students and indie developers. The professional license is intentionally cheap (currently around <strong id="price" style="color:var(--ink)">$10</strong>) because I'm still a developer and money remains quite useful in this terrible world 🥸. If a professional studio ships with it commercially, a little support is appreciated.</p>
+        <p class="k" style="margin:0;letter-spacing:.18em;line-height:1.7">Pricing and license terms are indicative and may change before release. The license text published with the plugin is the one that applies.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:4px">
+          <a id="cta-get2" class="btn pri" href="#get">Get YASP</a>
+          <a class="btn" href="docs/index.html">Read the docs</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CORE MESSAGE + ARCHITECTURE -->
+<section id="api" class="grid-bg"><div class="wrap sec">
+  <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:46px">
+    <span class="k">02 · Design principle</span>
+    <h2 class="h2">Simple does not mean limited</h2>
+    <p class="lead">Steamworks is huge. Your Blueprint graph doesn't have to be. Your node menu stays readable because YASP exposes one entry point and eight typed services. You drag from the service pin you need, and the search only shows the nodes that belong to it.</p>
+    <p style="margin:0;font-family:var(--disp);font-size:20px;font-weight:600;letter-spacing:.02em;color:var(--ac)">Get Steam YASP. Pick a system. Do the thing.</p>
+  </div>
+  <div id="arch" style="display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line)"></div>
+</div></section>
+
+<!-- INTENTION -->
+<section><div class="wrap sec">
+  <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:40px">
+    <span class="k">03 · Intention-oriented API</span>
+    <h2 class="h2">You say what you want to do</h2>
+    <p class="lead">Steamworks is low-level by design, so hosting a game means assembling a workflow out of a dozen independent calls. YASP adds an Unreal-friendly layer on top of it: you fill in one config struct, call one node, and read the result when the async output fires.</p>
+  </div>
+  <div class="cols2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start">
+    <div style="border:1px dashed #23232a;padding:26px;display:flex;flex-direction:column;gap:12px">
+      <span class="k">Low-level approach</span>
+      <div style="display:flex;flex-direction:column;gap:7px;font:500 13px/1.5 var(--mono);color:#8f8c86">
+        <span>request lobby list</span><span>add filters</span><span>create lobby</span><span>set lobby metadata</span><span>configure networking</span><span>configure presence</span><span>configure voice</span><span>handle callbacks</span><span style="color:#5a5d63">…</span>
+      </div>
+    </div>
+    <div class="card" style="padding:26px;display:flex;flex-direction:column;gap:18px;border-color:rgba(76,194,255,.4)">
+      <span class="k" style="color:var(--ac)">YASP</span>
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+        <span class="node root"><span class="t">ENTRY</span><span class="n">Get Steam YASP</span></span><span class="arrow">→</span>
+        <span class="node"><span class="t">SERVICE</span><span class="n">Multiplayer</span></span><span class="arrow">→</span>
+        <span class="node" style="border-color:rgba(76,194,255,.5)"><span class="t">ASYNC</span><span class="n">Host Game</span></span>
+      </div>
+      <p style="margin:0;font-size:16px;line-height:1.6;color:#b3b0aa">One compact Game Config covers the lobby, its metadata, networking, optional voice, host migration and Rich Presence. If you want matchmaking instead of hosting, that is Quick Play, and it takes the same kind of config.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- SERVICES -->
+<section><div class="wrap sec">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:40px">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <span class="k">04 · Primary API</span>
+      <h2 class="h2">One entry point. Eight services.</h2>
+    </div>
+    <span class="k" style="letter-spacing:.2em">Every card opens its documentation branch</span>
+  </div>
+  <div id="svc-grid" class="cols3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px"></div>
+</div></section>
+
+<!-- THREE LEVELS -->
+<section><div class="wrap sec">
+  <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:40px">
+    <span class="k">05 · Three API levels</span>
+    <h2 class="h2">Primary, Advanced, Legacy</h2>
+    <p class="lead">A normal game can do every common Steam integration task inside the Primary API, so it is where you should stay. The Advanced API is there for the days you deliberately want a low-level Steamworks primitive, and the Legacy API keeps older Blueprints compiling.</p>
+  </div>
+  <div class="cols3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px">
+    <div class="card" style="padding:28px;display:flex;flex-direction:column;gap:12px;border-color:rgba(76,194,255,.45);background:rgba(76,194,255,.05)">
+      <span class="k" style="color:var(--ac)">Recommended</span>
+      <h3 style="font-size:22px;font-weight:700;letter-spacing:.04em">PRIMARY API</h3>
+      <p style="margin:0;font-size:16px;line-height:1.6;color:#b3b0aa">High-level nodes organised by what you are trying to do: 184 of them behind one entry point and eight typed services. This is how you normally use YASP.</p>
+    </div>
+    <div class="card" style="padding:28px;display:flex;flex-direction:column;gap:12px">
+      <span class="k">Occasional</span>
+      <h3 style="font-size:22px;font-weight:700;letter-spacing:.04em">ADVANCED API</h3>
+      <p style="margin:0;font-size:16px;line-height:1.6;color:#b3b0aa">Fine Steamworks control for a low-level primitive or a specialised feature that has no high-level workflow. Nothing is hidden from you.</p>
+    </div>
+    <div class="card" style="padding:28px;display:flex;flex-direction:column;gap:12px">
+      <span class="k">Compatibility</span>
+      <h3 style="font-size:22px;font-weight:700;letter-spacing:.04em">LEGACY API</h3>
+      <p style="margin:0;font-size:16px;line-height:1.6;color:#b3b0aa">The older lower-level API. It stays in the plugin so existing project Blueprints keep working after an update.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- COVERAGE -->
+<section id="coverage" class="grid-bg"><div class="wrap sec">
+  <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:40px">
+    <span class="k">06 · Coverage</span>
+    <h2 class="h2">How big is it, actually</h2>
+    <p class="lead">Grouped by what you would actually ship. Everything below goes through the Primary API documented on this site.</p>
+  </div>
+  <div id="cov" class="cols3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px"></div>
+</div></section>
+
+<!-- BLUEPRINT -->
+<section><div class="wrap sec">
+  <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:40px">
+    <span class="k">07 · Blueprint experience</span>
+    <h2 class="h2">Three nodes, one feature</h2>
+    <p class="lead">Every chain below comes from the Primary API documentation. Drag from the service pin, pick your node, and wire the result into your UI.</p>
+  </div>
+  <div id="bp" style="display:flex;flex-direction:column;gap:14px"></div>
+  <div class="cols2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;margin-top:40px">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <span class="k">Blueprint</span>
+      <p style="margin:0;font-size:17px;line-height:1.6;color:#b3b0aa">Every Primary node is Blueprint-visible and typed, so you know what you are wiring before you wire it. Pure nodes read state. Immediate nodes act and return a result. Async nodes start a Steam workflow and complete through success and failure outputs.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <span class="k">C++</span>
+      <p style="margin:0;font-size:17px;line-height:1.6;color:#b3b0aa">YASP is a C++ plugin with a Blueprint surface on top, so the same subsystem and typed services are available from code. The exact signatures live in the headers shipped with the release.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- CLOSING -->
+<section><div class="wrap" style="padding:104px 48px;display:flex;flex-direction:column;gap:26px;align-items:flex-start">
+  <h2 style="font-size:46px;font-weight:700;line-height:1.08;letter-spacing:-.005em;max-width:20ch">Steamworks is complicated. Using it doesn't have to be.</h2>
+  <p style="margin:0;font-size:18px;color:var(--dim)">Yet another Steam plugin. Hopefully the last one you need.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:6px">
+    <a id="cta-get3" class="btn pri" href="#get">Get YASP</a>
+    <a class="btn" href="docs/index.html">Read the docs</a>
+  </div>
+</div></section>
+
+<footer style="border-top:1px solid var(--line)"><div class="wrap" style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;padding:34px 48px">
+  <span class="k">Yet Another Steam Plugin · v1.8.1 · validated in UE 5.6 → 5.8</span>
+  <span style="display:flex;gap:24px"><a href="docs/index.html" class="k">Documentation</a><a href="../index.html" class="k">Portfolio</a><a href="../index.html#plugins" class="k">Other plugins</a></span>
+</div></footer>
+
+<script src="yasp-api.js"></script>
+<script>
+// ── Editable configuration ───────────────────────────────────────────────
+var YASP_CONFIG = {
+  fabUrl: '',                 // FAB listing URL — fill in when the listing is live
+  professionalPrice: '$10',   // indicative professional-license price
+  githubUrl: ''               // optional public repository
+};
+// ─────────────────────────────────────────────────────────────────────────
+(function () {
+  var D = window.YASP_API;
+  document.getElementById('price').textContent = YASP_CONFIG.professionalPrice;
+  ['cta-get', 'cta-get2', 'cta-get3'].forEach(function (id) {
+    var a = document.getElementById(id);
+    if (!a) return;
+    if (YASP_CONFIG.fabUrl) { a.href = YASP_CONFIG.fabUrl; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'Get YASP on FAB ↗'; }
+    else if (id !== 'cta-get') { a.textContent = 'Coming soon on FAB'; a.setAttribute('aria-disabled', 'true'); a.classList.remove('pri'); }
+    else { a.textContent = id === 'cta-get' ? 'Get YASP (coming soon)' : 'Coming soon on FAB'; a.href = '#get'; }
+  });
+
+  // Hero service fan-out
+  var svcNames = D.services.map(function (s) { return s.name; });
+  var drops = document.getElementById('hero-drops'), g = document.getElementById('hero-svc'), NS = 'http://www.w3.org/2000/svg';
+  svcNames.forEach(function (n, i) {
+    var x = 60 + i * (400 / 7), y = 160 + (i % 2) * 34;
+    var p = document.createElementNS(NS, 'path');
+    p.setAttribute('d', 'M' + x + ' 126 V' + y); p.setAttribute('class', 'dash'); drops.appendChild(p);
+    var c = document.createElementNS(NS, 'circle');
+    c.setAttribute('cx', x); c.setAttribute('cy', y + 6); c.setAttribute('r', 3.5); c.setAttribute('fill', '#4CC2FF');
+    c.setAttribute('style', 'animation:blip 3.2s ease-in-out ' + (i * .28) + 's infinite'); g.appendChild(c);
+    var t = document.createElementNS(NS, 'text');
+    t.setAttribute('x', x); t.setAttribute('y', y + 30); t.setAttribute('text-anchor', 'middle');
+    t.setAttribute('fill', '#c6c3bd'); t.setAttribute('style', 'font:500 11px var(--mono);letter-spacing:.06em');
+    t.textContent = n; g.appendChild(t);
+    var cnt = document.createElementNS(NS, 'text');
+    cnt.setAttribute('x', x); cnt.setAttribute('y', y + 46); cnt.setAttribute('text-anchor', 'middle');
+    cnt.setAttribute('fill', '#5a5d63'); cnt.setAttribute('style', 'font:500 9px var(--mono);letter-spacing:.12em');
+    cnt.textContent = D.services[i].count + ' nodes'; g.appendChild(cnt);
+  });
+
+  // Architecture rows: service → its categories → a few real nodes
+  var arch = document.getElementById('arch');
+  D.services.forEach(function (s) {
+    var row = document.createElement('a');
+    row.href = 'docs/index.html#' + s.id;
+    row.style.cssText = 'background:#08080a;display:grid;grid-template-columns:200px minmax(0,1fr) 100px;gap:20px;padding:20px 24px;align-items:center;transition:background .2s';
+    row.onmouseenter = function () { row.style.background = 'rgba(76,194,255,.06)'; };
+    row.onmouseleave = function () { row.style.background = '#08080a'; };
+    var names = [];
+    s.cats.forEach(function (c) { c.nodes.slice(0, 2).forEach(function (n) { names.push(n.name); }); });
+    row.innerHTML =
+      '<span style="display:flex;flex-direction:column;gap:5px;min-width:0">' +
+        '<span style="font-family:var(--disp);font-size:18px;font-weight:600;letter-spacing:.04em">' + s.name + '</span>' +
+        '<span class="k" style="letter-spacing:.16em">' + s.count + ' nodes · ' + s.cats.length + ' categor' + (s.cats.length > 1 ? 'ies' : 'y') + '</span></span>' +
+      '<span style="display:flex;flex-wrap:wrap;gap:7px;min-width:0">' + names.slice(0, 7).map(function (n) {
+        return '<span style="padding:5px 10px;font:500 11px/1 var(--mono);letter-spacing:.04em;color:#a9a6a0;border:1px solid #1f2126">' + n + '</span>';
+      }).join('') + '</span>' +
+      '<span class="k" style="color:var(--ac);text-align:right;letter-spacing:.12em">OPEN →</span>';
+    arch.appendChild(row);
+  });
+
+  // Service cards
+  var grid = document.getElementById('svc-grid');
+  D.services.forEach(function (s) {
+    var a = document.createElement('a');
+    a.href = 'docs/index.html#' + s.id; a.className = 'card';
+    a.style.cssText = 'padding:24px;display:flex;flex-direction:column;gap:14px;min-width:0';
+    a.innerHTML =
+      '<span style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">' +
+        '<h3 style="font-size:20px;font-weight:700;letter-spacing:.05em;text-transform:uppercase">' + s.name + '</h3>' +
+        '<span class="k" style="color:var(--ac);letter-spacing:.14em;flex:none">' + s.count + '</span></span>' +
+      '<span style="font-size:15px;line-height:1.55;color:#b3b0aa">' + s.blurb + '</span>' +
+      '<span style="display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px">' + s.cats.map(function (c) {
+        return '<span class="pill" style="letter-spacing:.1em">' + c.name + '</span>'; }).join('') + '</span>';
+    grid.appendChild(a);
+  });
+
+  // Coverage groups, built from the documented categories
+  var groups = [
+    ['Multiplayer', ['multiplayer']], ['Social', ['social']], ['Progression', ['progression']],
+    ['Content', ['cloud', 'mods']], ['Items', ['inventory']], ['Platform & extras', ['input', 'platform']]
+  ];
+  var cov = document.getElementById('cov');
+  groups.forEach(function (grp) {
+    var items = [], total = 0;
+    grp[1].forEach(function (sid) {
+      var s = D.services.filter(function (x) { return x.id === sid; })[0];
+      total += s.count;
+      s.cats.forEach(function (c) { items.push((grp[1].length > 1 ? s.name + ' · ' : '') + c.name); });
+    });
+    var d = document.createElement('div');
+    d.className = 'card'; d.style.cssText = 'padding:24px;display:flex;flex-direction:column;gap:14px';
+    d.innerHTML = '<span style="display:flex;justify-content:space-between;align-items:baseline"><span class="k" style="color:#c6c3bd;letter-spacing:.2em">' + grp[0] + '</span><span class="k" style="color:var(--ac)">' + total + ' nodes</span></span>' +
+      '<span style="display:flex;flex-direction:column;gap:8px">' + items.map(function (i) {
+        return '<span style="font-size:15px;color:#b3b0aa;display:flex;gap:10px"><span style="color:#2f3339">·</span>' + i + '</span>'; }).join('') + '</span>';
+    cov.appendChild(d);
+  });
+
+  // Blueprint chains (only real documented node names)
+  var chains = [
+    ['Multiplayer', 'Host Game', 'multiplayer', 'core', 'host-game'],
+    ['Multiplayer', 'Quick Play', 'multiplayer', 'core', 'quick-play'],
+    ['Progression', 'Unlock Achievement', 'progression', 'achievements', 'unlock-achievement'],
+    ['Cloud', 'Save Text', 'cloud', 'core', 'save-text'],
+    ['Mods', 'Install Mod', 'mods', 'core', 'install-mod'],
+    ['Social', 'Get Friends', 'social', 'core', 'get-friends']
+  ];
+  var bp = document.getElementById('bp');
+  chains.forEach(function (c) {
+    var a = document.createElement('a');
+    a.href = 'docs/index.html#' + c[2] + '/' + c[3] + '/' + c[4];
+    a.style.cssText = 'display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:18px 22px;border:1px solid #17171a;background:#08080a;transition:border-color .2s,background .2s';
+    a.onmouseenter = function () { a.style.borderColor = 'rgba(76,194,255,.5)'; a.style.background = 'rgba(76,194,255,.05)'; };
+    a.onmouseleave = function () { a.style.borderColor = '#17171a'; a.style.background = '#08080a'; };
+    a.innerHTML = '<span class="node root"><span class="t">ENTRY</span><span class="n">Get Steam YASP</span></span><span class="arrow">→</span>' +
+      '<span class="node"><span class="t">SERVICE</span><span class="n">' + c[0] + '</span></span><span class="arrow">→</span>' +
+      '<span class="node" style="border-color:rgba(76,194,255,.5)"><span class="t">NODE</span><span class="n">' + c[1] + '</span></span>' +
+      '<span class="k" style="margin-left:auto;color:var(--ac);letter-spacing:.12em">DOCS →</span>';
+    bp.appendChild(a);
+  });
+})();
+</script>
+</body>
+</html>
