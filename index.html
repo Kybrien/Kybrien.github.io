@@ -104,7 +104,7 @@
     [data-m="edu-row"] { grid-template-columns: 1fr !important; gap: 12px !important; }
     #parcours > div:last-child { order: -1 !important; }
     [data-m="proj-card"] { grid-column: auto !important; }
-    [data-m="plug-grid"] > a { grid-column: auto !important; }
+    [data-m="plug-grid"] > * { grid-column: auto !important; }
     [data-m="thumbs"] { grid-template-columns: repeat(4, minmax(0,1fr)) !important; gap: 8px !important; }
 
     [data-m="feat-title"] > a { font-size: 32px !important; }
@@ -121,6 +121,12 @@
 <div data-m="root" style="--disp:{{ f.disp }};--body:{{ f.body }};--mono:{{ f.mono }};display:{{ homeDisplay }};width:100%;min-width:1100px;background:#000;color:#eceae6;font-family:var(--body)">
 
   <nav data-m="nav" aria-label="Navigation principale" style="position:fixed;top:50%;right:0;transform:translateY(-50%);z-index:60;display:flex;flex-direction:column;gap:10px;align-items:flex-end">
+    <a href="#" aria-label="Accueil" onClick="{{ toTop }}" onMouseEnter="{{ n3.enter }}" onMouseLeave="{{ n3.leave }}" style="display:flex;align-items:center;justify-content:flex-end;text-decoration:none">
+      <span style="overflow:hidden;white-space:nowrap;font-family:var(--disp);font-size:12px;letter-spacing:.18em;color:#fff;background:rgba(6,6,8,.92);border:1px solid {{ n3.bd }};border-right:none;line-height:44px;max-width:{{ n3.mw }};opacity:{{ n3.op }};padding:0 {{ n3.px }};transform:translateX({{ n3.tx }});transition:max-width .34s cubic-bezier(.22,1,.36,1),opacity .28s ease,transform .34s cubic-bezier(.22,1,.36,1),padding .34s ease">{{ t.navHome }}</span>
+      <span style="flex:none;width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:rgba(6,6,8,.92);border:1px solid {{ n3.bd }};color:{{ n3.ic }};transition:border-color .25s ease,color .25s ease">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 11 12 3.5 21 11"></path><path d="M5.5 9v11.5h13V9"></path><path d="M10 20.5v-6h4v6"></path></svg>
+      </span>
+    </a>
     <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
       <span onClick="{{ setFR }}" style="cursor:pointer;flex:none;width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:rgba(6,6,8,.92);border:1px solid {{ frBorder }};font:500 11px/1 var(--mono);letter-spacing:.12em;color:{{ frColor }};transition:color .25s ease,border-color .25s ease">FR</span>
       <span onClick="{{ setEN }}" style="cursor:pointer;flex:none;width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:rgba(6,6,8,.92);border:1px solid {{ enBorder }};font:500 11px/1 var(--mono);letter-spacing:.12em;color:{{ enColor }};transition:color .25s ease,border-color .25s ease">EN</span>
@@ -141,12 +147,6 @@
       <span style="overflow:hidden;white-space:nowrap;font-family:var(--disp);font-size:12px;letter-spacing:.18em;color:#fff;background:rgba(6,6,8,.92);border:1px solid {{ n2.bd }};border-right:none;line-height:44px;max-width:{{ n2.mw }};opacity:{{ n2.op }};padding:0 {{ n2.px }};transform:translateX({{ n2.tx }});transition:max-width .34s cubic-bezier(.22,1,.36,1),opacity .28s ease,transform .34s cubic-bezier(.22,1,.36,1),padding .34s ease">{{ t.navAbout }}</span>
       <span style="flex:none;width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:rgba(6,6,8,.92);border:1px solid {{ n2.bd }};color:{{ n2.ic }};transition:border-color .25s ease,color .25s ease">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="3.6"></circle><path d="M4.5 20.5c0-4.1 3.4-6.2 7.5-6.2s7.5 2.1 7.5 6.2"></path></svg>
-      </span>
-    </a>
-    <a href="#contact" onMouseEnter="{{ n3.enter }}" onMouseLeave="{{ n3.leave }}" style="display:flex;align-items:center;justify-content:flex-end;text-decoration:none">
-      <span style="overflow:hidden;white-space:nowrap;font-family:var(--disp);font-size:12px;letter-spacing:.18em;color:#fff;background:rgba(6,6,8,.92);border:1px solid {{ n3.bd }};border-right:none;line-height:44px;max-width:{{ n3.mw }};opacity:{{ n3.op }};padding:0 {{ n3.px }};transform:translateX({{ n3.tx }});transition:max-width .34s cubic-bezier(.22,1,.36,1),opacity .28s ease,transform .34s cubic-bezier(.22,1,.36,1),padding .34s ease">{{ t.navCV }}</span>
-      <span style="flex:none;width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:rgba(6,6,8,.92);border:1px solid {{ n3.bd }};color:{{ n3.ic }};transition:border-color .25s ease,color .25s ease">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14 3H6v18h12V7z"></path><path d="M14 3v4h4"></path><path d="M9 13h6M9 17h4"></path></svg>
       </span>
     </a>
     <a href="#contact" onMouseEnter="{{ n4.enter }}" onMouseLeave="{{ n4.leave }}" style="display:flex;align-items:center;justify-content:flex-end;text-decoration:none">
@@ -244,7 +244,7 @@
     </div>
     <div data-m="plug-grid" style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px">
       <a href="https://www.fab.com/listings/97e1b3d0-df12-41eb-89f4-3e4e54f28fc4" target="_blank" rel="noopener" style="grid-column:1 / span 3;display:flex;flex-direction:column;background:#000;border:1px solid #1c1c1f;transition:border-color .25s ease,background .25s ease" style-hover="border-color:#B7A6F0;background:rgba(183,166,240,.11)">
-        <img src="uploads/TwitchStreamSync.webp" alt="Twitch StreamSync, plugin Unreal Engine publié sur FAB" loading="lazy" decoding="async" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block">
+        <img src="uploads/TwitchStreamSync-v2.png" alt="Twitch StreamSync, plugin Unreal Engine publié sur FAB" loading="lazy" decoding="async" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block">
         <span style="display:flex;flex-direction:column;gap:9px;padding:17px;min-width:0;flex:1">
           <span style="display:flex;justify-content:space-between;align-items:baseline;gap:14px">
             <h3 style="margin:0;font-family:var(--disp);font-size:17px;font-weight:700;letter-spacing:.05em">TWITCH STREAMSYNC</h3>
@@ -319,10 +319,48 @@
           </sc-if>
           <span style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-top:auto;padding-top:6px">
             <span style="font-size:13px;font-weight:600;color:#c6c3bd">C++ · BLUEPRINT</span>
-            <span style="font-size:12px;font-weight:700;letter-spacing:.06em;color:#4CC2FF;flex:none">{{ t.viewSite }}</span>
+            <span style="font:500 11px/1 var(--mono);letter-spacing:.2em;color:#4CC2FF;flex:none">INCOMING</span>
           </span>
         </span>
       </a>
+      <div style="grid-column:4 / span 3;display:flex;flex-direction:column;background:#000;border:1px solid #1c1c1f;transition:border-color .25s ease,background .25s ease" style-hover="border-color:#9D86FF;background:rgba(120,90,255,.12)">
+        <img src="uploads/TestBDB.png" alt="Buffs, Debuffs & Beyond, système de modificateurs de gameplay pour Unreal Engine" loading="lazy" decoding="async" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block">
+        <span style="display:flex;flex-direction:column;gap:9px;padding:17px;min-width:0;flex:1">
+          <span style="display:flex;justify-content:space-between;align-items:baseline;gap:14px">
+            <h3 style="margin:0;font-family:var(--disp);font-size:17px;font-weight:700;letter-spacing:.05em">BUFFS, DEBUFFS &amp; BEYOND</h3>
+            <span style="font:500 11px/1 var(--mono);letter-spacing:.16em;color:#6d7078;flex:none">UE 5.1 → 5.8</span>
+          </span>
+          <sc-if value="{{ isFR }}" hint-placeholder-val="{{ true }}">
+            <span style="font-size:14px;line-height:1.5;color:#a9a6a0">Système de modificateurs de gameplay en Blueprint : buffs, debuffs, statuts et règles en Data Assets, stacking, GameplayTags, réplication et prédiction. Sans Gameplay Ability System.</span>
+          </sc-if>
+          <sc-if value="{{ isEN }}" hint-placeholder-val="{{ false }}">
+            <span style="font-size:14px;line-height:1.5;color:#a9a6a0">Gameplay modifier system in Blueprint: buffs, debuffs, status effects and rules as Data Assets, stacking, GameplayTags, replication and prediction. No Gameplay Ability System required.</span>
+          </sc-if>
+          <span style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-top:auto;padding-top:6px">
+            <span style="font-size:13px;font-weight:600;color:#c6c3bd">C++ · BLUEPRINT</span>
+            <span style="font:500 11px/1 var(--mono);letter-spacing:.2em;color:#9D86FF;flex:none">INCOMING</span>
+          </span>
+        </span>
+      </div>
+      <div style="grid-column:7 / span 3;display:flex;flex-direction:column;background:#000;border:1px solid #1c1c1f;transition:border-color .25s ease,background .25s ease" style-hover="border-color:#4FB8F0;background:rgba(79,184,240,.1)">
+        <img src="uploads/MultiplayerReplicationLint.jpg" alt="Multiplayer Replication Lint, outil éditeur d'analyse de réplication pour Unreal Engine" loading="lazy" decoding="async" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block">
+        <span style="display:flex;flex-direction:column;gap:9px;padding:17px;min-width:0;flex:1">
+          <span style="display:flex;justify-content:space-between;align-items:baseline;gap:14px">
+            <h3 style="margin:0;font-family:var(--disp);font-size:17px;font-weight:700;letter-spacing:.05em">MULTIPLAYER REPLICATION LINT</h3>
+            <span style="font:500 11px/1 var(--mono);letter-spacing:.16em;color:#6d7078;flex:none">UE 5.1 → 5.8</span>
+          </span>
+          <sc-if value="{{ isFR }}" hint-placeholder-val="{{ true }}">
+            <span style="font-size:14px;line-height:1.5;color:#a9a6a0">Outil éditeur qui analyse Blueprints et C++ et explique chaque erreur de réplication, avec correctif. 27 règles, note A à E, Lag Lab et commandlet CI.</span>
+          </sc-if>
+          <sc-if value="{{ isEN }}" hint-placeholder-val="{{ false }}">
+            <span style="font-size:14px;line-height:1.5;color:#a9a6a0">Editor tool that scans Blueprints and C++ and explains every replication mistake, with the fix. 27 rules, A to E grade, Lag Lab and a CI commandlet.</span>
+          </sc-if>
+          <span style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-top:auto;padding-top:6px">
+            <span style="font-size:13px;font-weight:600;color:#c6c3bd">C++ · BLUEPRINT</span>
+            <span style="font:500 11px/1 var(--mono);letter-spacing:.2em;color:#4FB8F0;flex:none">INCOMING</span>
+          </span>
+        </span>
+      </div>
     </div>
     <div style="display:flex;align-items:center;gap:16px;padding:20px 24px;border:1px dashed #23232a;color:#7d7a75">
       <span style="font: 500 11px/1 var(--mono); letter-spacing: .2em; color: #D1D1D1">{{ t.soon }}</span>
@@ -494,7 +532,6 @@
     <div style="display:flex;flex-direction:column;gap:14px">
       <span style="font-family:var(--disp);font-weight:700;font-size:19px;letter-spacing:.1em">ADRIEN <span style="color:oklch(0.72 0.19 25)">PATTE</span></span>
       <a href="mailto:adrienpatte75@gmail.com" style="align-self:flex-start;font-family:var(--disp);font-size:24px;font-weight:600;letter-spacing:.04em;padding-bottom:4px;background-image:linear-gradient(#fff,#fff);background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;transition:background-size .38s cubic-bezier(.22,1,.36,1)" style-hover="background-size:100% 1px">adrienpatte75@gmail.com</a>
-      <a href="tel:+33783794596" style="align-self:flex-start;font-size:15px;font-weight:600;color:#c6c3bd;padding-bottom:3px;background-image:linear-gradient(#fff,#fff);background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;transition:background-size .38s cubic-bezier(.22,1,.36,1)" style-hover="background-size:100% 1px">07 83 79 45 96</a>
       <span style="font-size:14px;color:#7d7a75">{{ t.replyLine }}</span>
       <span style="display:flex;flex-direction:column;gap:7px;margin-top:14px;padding:15px 17px;border:1px solid #26262a;border-left:2px solid oklch(0.72 0.19 25);align-self:flex-start">
         <span style="display:flex;align-items:center;gap:9px">
@@ -514,11 +551,11 @@
     
     <div style="display:flex;flex-direction:column;gap:10px">
       <span style="font:500 11px/1 var(--mono);letter-spacing:.2em;color:#5f6269;margin-bottom:4px">{{ t.cvTitle }}</span>
-      <a href="uploads/CVO-AdrienPatte-FR.pdf" download="" style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 18px;font-family:var(--disp);font-size:14px;font-weight:700;letter-spacing:.1em;border:1px solid #3a3a40;background:transparent;color:#e8e6e2;transition:background .25s ease,color .25s ease,border-color .25s ease" style-hover="background:oklch(0.72 0.19 25);border-color:oklch(0.72 0.19 25);color:#0a0a0c">
+      <a href="uploads/CV-AdrienPATTE-FR.pdf" download="" style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 18px;font-family:var(--disp);font-size:14px;font-weight:700;letter-spacing:.1em;border:1px solid #3a3a40;background:transparent;color:#e8e6e2;transition:background .25s ease,color .25s ease,border-color .25s ease" style-hover="background:oklch(0.72 0.19 25);border-color:oklch(0.72 0.19 25);color:#0a0a0c">
         <span>CV FR (PDF)</span>
         <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" style="flex:none" aria-hidden="true"><path d="M8 1v9"></path><path d="M4 6.5 8 10.5l4-4"></path><path d="M1.5 13.5h13"></path></svg>
       </a>
-      <a href="uploads/CVO-AdrienPatte-EN.pdf" download="" style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 18px;font-family:var(--disp);font-size:14px;font-weight:700;letter-spacing:.1em;border:1px solid #3a3a40;background:transparent;color:#e8e6e2;transition:background .25s ease,color .25s ease,border-color .25s ease" style-hover="background:oklch(0.72 0.19 25);border-color:oklch(0.72 0.19 25);color:#0a0a0c">
+      <a href="uploads/CV-AdrienPATTE-EN.pdf" download="" style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 18px;font-family:var(--disp);font-size:14px;font-weight:700;letter-spacing:.1em;border:1px solid #3a3a40;background:transparent;color:#e8e6e2;transition:background .25s ease,color .25s ease,border-color .25s ease" style-hover="background:oklch(0.72 0.19 25);border-color:oklch(0.72 0.19 25);color:#0a0a0c">
         <span>CV EN (PDF)</span>
         <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" style="flex:none" aria-hidden="true"><path d="M8 1v9"></path><path d="M4 6.5 8 10.5l4-4"></path><path d="M1.5 13.5h13"></path></svg>
       </a>
@@ -599,7 +636,7 @@
         <div style="max-width:1240px;margin:0 auto;padding:0 40px 64px;display:flex;flex-direction:column;gap:14px">
           <span style="font:500 11px/1 var(--mono);letter-spacing:.26em;color:#6d7078">{{ t.trailerLabel }}</span>
           <sc-if value="{{ pg.hasEmbed }}" hint-placeholder-val="{{ false }}">
-            <iframe src="{{ pg.videoSrc }}" title="Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen="true" style="width:100%;aspect-ratio:16/9;border:1px solid #1c1c1f;display:block"></iframe>
+            <iframe src="{{ pg.videoSrc }}" title="Trailer" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen="true" style="width:100%;aspect-ratio:16/9;border:1px solid #1c1c1f;display:block"></iframe>
           </sc-if>
           <sc-if value="{{ pg.needsVideo }}" hint-placeholder-val="{{ false }}">
             <div style="width:100%;aspect-ratio:16/9;border:1px dashed #2c2c30;display:flex;align-items:center;justify-content:center;gap:14px">
@@ -810,7 +847,7 @@
         <div style="padding:60px 44px 0;display:flex;flex-direction:column;gap:14px">
           <span style="font:500 11px/1 var(--mono);letter-spacing:.26em;color:#6d7078">{{ t.trailerLabel }}</span>
           <sc-if value="{{ pg.hasEmbed }}" hint-placeholder-val="{{ false }}">
-            <iframe src="{{ pg.videoSrc }}" title="Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen="true" style="width:100%;aspect-ratio:16/9;border:1px solid #1c1c1f;display:block"></iframe>
+            <iframe src="{{ pg.videoSrc }}" title="Trailer" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen="true" style="width:100%;aspect-ratio:16/9;border:1px solid #1c1c1f;display:block"></iframe>
           </sc-if>
           <sc-if value="{{ pg.needsVideo }}" hint-placeholder-val="{{ false }}">
             <div style="width:100%;aspect-ratio:16/9;border:1px dashed #2c2c30;display:flex;align-items:center;justify-content:center;gap:14px">
@@ -906,7 +943,7 @@
       <sc-if value="{{ pg.hasVideo }}" hint-placeholder-val="{{ false }}">
         <div style="border-top:1px solid #1b1b1e;padding:0">
           <sc-if value="{{ pg.hasEmbed }}" hint-placeholder-val="{{ false }}">
-            <iframe src="{{ pg.videoSrc }}" title="Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen="true" style="width:100%;aspect-ratio:21/9;border:none;display:block"></iframe>
+            <iframe src="{{ pg.videoSrc }}" title="Trailer" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen="true" style="width:100%;aspect-ratio:21/9;border:none;display:block"></iframe>
           </sc-if>
           <sc-if value="{{ pg.needsVideo }}" hint-placeholder-val="{{ false }}">
             <div style="width:100%;aspect-ratio:21/9;background:#08080a;display:flex;align-items:center;justify-content:center;gap:16px">
@@ -1385,7 +1422,7 @@ class Component extends DCLogic {
 
   dict(fr) {
     return fr ? {
-      navProjects: 'PROJETS', navPlugins: 'PLUGINS', navAbout: 'À PROPOS', navCV: 'CV', navContact: 'CONTACT',
+      navProjects: 'PROJETS', navPlugins: 'PLUGINS', navAbout: 'À PROPOS', navCV: 'CV', navHome: 'ACCUEIL', navContact: 'CONTACT',
       caseStudyCta: 'ÉTUDE DE CAS →', statYears: 'EXPÉRIENCES EN ENTREPRISE', statShipped: 'PROJETS LIVRÉS', statPlugins: 'PLUGINS PUBLIÉS',
       otherProjects: 'AUTRES PROJETS', otherKicker: 'JAMS · SOLO · ÉQUIPE', reviews: '5.0 · 9 AVIS SUR FAB', review1: '5.0 · 1 AVIS SUR FAB',
       viewFab: 'VOIR SUR FAB ↗', viewSite: 'SITE & DOC →', yaspBadge: 'GRATUIT', soon: 'BIENTÔT', soonText: "D'autres plugins sont en préparation et arriveront sur FAB.",
@@ -1430,7 +1467,7 @@ class Component extends DCLogic {
       phSystems: 'SYSTÈMES CLÉS & DÉFIS À COMPLÉTER', phSystemsSub: '3 à 4 systèmes, puis 2 à 3 défis : un titre et deux phrases chacun.',
       phVideo: 'URL YOUTUBE À RENSEIGNER', problem: 'PROBLÈME', editorTools: 'Outils éditeur', phVideoLong: 'TRAILER · URL YOUTUBE À RENSEIGNER', shotPh: 'CAPTURE 16:9'
     } : {
-      navProjects: 'PROJECTS', navPlugins: 'PLUGINS', navAbout: 'ABOUT', navCV: 'RESUME', navContact: 'CONTACT',
+      navProjects: 'PROJECTS', navPlugins: 'PLUGINS', navAbout: 'ABOUT', navCV: 'RESUME', navHome: 'HOME', navContact: 'CONTACT',
       caseStudyCta: 'CASE STUDY →', statYears: 'PROFESSIONAL PLACEMENTS', statShipped: 'PROJECTS SHIPPED', statPlugins: 'PLUGINS PUBLISHED',
       otherProjects: 'OTHER PROJECTS', otherKicker: 'JAMS · SOLO · TEAM', reviews: '5.0 · 9 REVIEWS ON FAB', review1: '5.0 · 1 REVIEW ON FAB',
       viewFab: 'VIEW ON FAB ↗', viewSite: 'SITE & DOCS →', yaspBadge: 'FREE', soon: 'SOON', soonText: 'More plugins are in the works and will land on FAB.',
@@ -1517,9 +1554,9 @@ class Component extends DCLogic {
       hasPitch: !!p.pitchFr,
       needsPitch: !p.pitchFr,
       hasVideo: !!p.video,
-      hasEmbed: !!(p.video && (this.props.olrVideo || '')),
-      needsVideo: !!(p.video && !(this.props.olrVideo || '')),
-      videoSrc: this.props.olrVideo || '',
+      hasEmbed: !!(p.video && (this.props.olrVideo || 'https://www.youtube.com/embed/vFo3l6WSoxg?rel=0&playsinline=1')),
+      needsVideo: !!(p.video && !(this.props.olrVideo || 'https://www.youtube.com/embed/vFo3l6WSoxg?rel=0&playsinline=1')),
+      videoSrc: this.props.olrVideo || 'https://www.youtube.com/embed/vFo3l6WSoxg?rel=0&playsinline=1',
       tech: p.tech.map(t => ({ t })),
       roles: p.roles.map(r => ({ r })),
       features: (p.features || []).map((f, k) => ({
@@ -1657,7 +1694,8 @@ class Component extends DCLogic {
       frBorder: fr ? '#fff' : '#1c1c1f',
       enBorder: fr ? '#1c1c1f' : '#fff',
       setFR: () => this.setState({ lang: 'FR' }),
-      setEN: () => this.setState({ lang: 'EN' })
+      setEN: () => this.setState({ lang: 'EN' }),
+      toTop: (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
     };
   }
 }

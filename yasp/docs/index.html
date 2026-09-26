@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>YASP Documentation — Steam YASP Primary API Map | Yet Another Steam Plugin</title>
-<meta name="description" content="Interactive documentation for the Yet Another Steam Plugin Primary API: 184 Blueprint nodes across 8 typed Steam services — multiplayer, social, progression, Cloud, mods, input, inventory and platform.">
+<meta name="description" content="Interactive documentation for the Yet Another Steam Plugin Primary API v1.0.0: 163 Blueprint nodes across 8 typed Steam services — multiplayer, social, progression, Cloud, mods, input, inventory and platform. Outcomes, not plumbing.">
 <meta name="author" content="Adrien Patte">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#050506">
@@ -15,11 +15,11 @@
 <meta property="og:site_name" content="Yet Another Steam Plugin">
 <meta property="og:url" content="https://kybrien.github.io/yasp/docs/">
 <meta property="og:title" content="Steam YASP API Map — Documentation">
-<meta property="og:description" content="Get Steam YASP → choose a service → do the thing. 184 Primary API nodes, one interactive map.">
+<meta property="og:description" content="Get Steam YASP → pick what you want → do the thing. 163 Primary API nodes, one interactive map.">
 <meta property="og:image" content="https://kybrien.github.io/uploads/YASP_Cover.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Steam YASP API Map — Documentation">
-<meta name="twitter:description" content="Get Steam YASP → choose a service → do the thing. 184 Primary API nodes, one interactive map.">
+<meta name="twitter:description" content="Get Steam YASP → pick what you want → do the thing. 163 Primary API nodes, one interactive map.">
 <meta name="twitter:image" content="https://kybrien.github.io/uploads/YASP_Cover.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,7 +64,7 @@
   @media (max-width: 900px) {
     #inspector { position:fixed !important; left:0; right:0; bottom:0; top:auto !important; width:100% !important;
                  max-height:76vh; border-left:none !important; border-top:1px solid var(--line); z-index:30; }
-    #brand-sub, #hdr-count { display:none; }
+    #brand-sub, #hdr-count, #layer-btn { display:none; }
     #search-hint { display:none; }
     .hdr-tabs { gap:6px !important; }
     .tab { padding:9px 11px; letter-spacing:.1em; }
@@ -77,7 +77,7 @@
   <a href="../index.html" class="k" style="color:#c6c3bd;flex:none">← YASP</a>
   <span style="display:flex;flex-direction:column;gap:3px;flex:none">
     <span style="font-size:14px;font-weight:600;letter-spacing:.1em">STEAM YASP</span>
-    <span id="brand-sub" class="k" style="letter-spacing:.16em">Primary API · v1.8.1</span>
+    <span id="brand-sub" class="k" style="letter-spacing:.16em">Documentation · v<span id="brand-v"></span> · <span id="brand-e"></span></span>
   </span>
   <div class="hdr-tabs" style="display:flex;gap:8px;margin-left:12px">
     <button class="tab" id="tab-map" aria-selected="true">API Map</button>
@@ -87,7 +87,8 @@
   <button id="search-btn" style="margin-left:auto;display:flex;align-items:center;gap:10px;padding:0 14px;height:38px;background:#0b0b0e;border:1px solid #1f1f23;color:var(--faint);font:500 11px/1 var(--mono);letter-spacing:.12em">
     <span>SEARCH THE API</span><span id="search-hint" style="padding:3px 6px;border:1px solid #26262c">⌘K</span>
   </button>
-  <span id="hdr-count" class="k" style="flex:none">184 nodes</span>
+  <button class="tab" id="layer-btn" style="flex:none;margin-left:10px" title="Show Helpers and Advanced nodes too">PRIMARY</button>
+  <span id="hdr-count" class="k" style="flex:none">163 nodes</span>
 </header>
 
 <main id="stage" style="position:relative;height:calc(100vh - 58px);display:flex">
@@ -97,7 +98,7 @@
     <svg id="svg" role="application" aria-label="Steam YASP API map"><g id="vp"><g id="links" fill="none"></g><g id="nodes"></g></g></svg>
     <div style="position:absolute;left:18px;top:18px;max-width:230px;display:flex;flex-direction:column;gap:7px;pointer-events:none;padding:11px 13px;background:rgba(5,5,6,.9);border:1px solid #16161a">
       <span class="k" style="letter-spacing:.2em;color:#c6c3bd">Steam YASP API Map</span>
-      <span class="k" style="letter-spacing:.12em;line-height:1.7">Click a service to open its nodes<br>Drag to pan · scroll to zoom</span>
+      <span class="k" style="letter-spacing:.12em;line-height:1.7">Click a service to open its nodes<br>Click it again to fold it back<br>Drag to pan · scroll to zoom</span>
     </div>
     <div style="position:absolute;left:18px;bottom:18px;display:flex;gap:8px;flex-wrap:wrap">
       <button class="ctl" id="z-in" title="Zoom in" aria-label="Zoom in">+</button>
@@ -107,7 +108,7 @@
       <button class="ctl" id="z-all" title="Expand every branch" aria-label="Expand all branches" style="width:auto;padding:0 12px;letter-spacing:.1em">EXPAND ALL</button>
     </div>
     <div style="position:absolute;right:18px;bottom:18px;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end">
-      <span class="type t-service">SERVICE</span><span class="type t-pure">PURE</span><span class="type t-immediate">IMMEDIATE</span><span class="type t-async">ASYNC</span>
+      <span class="type" style="color:#4CC2FF;border-color:#4CC2FF;background:rgba(76,194,255,.1)">INTENT</span><span class="type t-service">SERVICE</span><span class="type t-pure">PURE</span><span class="type t-immediate">IMMEDIATE</span><span class="type t-async">ASYNC</span>
     </div>
   </div>
 
@@ -147,17 +148,31 @@ var INDEX = [];
 D.services.forEach(function (s) {
   s.cats.forEach(function (c) {
     c.nodes.forEach(function (n) {
-      INDEX.push({ node: n, s: s, c: c, path: s.id + '/' + c.id + '/' + n.slug,
-                   hay: (n.name + ' ' + s.name + ' ' + c.name + ' ' + n.desc + ' ' + n.type).toLowerCase() });
+      INDEX.push({ node: n, s: s, c: c, path: s.id + '/' + c.id + '/' + n.slug, layer: n.layer || 'primary',
+                   hay: (n.name + ' ' + s.name + ' ' + c.name + ' ' + n.desc + ' ' + n.type + ' ' + (n.layer || 'primary')).toLowerCase() });
     });
   });
 });
 var byPath = {}; INDEX.forEach(function (e) { byPath[e.path] = e; });
-$('hdr-count').textContent = D.primaryCount + ' nodes';
-$('search-in').placeholder = 'Search ' + D.primaryCount + ' nodes — name, service, category, description';
+$('brand-v').textContent = D.version; $('brand-e').textContent = D.engine;
+$('search-in').placeholder = 'Search ' + INDEX.length + ' nodes — name, service, category, description';
 
 /* ── state ─────────────────────────────────────────────────────── */
-var st = { mode: 'map', svc: {}, cat: {}, sel: null, ex: null, tx: 0, ty: 0, k: 1 };
+var st = { mode: 'map', svc: {}, cat: {}, sel: null, ex: null, tx: 0, ty: 0, k: 1, layer: 'primary' };
+
+/* layer filter — Primary is the default view; Helpers/Advanced are opt-in */
+function vis(nodes) {
+  if (st.layer === 'all') return nodes;
+  return nodes.filter(function (n) { return (n.layer || 'primary') === 'primary'; });
+}
+function svcCount(s) { return st.layer === 'all' ? s.total : s.count; }
+function syncCount() {
+  var n = 0;
+  D.services.forEach(function (s) { n += svcCount(s); });
+  $('hdr-count').textContent = st.layer === 'all' ? n + ' · all layers' : (n + 8) + ' nodes';
+  $('layer-btn').textContent = st.layer === 'all' ? 'ALL LAYERS' : 'PRIMARY';
+  $('layer-btn').setAttribute('aria-selected', st.layer === 'all');
+}
 
 /* ══ GRAPH ═════════════════════════════════════════════════════ */
 var NW = 210, NH = 34, GAP = 9, COL = [0, 268, 536, 804];
@@ -171,23 +186,25 @@ function buildLayout() {
     var sTop = y, kids = [];
     if (st.svc[s.id]) {
       s.cats.forEach(function (c) {
+        var vn = vis(c.nodes);
+        if (!vn.length) return;
         var cTop = y, cKids = [];
         if (st.cat[s.id + '/' + c.id]) {
-          c.nodes.forEach(function (n) {
-            var it = { kind: 'node', id: s.id + '/' + c.id + '/' + n.slug, label: n.name, type: n.type, d: 3, y: y + NH / 2, x: COL[3] };
+          vn.forEach(function (n) {
+            var it = { kind: 'node', id: s.id + '/' + c.id + '/' + n.slug, label: n.name, type: n.type, layer: n.layer || 'primary', intent: !!n.intent, d: 3, y: y + NH / 2, x: COL[3] };
             nodes.push(it); cKids.push(it); y += NH + GAP;
           });
           y -= (NH + GAP); y += NH + GAP;
         } else { y += NH + GAP; }
         var cy = cKids.length ? (cKids[0].y + cKids[cKids.length - 1].y) / 2 : cTop + NH / 2;
-        var cit = { kind: 'cat', id: s.id + '/' + c.id, label: c.name, count: c.nodes.length, d: 2, x: COL[2], y: cy, open: !!st.cat[s.id + '/' + c.id] };
+        var cit = { kind: 'cat', id: s.id + '/' + c.id, label: c.name, count: vn.length, d: 2, x: COL[2], y: cy, open: !!st.cat[s.id + '/' + c.id] };
         nodes.push(cit); kids.push(cit);
         cKids.forEach(function (k) { links.push([cit, k]); });
         if (cKids.length) y += GAP * 1.2;
       });
     } else { y += NH + GAP; }
     var sy = kids.length ? (kids[0].y + kids[kids.length - 1].y) / 2 : sTop + NH / 2;
-    var sit = { kind: 'svc', id: s.id, label: s.name, count: s.count, d: 1, x: COL[1], y: sy, open: !!st.svc[s.id] };
+    var sit = { kind: 'svc', id: s.id, label: s.name, count: svcCount(s), d: 1, x: COL[1], y: sy, open: !!st.svc[s.id] };
     nodes.push(sit); rootChildren.push(sit);
     kids.forEach(function (k) { links.push([sit, k]); });
     y += GAP * 2.2;
@@ -203,7 +220,10 @@ function colorFor(it) {
   if (it.kind === 'svc') return it.open ? ['rgba(201,168,240,.12)', '#C9A8F0'] : ['#0b0d11', '#2c2f36'];
   if (it.kind === 'cat') return it.open ? ['rgba(76,194,255,.08)', '#3a6a86'] : ['#0b0d11', '#24262c'];
   var m = { pure: '#8FD9A8', immediate: '#F0C674', async: '#4CC2FF', service: '#C9A8F0' };
-  return [st.sel === it.id ? 'rgba(76,194,255,.2)' : '#0b0d11', st.sel === it.id ? '#4CC2FF' : (m[it.type] || '#24262c') + '55'];
+  if (st.sel === it.id) return ['rgba(76,194,255,.2)', '#4CC2FF'];
+  if (it.layer && it.layer !== 'primary') return ['#08090b', '#1e2025'];
+  if (it.intent) return ['rgba(76,194,255,.07)', 'rgba(76,194,255,.55)'];
+  return ['#0b0d11', (m[it.type] || '#24262c') + '55'];
 }
 
 function drawGraph() {
@@ -229,8 +249,8 @@ function drawGraph() {
     r.setAttribute('fill', c[0]); r.setAttribute('stroke', c[1]);
     g.appendChild(r);
     var t = document.createElementNS(NS, 'text');
-    t.setAttribute('x', it.x + 13); t.setAttribute('y', it.y + 5); t.setAttribute('fill', it.kind === 'node' && st.sel !== it.id ? '#dcdad5' : '#f4f2ee');
-    t.setAttribute('style', 'font:' + (it.kind === 'node' ? '500 12px var(--mono)' : '600 13px var(--disp)') + ';letter-spacing:.04em');
+    t.setAttribute('x', it.x + 13); t.setAttribute('y', it.y + 5); t.setAttribute('fill', it.kind !== 'node' || st.sel === it.id || it.intent ? '#f4f2ee' : (it.layer !== 'primary' ? '#6d7078' : '#dcdad5'));
+    t.setAttribute('style', 'font:' + (it.kind === 'node' ? (it.intent ? '600 12px var(--mono)' : '500 12px var(--mono)') : '600 13px var(--disp)') + ';letter-spacing:.04em');
     t.textContent = it.label.length > 26 ? it.label.slice(0, 25) + '…' : it.label;
     g.appendChild(t);
     if (it.count) {
@@ -257,21 +277,36 @@ function expandBranch(sid) {
   var s = D.services.filter(function (x) { return x.id === sid; })[0];
   if (!s) return;
   st.svc[sid] = 1;
-  s.cats.forEach(function (c) { st.cat[sid + '/' + c.id] = 1; });
+  s.cats.forEach(function (c) { if (vis(c.nodes).length) st.cat[sid + '/' + c.id] = 1; });
 }
 function collapseBranch(sid) {
   delete st.svc[sid];
   Object.keys(st.cat).forEach(function (k) { if (k.split('/')[0] === sid) delete st.cat[k]; });
 }
+/* graph clicks mutate state directly and never move the camera;
+   the hash is updated quietly so the router doesn't rebuild/refit the view */
+function dropSel(prefix) {
+  if (st.sel && (st.sel === prefix || st.sel.indexOf(prefix + '/') === 0)) { st.sel = null; closeInspector(); }
+}
 function onGraphClick(it) {
-  if (it.kind === 'root') { setHash(''); return; }
-  if (it.kind === 'svc') {
-    if (st.svc[it.id]) { collapseBranch(it.id); setHash(''); }
-    else { expandBranch(it.id); setHash(it.id); }
+  if (it.kind === 'root') {
+    st.svc = {}; st.cat = {}; st.sel = null; closeInspector();
+    drawGraph(); quietHash('');
     return;
   }
-  if (it.kind === 'cat') { st.cat[it.id] = !st.cat[it.id]; setHash(st.cat[it.id] ? it.id : it.id.split('/')[0]); return; }
-  setHash(it.id);
+  if (it.kind === 'svc') {
+    if (st.svc[it.id]) { collapseBranch(it.id); dropSel(it.id); }
+    else expandBranch(it.id);
+    drawGraph(); quietHash(st.svc[it.id] ? it.id : '');
+    return;
+  }
+  if (it.kind === 'cat') {
+    if (st.cat[it.id]) { delete st.cat[it.id]; dropSel(it.id); }
+    else st.cat[it.id] = 1;
+    drawGraph(); quietHash(st.cat[it.id] ? it.id : it.id.split('/')[0]);
+    return;
+  }
+  st.sel = it.id; drawGraph(); showInspector(it.id); quietHash(it.id);
 }
 
 function applyTransform() { $('vp').setAttribute('transform', 'translate(' + st.tx + ',' + st.ty + ') scale(' + st.k + ')'); }
@@ -343,7 +378,7 @@ svg.addEventListener('pointerup', function (e) {
   var d0 = drag; drag = null; svg.classList.remove('drag');
   if (!d0 || d0.id !== e.pointerId || d0.moved > 5) return;
   if (d0.hit) onGraphClick(d0.hit);
-  else if (st.sel) setHash(st.sel.split('/').slice(0, 2).join('/'));
+  else if (st.sel) { var par = st.sel.split('/').slice(0, 2).join('/'); st.sel = null; closeInspector(); drawGraph(); quietHash(par); }
 });
 svg.addEventListener('pointercancel', function () { drag = null; svg.classList.remove('drag'); });
 var touches = {};
@@ -366,6 +401,17 @@ function dist(t) { return Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY -
 
 $('z-in').onclick = function () { var r = svg.getBoundingClientRect(); zoomAt(1.2, r.left + r.width / 2, r.top + r.height / 2); };
 $('z-out').onclick = function () { var r = svg.getBoundingClientRect(); zoomAt(1 / 1.2, r.left + r.width / 2, r.top + r.height / 2); };
+$('layer-btn').onclick = function () {
+  st.layer = st.layer === 'all' ? 'primary' : 'all';
+  if (st.layer === 'primary' && st.sel && byPath[st.sel] && (byPath[st.sel].node.layer || 'primary') !== 'primary') { st.sel = null; closeInspector(); }
+  Object.keys(st.cat).forEach(function (k) {
+    var p = k.split('/'), sv = D.services.filter(function (x) { return x.id === p[0]; })[0];
+    var c = sv && sv.cats.filter(function (x) { return x.id === p[1]; })[0];
+    if (c && !vis(c.nodes).length) delete st.cat[k];
+  });
+  syncCount(); buildRef(); drawGraph();
+  if (st.mode === 'map') { var k = Object.keys(st.svc); k.length === 1 ? fitBranch(k[0]) : fit(); }
+};
 $('z-fit').onclick = function () { fit(); };
 $('z-reset').onclick = function () { st.svc = {}; st.cat = {}; setHash(''); };
 $('z-all').onclick = function () {
@@ -413,7 +459,10 @@ function showInspector(path) {
       '<button id="ins-x" aria-label="Close documentation panel" style="flex:none;width:30px;height:30px;background:transparent;border:1px solid #22222a;color:var(--dim)">✕</button></div>' +
     '<h2 style="font-size:26px;font-weight:700;letter-spacing:.01em;line-height:1.15">' + esc(n.name) + '</h2>' +
     '<div style="display:flex;gap:8px;margin:14px 0 20px"><span class="type t-' + n.type + '">' + n.type.toUpperCase() + '</span>' +
-      '<span class="type" style="color:#8f8c86;border-color:#26262c">' + esc(e.s.name.toUpperCase()) + ' SERVICE</span></div>' +
+      '<span class="type" style="color:#8f8c86;border-color:#26262c">' + esc(e.s.name.toUpperCase()) + ' SERVICE</span>' +
+      ((n.layer || 'primary') === 'primary'
+        ? (n.intent ? '<span class="type" style="color:#4CC2FF;border-color:#4CC2FF;background:rgba(76,194,255,.1)">INTENT</span>' : '')
+        : '<span class="type" style="color:#F0C674;border-color:rgba(240,198,116,.45)">' + esc((n.layer || '').toUpperCase()) + '</span>') + '</div>' +
     '<p style="margin:0 0 22px;font-size:16px;line-height:1.62;color:#b3b0aa">' + esc(n.desc) + '</p>' +
     '<div style="display:flex;flex-direction:column;gap:22px">' +
       '<div style="display:flex;flex-direction:column;gap:9px"><span class="k">Blueprint path</span>' +
@@ -436,24 +485,29 @@ function buildRef() {
     '<div style="display:flex;flex-direction:column;gap:14px">' +
       '<span class="k">Reference</span>' +
       '<h1 style="font-size:34px;font-weight:700;letter-spacing:.02em">Primary API reference</h1>' +
-      '<p style="margin:0;font-size:17px;line-height:1.62;color:#b3b0aa;max-width:70ch">' + D.primaryCount + ' Blueprint-visible nodes, taken from the compiling v' + D.version + ' headers. ' +
-      'The workflow is always the same: get Steam YASP, choose a typed service, then drag from that service pin. Click any row for the full documentation.</p></div>' +
+      '<p style="margin:0;font-size:17px;line-height:1.62;color:#b3b0aa;max-width:70ch">' + D.primaryCount + ' Blueprint-visible Primary nodes in v' + D.version + ' — eight typed services and ' + D.primaryActions + ' actions. ' +
+      'The workflow is always the same: get Steam YASP, pick the service you need, then drag from that service pin. Click any row for the full documentation.' +
+      (st.layer === 'all' ? ' You are currently also seeing the Helpers and Advanced layers.' : '') + '</p></div>' +
+    philosophyBlock() + migrationBlock() +
     startHereBlock() +
     D.services.map(function (s) {
       return '<section id="ref-' + s.id + '" style="display:flex;flex-direction:column;gap:16px">' +
         '<div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-bottom:1px solid #22222a;padding-bottom:12px">' +
           '<h2 style="font-size:24px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">' + s.name + '</h2>' +
-          '<span class="k" style="color:var(--ac)">' + s.count + ' nodes</span></div>' +
+          '<span class="k" style="color:var(--ac)">' + svcCount(s) + ' nodes</span></div>' +
         '<p style="margin:0;font-size:15px;line-height:1.6;color:var(--dim)">' + esc(s.blurb) + '</p>' +
         s.cats.map(function (c) {
+          var vn = vis(c.nodes);
+          if (!vn.length) return '';
           return '<div style="display:flex;flex-direction:column;gap:2px;margin-top:10px">' +
-            '<span class="k" style="color:#c6c3bd;letter-spacing:.2em;padding:8px 16px;background:#0b0b0e;border:1px solid #17171a">' + esc(c.name) + ' · ' + c.nodes.length + '</span>' +
-            c.nodes.map(function (n) {
+            '<span class="k" style="color:#c6c3bd;letter-spacing:.2em;padding:8px 16px;background:#0b0b0e;border:1px solid #17171a">' + esc(c.name) + ' · ' + vn.length + '</span>' +
+            vn.map(function (n) {
               return '<a class="row" href="#' + s.id + '/' + c.id + '/' + n.slug + '">' +
                 '<span style="display:flex;flex-direction:column;gap:4px;min-width:0">' +
                   '<span style="font:500 13px var(--mono);color:#f4f2ee">' + esc(n.name) + '</span>' +
                   '<span style="font-size:13px;line-height:1.5;color:#8f8c86">' + esc(n.desc) + '</span></span>' +
-                '<span style="text-align:right"><span class="type t-' + n.type + '">' + n.type.toUpperCase() + '</span></span></a>';
+                '<span style="display:flex;flex-direction:column;gap:5px;align-items:flex-end;text-align:right"><span class="type t-' + n.type + '">' + n.type.toUpperCase() + '</span>' +
+                ((n.layer || 'primary') !== 'primary' ? '<span class="type" style="color:#F0C674;border-color:rgba(240,198,116,.45)">' + n.layer.toUpperCase() + '</span>' : '') + '</span></a>';
             }).join('') + '</div>';
         }).join('') + '</section>';
     }).join('') +
@@ -469,13 +523,35 @@ function buildRef() {
       D.notes.map(function (n) { return '<li style="font-size:15px;line-height:1.62;color:#b3b0aa">' + esc(n.replace(/\*\*/g, '').replace(/`/g, '')) + '</li>'; }).join('') +
       '</ul></section></div>';
 }
+function philosophyBlock() {
+  var p = D.philosophy;
+  return '<section style="display:flex;flex-direction:column;gap:14px;padding:26px;background:#0b0d11;border:1px solid rgba(76,194,255,.35)">' +
+    '<span class="k" style="color:var(--ac)">The contract</span>' +
+    '<h2 style="font-size:30px;font-weight:700;letter-spacing:.01em">' + esc(p.line) + '</h2>' +
+    '<p style="margin:0;font-size:17px;line-height:1.6;color:#dcdad5">' + esc(p.sub) + '</p>' +
+    '<p style="margin:0;font-size:15px;line-height:1.7;color:#b3b0aa;max-width:78ch">' + esc(p.body) + '</p>' +
+    '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px">' +
+      ['Primary — what you ship with', 'Helpers — presets and shortcuts', 'Advanced — raw Steamworks plumbing'].map(function (t, i) {
+        return '<span class="type" style="padding:7px 11px;letter-spacing:.1em;' +
+          (i === 0 ? 'color:#4CC2FF;border-color:rgba(76,194,255,.5)' : 'color:#8f8c86;border-color:#26262c') + '">' + t + '</span>';
+      }).join('') + '</div></section>';
+}
+function migrationBlock() {
+  var m = D.migration;
+  return '<section style="display:flex;flex-direction:column;gap:14px">' +
+    '<div style="border-bottom:1px solid #22222a;padding-bottom:12px"><h2 style="font-size:24px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">' + esc(m.title) + '</h2></div>' +
+    '<ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:11px">' +
+    m.points.map(function (x) { return '<li style="font-size:15px;line-height:1.65;color:#b3b0aa">' + esc(x) + '</li>'; }).join('') +
+    '</ul></section>';
+}
 function startHereBlock() {
   return '<section style="display:flex;flex-direction:column;gap:16px">' +
     '<div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #22222a;padding-bottom:12px">' +
       '<h2 style="font-size:24px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">Start here</h2>' +
-      '<span class="k" style="color:var(--ac)">' + (D.startHere.length + D.servicePins.length) + ' nodes</span></div>' +
-    '<p style="margin:0;font-size:15px;line-height:1.6;color:var(--dim)">Setup and readiness nodes, plus the eight typed service pins that Get Steam YASP returns.</p>' +
-    [['Setup & status', D.startHere], ['Typed service pins', D.servicePins]].map(function (grp) {
+      '<span class="k" style="color:var(--ac)">1 entry point</span></div>' +
+    '<p style="margin:0;font-size:15px;line-height:1.6;color:var(--dim)">Get Steam YASP is the entry point — the runtime initialises itself, so there is nothing to call before it. It returns the eight typed service pins below. Setup and preset nodes are Helpers you reach for only when you want explicit configuration.</p>' +
+    [['Entry point & status', vis(D.startHere)], ['Typed service pins', D.servicePins]].map(function (grp) {
+      if (!grp[1].length) return '';
       return '<div style="display:flex;flex-direction:column;gap:2px;margin-top:10px">' +
         '<span class="k" style="color:#c6c3bd;letter-spacing:.2em;padding:8px 16px;background:#0b0b0e;border:1px solid #17171a">' + grp[0] + ' · ' + grp[1].length + '</span>' +
         grp[1].map(function (n) {
@@ -483,7 +559,8 @@ function startHereBlock() {
             '<span style="display:flex;flex-direction:column;gap:4px;min-width:0">' +
               '<span style="font:500 13px var(--mono);color:#f4f2ee">' + esc(n.name) + '</span>' +
               '<span style="font-size:13px;line-height:1.5;color:#8f8c86">' + esc(n.desc) + '</span></span>' +
-            '<span style="text-align:right"><span class="type t-' + n.type + '">' + n.type.toUpperCase() + '</span></span></div>';
+            '<span style="display:flex;flex-direction:column;gap:5px;align-items:flex-end;text-align:right"><span class="type t-' + n.type + '">' + n.type.toUpperCase() + '</span>' +
+            ((n.layer || 'primary') !== 'primary' ? '<span class="type" style="color:#F0C674;border-color:rgba(240,198,116,.45)">' + n.layer.toUpperCase() + '</span>' : '') + '</span></div>';
         }).join('') + '</div>';
     }).join('') + '</section>';
 }
@@ -494,9 +571,11 @@ function chainHtml(chain) {
   return '<div style="display:flex;flex-wrap:wrap;align-items:center;gap:9px">' +
     chain.map(function (c, i) {
       var e = INDEX.filter(function (x) { return x.node.name === c; })[0];
+      var sh = e ? null : D.startHere.concat(D.servicePins).filter(function (x) { return x.name === c; })[0];
       var inner = '<span style="display:inline-flex;flex-direction:column;gap:3px;padding:9px 13px;background:#0b0d11;border:1px solid ' + (e ? '#24262c' : '#1a1b1f') + '">' +
-        (e ? '<span style="font:500 9px var(--mono);letter-spacing:.16em;color:var(--faint)">' + e.s.name.toUpperCase() + ' · ' + e.node.type.toUpperCase() + '</span>' : '') +
-        '<span style="font:600 13px var(--disp);letter-spacing:.03em;color:' + (e ? '#f4f2ee' : '#a9a6a0') + '">' + esc(c) + '</span></span>';
+        (e ? '<span style="font:500 9px var(--mono);letter-spacing:.16em;color:var(--faint)">' + e.s.name.toUpperCase() + ' · ' + e.node.type.toUpperCase() + '</span>'
+           : sh ? '<span style="font:500 9px var(--mono);letter-spacing:.16em;color:var(--faint)">ENTRY · ' + sh.type.toUpperCase() + '</span>' : '') +
+        '<span style="font:600 13px var(--disp);letter-spacing:.03em;color:' + (e || sh ? '#f4f2ee' : '#a9a6a0') + '">' + esc(c) + '</span></span>';
       return (e ? '<a href="#' + e.path + '">' + inner + '</a>' : inner) +
         (i < chain.length - 1 ? '<span style="color:var(--ac)">→</span>' : '');
     }).join('') + '</div>';
@@ -506,12 +585,12 @@ function buildEx() {
     '<div style="display:flex;flex-direction:column;gap:14px">' +
       '<span class="k">Examples</span>' +
       '<h1 style="font-size:34px;font-weight:700;letter-spacing:.02em">Complete workflows</h1>' +
-      '<p style="margin:0;font-size:17px;line-height:1.62;color:#b3b0aa;max-width:70ch">Every chain below uses real node names from the Primary API. Click any node to open its documentation.</p></div>' +
+      '<p style="margin:0;font-size:17px;line-height:1.62;color:#b3b0aa;max-width:70ch">Every chain below uses real node names from the Primary API, and every one of them is a complete outcome rather than a step. Click any node to open its documentation.</p></div>' +
     '<div style="padding:24px;background:#0b0d11;border:1px solid rgba(76,194,255,.35);display:flex;flex-direction:column;gap:14px">' +
       '<span class="k" style="color:var(--ac)">Quick start</span>' +
-      '<span style="font-size:17px;line-height:1.6;color:#b3b0aa">Install and enable the plugin, set your Steam App ID in Steamworks and in the project, then run the Blueprint below. ' +
-      'If the status comes back not ready, Run Steam YASP Setup Check tells you what is missing.</span>' +
-      chainHtml(['Get Steam YASP', 'Setup Steam YASP', 'Is Steam YASP Ready']) + '</div>' +
+      '<span style="font-size:17px;line-height:1.6;color:#b3b0aa">Install and enable the plugin, set your Steam App ID in Steamworks and in the project, and you are done — the runtime initialises itself. ' +
+      'Get Steam YASP is the first node you place. If something looks wrong, Run Steam YASP Health Check names it.</span>' +
+      chainHtml(['Get Steam YASP', 'Is Steam YASP Ready']) + '</div>' +
     D.examples.map(function (x, i) {
       return '<section id="ex-' + x.id + '" style="display:flex;flex-direction:column;gap:14px;padding-bottom:34px;border-bottom:1px solid #17171a">' +
         '<div style="display:flex;gap:18px;align-items:baseline"><span style="font-family:var(--disp);font-size:24px;font-weight:700;color:var(--ac);line-height:1">' + String(i + 1).padStart(2, '0') + '</span>' +
@@ -522,6 +601,10 @@ function buildEx() {
 }
 
 /* ══ SEARCH ═══════════════════════════════════════════════════ */
+function revealLayerFor(path) {
+  var e = byPath[path];
+  if (e && (e.node.layer || 'primary') !== 'primary' && st.layer !== 'all') { st.layer = 'all'; syncCount(); buildRef(); }
+}
 var searchOpen = false, results = [], cursor = 0;
 function openSearch() { searchOpen = true; $('search-ov').style.display = 'block'; $('search-in').value = ''; runSearch(''); $('search-in').focus(); }
 function closeSearch() { searchOpen = false; $('search-ov').style.display = 'none'; }
@@ -546,11 +629,12 @@ function renderResults() {
       (i === cursor ? ';background:rgba(76,194,255,.09);border-color:rgba(76,194,255,.35)' : '') + '">' +
       '<span style="display:flex;flex-direction:column;gap:4px;min-width:0">' +
         '<span style="font:500 13px var(--mono);color:#f4f2ee">' + esc(e.node.name) + '</span>' +
-        '<span class="k" style="letter-spacing:.14em">' + esc(e.s.name) + ' / ' + esc(e.c.name) + '</span></span>' +
+        '<span class="k" style="letter-spacing:.14em">' + esc(e.s.name) + ' / ' + esc(e.c.name) +
+          (e.layer !== 'primary' ? ' <span style="color:#F0C674">· ' + esc(e.layer.toUpperCase()) + '</span>' : '') + '</span></span>' +
       '<span style="text-align:right"><span class="type t-' + e.node.type + '">' + e.node.type.toUpperCase() + '</span></span></a>';
   }).join('') : '<div style="padding:28px;text-align:center" class="k">No node matches. Try “lobby”, “achievement”, “cloud”, “workshop”.</div>';
   Array.prototype.forEach.call($('search-res').querySelectorAll('a'), function (a) {
-    a.onclick = function () { closeSearch(); };
+    a.onclick = function () { closeSearch(); revealLayerFor(results[+a.getAttribute('data-i')].path); };
   });
 }
 $('search-btn').onclick = openSearch;
@@ -569,11 +653,13 @@ document.addEventListener('keydown', function (e) {
     var el = $('search-res').querySelector('[data-i="' + cursor + '"]');
     if (el) el.scrollIntoViewIfNeeded ? el.scrollIntoViewIfNeeded() : null;
   }
-  if (e.key === 'Enter' && results[cursor]) { closeSearch(); setHash(results[cursor].path); }
+  if (e.key === 'Enter' && results[cursor]) { closeSearch(); revealLayerFor(results[cursor].path); setHash(results[cursor].path); }
 });
 
 /* ══ ROUTING ══════════════════════════════════════════════════ */
 function setHash(h) { if (location.hash.slice(1) === h) route(); else location.hash = h; }
+var quiet = false;
+function quietHash(h) { if (location.hash.slice(1) === h) return; quiet = true; location.hash = h; }
 function setMode(m) {
   st.mode = m;
   $('view-map').style.display = m === 'map' ? 'block' : 'none';
@@ -608,6 +694,7 @@ function route() {
   if (cat) st.cat[svc.id + '/' + cat.id] = 1;
   if (cat && parts[2]) {
     var path = svc.id + '/' + cat.id + '/' + parts[2];
+    revealLayerFor(path);
     if (byPath[path]) { st.sel = path; drawGraph(); showInspector(path); focusNode(path); return; }
   }
   closeInspector();
@@ -617,10 +704,10 @@ function route() {
 $('tab-map').onclick = function () { setHash(''); };
 $('tab-ref').onclick = function () { setHash('reference'); };
 $('tab-ex').onclick = function () { setHash('examples'); };
-window.addEventListener('hashchange', route);
+window.addEventListener('hashchange', function () { if (quiet) { quiet = false; return; } route(); });
 window.addEventListener('resize', function () { if (st.mode === 'map' && !st.sel) fit(); });
 
-buildRef(); buildEx(); drawGraph();
+syncCount(); buildRef(); buildEx(); drawGraph();
 if (!location.hash && window.innerWidth < 760) location.hash = 'reference';
 route();
 if (st.mode === 'map' && !st.sel) fit();
